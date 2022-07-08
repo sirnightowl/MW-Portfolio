@@ -21,6 +21,6 @@ module.exports = function(eleventyConfig) {
       output: "public"
     },
 
-    pathPrefix: "/NCC-Design-System/public/"
+    pathPrefix: "/MW-Portfolio/public/"
   };
 };
