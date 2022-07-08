@@ -1,0 +1,206 @@
+@import "bootstrap/bootstrap";
+
+$focus-colour: #ffdd00;
+$focus-text-colour: #0b0c0c;
+
+$link-colour: #4840f3;
+$link-colour-hover: darken(#4840f3, 10%);
+
+$body-colour: #111;
+$body-text-colour: $light;
+// light theme
+$body-colour-light: white;
+$body-text-colour-light: $dark;
+
+$object-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+$object-shadow-hover: 0px 10px 18px rgba(0, 0, 0, 0.5);
+
+@mixin ani {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+  }
+}
+
+
+@import
+  "components/general_card",
+  "components/navigation_card",
+  "components/promo_card",
+  "components/image_card",
+  "components/card_slider",
+  "components/immersion_card",
+  "components/timeline",
+  "components/figure",
+  "components/header",
+  "components/footer",
+  "components/section_full_width",
+  "components/section_nav",
+  "components/object_promo",
+  "components/breadcrumbs",
+  "components/accordion",
+  "components/tabsection",
+  "code_highlights"
+;
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Mulish', sans-serif;
+  background-color: $body-colour-light;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+}
+
+p {
+  font-size: 1.125rem;
+  color: $dark;
+}
+.lead, .lead * {
+  font-weight: 600;
+  font-size: 1.375rem;
+}
+
+a {
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: $link-colour;
+  &:hover {
+    text-decoration: underline;
+    color: $link-colour-hover;
+  }
+  &:focus {
+    color: $focus-text-colour;
+    background-color: $focus-colour;
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+pre {
+  font-size: 1.125rem;
+  border-radius: 6px;
+}
+
+p code {
+  font-size: 1.125rem;
+}
+
+
+#componentsListAccordion {
+  display: none;
+  @include media-breakpoint-down(md) { display: block; }
+}
+#componentsListSidebar {
+  display: block;
+  @include media-breakpoint-down(md) { display: none; }
+}
+
+.navbar-nav {
+  .nav-item {
+    @include media-breakpoint-down(lg) { text-align: center; }
+  }  
+}
+
+.features-list {
+  li {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+}
+
+.back-to-top {
+  display: inline-block;
+  &:hover {
+    svg path { fill: $link-colour-hover };
+  }
+  &:focus {
+    svg path { fill: $focus-text-colour };
+  }
+}
+.example-container {
+  background-color: $gray-200;
+}
+.example-row {
+  background-color: $gray-500;
+}
+.example-column {
+  background-color: $gray-400;
+  border: solid 1px $gray-700;
+  font-weight: 700;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn-header, .btn-check, .github-link {
+  &:focus, &:active, &:focus-visible, &:checked {
+    transition: none;
+    box-shadow: none;
+    outline: solid 3px $focus-text-colour;
+    border-color: transparent;
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    svg path {
+      fill: $focus-text-colour;
+    }
+  }
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.btn-check:checked + .btn-outline-dark:focus, .btn-check:active + .btn-outline-dark:focus, .btn-outline-dark:active:focus, .btn-outline-dark.active:focus, .btn-outline-dark.dropdown-toggle.show:focus {
+  box-shadow: none;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+  .form-control {
+    &:focus {
+      box-shadow: none;
+      outline: solid 3px $focus-colour;
+      border-color: white;
+    }
+  }
+  .btn-close {
+    &:focus {
+      box-shadow: none;
+      background-color: $focus-colour;
+    }
+  }
+}
+
+.search-result-item {
+  display: none;
+  background-color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px;
+  color: black;
+
+  &:not(:last-child) {
+    border-bottom: solid $gray-400 1px;
+  }
+}
+
+.nccds-hr {
+  color: #350C78;
+  opacity: 1;
+  height: 2px !important;
+}
