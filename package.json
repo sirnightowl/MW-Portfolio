@@ -22,11 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kai-NCC/NCC-Design-System.git"
+    "url": "git+https://github.com/sirnightowl/MW-Portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/Kai-NCC/NCC-Design-System/issues"
+    "url": "https://github.com/sirnightowl/MW-Portfolio/issues"
   },
-  "homepage": "https://github.com/Kai-NCC/NCC-Design-System#readme",
+  "homepage": "https://github.com/sirnightowl/MW-Portfolio#readme",
   "description": ""
 }
