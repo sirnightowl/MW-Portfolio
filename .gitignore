@@ -1,0 +1,38 @@
+# Dependencies and Next.js output
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.env*
+!.env.example
+*.pem
+
+# Local agent and browser tooling
+.claude/
+.playwright/
+.playwright-cli/
+.playwright-mcp/
+.superpowers/
+
+# Private source material and local design exports
+bay/
+/plans/
+/docs/superpowers/
+/*.png
+/inspiration.md
+/public/images/bubbles-original.png
+/public/images/bubbles.png
+/public/images/projects/horrorometer.jpg
+/public/images/projects/horrorometer.png
+/public/images/projects/kanaboards.png
+/public/images/projects/sendadvisor.png
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+npm-debug.log*

@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(31, 31, 29, 0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+    font-family: "Nunito Sans Variable", "Aptos", "Segoe UI", sans-serif;
+  }
+
+  ::selection {
+    @apply bg-butter text-ink;
+  }
+
+  :focus-visible {
+    scroll-margin-block: 6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+}

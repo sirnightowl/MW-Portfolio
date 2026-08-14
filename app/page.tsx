@@ -18,17 +18,17 @@ const traits = [
 export default function Home() {
   return (
     <main>
-      <section className="container-custom grid items-end gap-12 pt-16 lg:min-h-[680px] lg:grid-cols-[1.05fr_0.95fr] lg:pt-20">
-        <div className="pb-14 lg:pb-24">
+      <section className="container-custom grid items-end gap-8 pt-16 lg:min-h-[680px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:pt-20">
+        <div className="pb-6 pt-8 sm:pb-10 lg:pb-24 lg:pt-0">
           <p className="mb-5 text-lg font-medium text-ink/70">Hi, I&apos;m Martin.</p>
-          <h1 className="max-w-3xl text-5xl font-black leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-3xl text-[2.75rem] font-black leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
             Digital designer with a front end craft and a nerdy streak.
           </h1>
-          <p className="mt-7 max-w-2xl text-xl leading-8 text-ink/70">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/70 sm:mt-7 sm:text-xl">
             I design and build accessible, user-centered websites and interfaces — from council services to horror fan platforms.
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row">
             <Button href="#work" size="lg">
               View projects
             </Button>
@@ -38,8 +38,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative mx-auto flex min-h-[360px] w-full max-w-[520px] items-end justify-center lg:mr-0 lg:min-h-[520px]">
-          <div className="absolute bottom-4 left-1/2 h-[330px] w-[330px] -translate-x-1/2 rounded-[43%_57%_50%_50%/55%_42%_58%_45%] border-2 border-ink bg-sage shadow-[8px_10px_0_#1f1f1d] sm:h-[390px] sm:w-[390px] lg:bottom-12 lg:h-[440px] lg:w-[440px]" />
+        <div className="relative mx-auto flex min-h-[300px] w-full max-w-[520px] items-end justify-center sm:min-h-[380px] lg:mr-0 lg:min-h-[520px]">
+          <div className="absolute bottom-4 left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-[43%_57%_50%_50%/55%_42%_58%_45%] border-2 border-ink bg-sage shadow-[8px_10px_0_#1f1f1d] sm:h-[390px] sm:w-[390px] lg:bottom-12 lg:h-[440px] lg:w-[440px]" />
           <div className="absolute bottom-24 right-2 rounded-[6px] border-2 border-ink bg-butter px-3 py-1 text-sm font-black shadow-[3px_4px_0_#1f1f1d] sm:right-6 lg:right-0">
             QA
           </div>
@@ -51,17 +51,17 @@ export default function Home() {
           </div>
           <Image
             alt="Bubbles the black cat"
-            className="relative z-10 h-auto w-full max-w-[310px] sm:max-w-[350px] lg:max-w-[390px]"
+            className="relative z-10 h-auto w-full max-w-[270px] sm:max-w-[350px] lg:max-w-[390px]"
             height={1166}
             priority
             sizes="(min-width: 1024px) 390px, (min-width: 640px) 350px, 310px"
-            src="/images/bubbles.png"
+            src="/images/bubbles.webp"
             width={859}
           />
         </div>
       </section>
 
-      <section id="skills" className="border-y-2 border-ink bg-cream py-7">
+      <section id="skills" className="scroll-mt-20 border-y-2 border-ink bg-cream py-7">
         <div className="container-custom flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-black uppercase tracking-[0.16em] text-ink/60">
           {skills.map((skill) => (
             <span key={skill}>{skill}</span>
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="work" className="container-custom py-20 md:py-28">
+      <section id="work" className="container-custom scroll-mt-20 py-20 md:py-28">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
@@ -80,8 +80,8 @@ export default function Home() {
             </h2>
           </div>
           <p className="max-w-md text-lg leading-7 text-ink/70">
-            Colorful project bands keep the page warm without making the whole
-            portfolio feel loud.
+            Three self-directed products, from first sketch through architecture,
+            accessibility, and production build.
           </p>
         </div>
 
@@ -90,12 +90,12 @@ export default function Home() {
             const style = cardStyles[project.id] ?? { bg: cardColorList[index % cardColorList.length], text: 'text-ink', textMuted: 'text-ink/60', border: 'border-ink', shadow: 'shadow-[8px_10px_0_#1f1f1d]' }
             return (
             <article
-              className={`${style.bg} ${style.border} ${style.shadow} grid gap-8 overflow-hidden rounded-[6px] border-2 p-10 md:grid-cols-[1fr_240px] md:p-14`}
+              className={`${style.bg} ${style.border} ${style.shadow} grid gap-10 overflow-hidden rounded-[6px] border-2 p-10 sm:p-12 md:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.72fr)] md:items-center md:p-16 lg:grid-cols-[minmax(0,0.88fr)_minmax(400px,0.78fr)] lg:gap-12 xl:grid-cols-[minmax(0,0.85fr)_minmax(460px,0.8fr)]`}
               key={project.id}
             >
-              <div>
+              <div className="relative z-10">
                 <p className={`text-sm font-black uppercase tracking-[0.18em] ${style.textMuted}`}>
-                  Featured build
+                  {project.status} · {project.year}
                 </p>
                 <h3 className={`mt-5 text-3xl font-black md:text-5xl ${style.text}`}>{project.title}</h3>
                 <p className={`mt-5 max-w-2xl text-lg leading-8 ${style.text.replace('/60', '/75') || 'text-ink/75'}`}>
@@ -108,12 +108,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className={`relative min-h-[160px] overflow-hidden -mr-10 md:-mr-14 md:min-h-full`}>
+              <div className="relative min-h-[230px] overflow-hidden rounded-[4px] bg-white/90 sm:min-h-[300px] md:min-h-[340px] lg:min-h-[380px]">
                 <Image
                   alt={`${project.title} screenshot`}
-                  className="object-cover"
+                  className="object-contain object-center"
                   fill
-                  sizes="240px"
+                  sizes="(min-width: 1280px) 460px, (min-width: 1024px) 400px, (min-width: 768px) 320px, calc(100vw - 64px)"
                   src={project.image}
                 />
               </div>
@@ -189,7 +189,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="container-custom py-20 md:py-28">
+      <section id="contact" className="container-custom scroll-mt-20 py-20 md:py-28">
         <div className="max-w-3xl">
           <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
             Contact

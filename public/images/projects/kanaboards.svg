@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Kanaboards planning workspace</title>
+  <desc id="desc">A stylised dark kanban board with three columns, task cards, an agent activity panel, and purple highlights.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#17171d"/>
+      <stop offset="1" stop-color="#24202e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#c084fc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0b0712" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="1197" height="757" rx="32.5" fill="none" stroke="#5c536b" stroke-width="3"/>
+  <rect x="0" y="0" width="1200" height="88" rx="34" fill="#1c1c23"/>
+  <rect y="62" width="1200" height="26" fill="#1c1c23"/>
+  <circle cx="42" cy="43" r="8" fill="#fb7185"/>
+  <circle cx="70" cy="43" r="8" fill="#fbbf24"/>
+  <circle cx="98" cy="43" r="8" fill="#4ade80"/>
+  <rect x="142" y="29" width="38" height="28" rx="8" fill="url(#accent)"/>
+  <text x="196" y="51" fill="#f8f5ff" font-family="Arial, sans-serif" font-size="23" font-weight="700">Kanaboards</text>
+  <rect x="938" y="24" width="222" height="40" rx="20" fill="#2b2934" stroke="#514b60"/>
+  <circle cx="965" cy="44" r="10" fill="#4ade80"/>
+  <text x="985" y="50" fill="#d9d2e7" font-family="Arial, sans-serif" font-size="17">3 agents active</text>
+
+  <text x="42" y="137" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">Portfolio launch</text>
+  <text x="42" y="169" fill="#9e96ad" font-family="Arial, sans-serif" font-size="17">Sprint 08 · shared delivery board</text>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(42 205)">
+      <rect width="330" height="505" rx="20" fill="#212129" stroke="#47414f"/>
+      <circle cx="25" cy="31" r="7" fill="#94a3b8"/>
+      <text x="44" y="38" fill="#f7f5fb" font-family="Arial, sans-serif" font-size="19" font-weight="700">Ready</text>
+      <rect x="256" y="18" width="48" height="30" rx="15" fill="#34313d"/>
+      <text x="274" y="39" fill="#c9c2d4" font-family="Arial, sans-serif" font-size="16">3</text>
+      <g transform="translate(16 70)">
+        <rect width="298" height="122" rx="14" fill="#2a2832" stroke="#4a4554"/>
+        <rect x="18" y="18" width="78" height="22" rx="11" fill="#443457"/>
+        <text x="31" y="34" fill="#d8b4fe" font-family="Arial, sans-serif" font-size="13" font-weight="700">DESIGN</text>
+        <text x="18" y="69" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700">Polish case-study layout</text>
+        <text x="18" y="98" fill="#a79ead" font-family="Arial, sans-serif" font-size="14">MW-218 · High priority</text>
+      </g>
+      <g transform="translate(16 208)">
+        <rect width="298" height="108" rx="14" fill="#2a2832" stroke="#4a4554"/>
+        <rect x="18" y="17" width="59" height="22" rx="11" fill="#263f3a"/>
+        <text x="31" y="33" fill="#86efac" font-family="Arial, sans-serif" font-size="13" font-weight="700">A11Y</text>
+        <text x="18" y="68" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700">Keyboard navigation</text>
+        <text x="18" y="94" fill="#a79ead" font-family="Arial, sans-serif" font-size="14">MW-221</text>
+      </g>
+    </g>
+
+    <g transform="translate(392 205)">
+      <rect width="330" height="505" rx="20" fill="#212129" stroke="#7c3aed" stroke-width="2"/>
+      <circle cx="25" cy="31" r="7" fill="#a855f7"/>
+      <text x="44" y="38" fill="#f7f5fb" font-family="Arial, sans-serif" font-size="19" font-weight="700">In progress</text>
+      <rect x="256" y="18" width="48" height="30" rx="15" fill="#3d2754"/>
+      <text x="274" y="39" fill="#e9d5ff" font-family="Arial, sans-serif" font-size="16">2</text>
+      <g transform="translate(16 70)">
+        <rect width="298" height="154" rx="14" fill="#302b39" stroke="#8b5cf6" stroke-width="2"/>
+        <rect x="18" y="18" width="82" height="22" rx="11" fill="url(#accent)"/>
+        <text x="29" y="34" fill="#fff" font-family="Arial, sans-serif" font-size="13" font-weight="700">FEATURE</text>
+        <text x="18" y="70" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700">Build project narrative</text>
+        <text x="18" y="98" fill="#b6adbf" font-family="Arial, sans-serif" font-size="14">Owned by Codex Agent</text>
+        <rect x="18" y="118" width="210" height="8" rx="4" fill="#4a4554"/>
+        <rect x="18" y="118" width="137" height="8" rx="4" fill="url(#accent)"/>
+      </g>
+      <g transform="translate(16 240)">
+        <rect width="298" height="108" rx="14" fill="#2a2832" stroke="#4a4554"/>
+        <rect x="18" y="17" width="66" height="22" rx="11" fill="#4a352b"/>
+        <text x="31" y="33" fill="#fdba74" font-family="Arial, sans-serif" font-size="13" font-weight="700">BUILD</text>
+        <text x="18" y="68" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700">Optimise project media</text>
+        <text x="18" y="94" fill="#a79ead" font-family="Arial, sans-serif" font-size="14">MW-224 · Martin</text>
+      </g>
+    </g>
+
+    <g transform="translate(742 205)">
+      <rect width="416" height="505" rx="20" fill="#212129" stroke="#47414f"/>
+      <circle cx="25" cy="31" r="7" fill="#4ade80"/>
+      <text x="44" y="38" fill="#f7f5fb" font-family="Arial, sans-serif" font-size="19" font-weight="700">Agent activity</text>
+      <g transform="translate(16 72)">
+        <rect width="384" height="84" rx="14" fill="#292731"/>
+        <circle cx="35" cy="31" r="18" fill="#7c3aed"/>
+        <text x="29" y="37" fill="#fff" font-family="Arial, sans-serif" font-size="15" font-weight="700">C</text>
+        <text x="68" y="28" fill="#fff" font-family="Arial, sans-serif" font-size="16" font-weight="700">Codex claimed MW-218</text>
+        <text x="68" y="53" fill="#a79ead" font-family="Arial, sans-serif" font-size="14">12 seconds ago</text>
+      </g>
+      <g transform="translate(16 172)">
+        <rect width="384" height="84" rx="14" fill="#292731"/>
+        <circle cx="35" cy="31" r="18" fill="#0f766e"/>
+        <text x="28" y="37" fill="#fff" font-family="Arial, sans-serif" font-size="15" font-weight="700">M</text>
+        <text x="68" y="28" fill="#fff" font-family="Arial, sans-serif" font-size="16" font-weight="700">Martin updated the sprint</text>
+        <text x="68" y="53" fill="#a79ead" font-family="Arial, sans-serif" font-size="14">4 minutes ago</text>
+      </g>
+      <g transform="translate(16 272)">
+        <rect width="384" height="147" rx="14" fill="#211c2c" stroke="#5b3f78"/>
+        <text x="20" y="31" fill="#d8b4fe" font-family="Arial, sans-serif" font-size="14" font-weight="700">AGENT NOTE</text>
+        <text x="20" y="65" fill="#fff" font-family="Arial, sans-serif" font-size="17" font-weight="700">Implementation is ready for review.</text>
+        <text x="20" y="94" fill="#b6adbf" font-family="Arial, sans-serif" font-size="14">Build, lint, and responsive checks passed.</text>
+        <rect x="20" y="111" width="128" height="25" rx="12.5" fill="#7c3aed"/>
+        <text x="39" y="129" fill="#fff" font-family="Arial, sans-serif" font-size="13" font-weight="700">OPEN CARD</text>
+      </g>
+    </g>
+  </g>
+</svg>
