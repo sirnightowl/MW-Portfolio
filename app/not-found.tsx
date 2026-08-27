@@ -1,11 +1,15 @@
 import Link from 'next/link'
 import Button from '@/components/common/Button'
+import { Star } from '@/components/common/DecorativeShapes'
 
 export default function NotFound() {
   return (
     <main className="container-custom flex min-h-[70vh] flex-col items-center justify-center py-20 text-center">
-      <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">Error 404</p>
-      <h1 className="mt-4 text-6xl font-black tracking-tight md:text-8xl">
+      <div className="flex items-center gap-3">
+        <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/40">Error 404</p>
+        <Star aria-hidden="true" />
+      </div>
+      <h1 className="mt-4 font-serif text-6xl font-black tracking-tight md:text-8xl">
         Lost in the<br />Norfolk fog.
       </h1>
       <p className="mt-6 max-w-md text-lg leading-8 text-ink/70">

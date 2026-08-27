@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Button from '@/components/common/Button'
+import { DotCluster } from '@/components/common/DecorativeShapes'
 
 export const metadata: Metadata = {
   title: 'Uses',
@@ -52,10 +53,15 @@ const groups = [
 export default function UsesPage() {
   return (
     <main className="container-custom pt-28 pb-20 md:pt-36 md:pb-28">
-      <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">Uses</p>
-      <h1 className="mt-3 text-5xl font-black tracking-normal md:text-7xl">
-        What I reach for every day.
-      </h1>
+      <div className="flex items-start gap-4">
+        <DotCluster aria-hidden="true" className="mt-2 text-coral" />
+        <div>
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/40">Uses</p>
+          <h1 className="mt-3 font-serif text-5xl font-black tracking-tight md:text-7xl">
+            What I reach for every day.
+          </h1>
+        </div>
+      </div>
       <p className="mt-6 max-w-2xl text-xl leading-8 text-ink/70">
         The tools, stack, and setup behind my design and front-end work — at Norfolk County Council and on my own products.
       </p>
@@ -64,9 +70,9 @@ export default function UsesPage() {
         {groups.map((group) => (
           <section
             key={group.cat}
-            className="rounded-[6px] border-2 border-ink bg-cream p-7 shadow-[6px_8px_0_#1f1f1d]"
+            className="rounded-[12px] border-2 border-ink bg-cream p-7 shadow-[4px_4px_0_#1f1f1d]"
           >
-            <h2 className="text-xs font-black uppercase tracking-[0.18em] text-ink/50">{group.cat}</h2>
+            <h2 className="text-xs font-black uppercase tracking-[0.18em] text-ink/40">{group.cat}</h2>
             <ul className="mt-5 space-y-4">
               {group.items.map((item) => (
                 <li key={item.name}>
