@@ -14,15 +14,15 @@ type ButtonAnchorProps = ButtonProps & AnchorHTMLAttributes<HTMLAnchorElement>
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonAnchorProps>(
   ({ className, variant = 'primary', size = 'md', href, ...props }, ref) => {
     const classes = cn(
-      'inline-flex items-center justify-center rounded-[6px] border-2 border-ink font-semibold tracking-normal transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-butter focus:bg-butter focus:ring-offset-2 disabled:pointer-events-none disabled:translate-x-0 disabled:translate-y-0 disabled:opacity-50',
+      'inline-flex items-center justify-center rounded-[8px] border-2 border-ink font-semibold tracking-normal transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-butter focus:bg-butter focus:ring-offset-2 disabled:pointer-events-none disabled:translate-x-0 disabled:translate-y-0 disabled:opacity-50 active:scale-[0.98]',
       {
-        'bg-coral text-ink shadow-[5px_7px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_9px_0_#1f1f1d] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[3px_4px_0_#1f1f1d]':
+        'bg-butter text-ink shadow-[4px_4px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#1f1f1d] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d]':
           variant === 'primary',
-        'bg-sage text-ink shadow-[5px_7px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_9px_0_#1f1f1d] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[3px_4px_0_#1f1f1d]':
+        'bg-sage text-ink shadow-[4px_4px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#1f1f1d] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d]':
           variant === 'secondary',
-        'bg-paper text-ink shadow-[5px_7px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white hover:shadow-[7px_9px_0_#1f1f1d] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[3px_4px_0_#1f1f1d]':
+        'bg-paper text-ink shadow-[4px_4px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[6px_6px_0_#1f1f1d] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d]':
           variant === 'outline',
-        'border-transparent bg-transparent text-ink/70 hover:bg-ink/5 hover:text-ink':
+        'border-transparent bg-transparent text-ink/70 hover:bg-ink/5 hover:text-ink active:scale-[0.98]':
           variant === 'ghost',
       },
       {
