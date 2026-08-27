@@ -15,8 +15,8 @@ const contactSchema = z.object({
 type ContactValues = z.infer<typeof contactSchema>
 
 const fieldBase =
-  'w-full rounded-[6px] border-2 border-ink bg-paper px-4 py-3 text-base font-medium text-ink shadow-[4px_5px_0_#1f1f1d] transition-all focus:outline-none focus:ring-2 focus:ring-butter focus:ring-offset-2 placeholder:text-ink/40'
-const fieldError = 'border-coral shadow-[4px_5px_0_#ff9d91]'
+  'w-full rounded-[8px] border-2 border-ink bg-paper px-4 py-3 text-base font-medium text-ink shadow-[3px_3px_0_#1f1f1d] transition-all focus:outline-none focus:ring-2 focus:ring-butter focus:ring-offset-2 placeholder:text-ink/40'
+const fieldError = 'border-coral shadow-[3px_3px_0_#ff9d91]'
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -38,7 +38,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-[6px] border-2 border-ink bg-sage p-6 shadow-[6px_8px_0_#1f1f1d]">
+      <div className="rounded-[12px] border-2 border-ink bg-sage p-6 shadow-[4px_4px_0_#1f1f1d]">
         <p className="text-lg font-black">Thanks — your mail client should be open.</p>
         <p className="mt-2 text-ink/70">
           If nothing happened, email me directly at{' '}
@@ -107,7 +107,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex items-center justify-center rounded-[6px] border-2 border-ink bg-coral px-8 py-4 text-lg font-semibold text-ink shadow-[5px_7px_0_#1f1f1d] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_9px_0_#1f1f1d] focus:outline-none focus:ring-2 focus:ring-butter focus:ring-offset-2 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[3px_4px_0_#1f1f1d] disabled:opacity-50"
+        className="inline-flex items-center justify-center rounded-[8px] border-2 border-ink bg-butter px-8 py-4 text-lg font-semibold text-ink shadow-[4px_4px_0_#1f1f1d] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#1f1f1d] focus:outline-none focus:ring-2 focus:ring-butter focus:ring-offset-2 active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d] active:scale-[0.98] disabled:opacity-50"
       >
         Send message
       </button>
