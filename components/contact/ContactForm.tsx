@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import Button from '@/components/common/Button'
 import { cn } from '@/lib/utils'
 
 const contactSchema = z.object({
@@ -32,7 +33,7 @@ export default function ContactForm() {
   const onSubmit = (values: ContactValues) => {
     const subject = encodeURIComponent(`Portfolio enquiry from ${values.name}`)
     const body = encodeURIComponent(`${values.message}\n\n— ${values.name}\n${values.email}`)
-    window.open(`mailto:martwhitty@gmail.com?subject=${subject}&body=${body}`, '_self')
+    window.open(`mailto:martwhitty@gmail.com?subject=${subject}&body=${body}`, '_blank')
     setSubmitted(true)
   }
 
@@ -104,13 +105,9 @@ export default function ContactForm() {
         {errors.message && <p className="mt-2 text-sm font-bold text-coral">{errors.message.message}</p>}
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="inline-flex items-center justify-center rounded-[8px] border-2 border-ink bg-butter px-8 py-4 text-lg font-semibold text-ink shadow-[4px_4px_0_#1f1f1d] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#1f1f1d] focus:outline-none focus:ring-2 focus:ring-butter focus:ring-offset-2 active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d] active:scale-[0.98] disabled:opacity-50"
-      >
+      <Button type="submit" size="lg" disabled={isSubmitting}>
         Send message
-      </button>
+      </Button>
     </form>
   )
 }

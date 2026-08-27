@@ -35,7 +35,6 @@ export const projects: Project[] = [
       textDescription: 'text-paper/75',
       border: 'border-paper',
       shadow: 'shadow-[8px_10px_0_#fffaf2]',
-      accent: 'bg-coral',
     },
   },
   {
@@ -72,7 +71,6 @@ export const projects: Project[] = [
       textDescription: 'text-ink/75',
       border: 'border-ink',
       shadow: 'shadow-[8px_10px_0_#1f1f1d]',
-      accent: 'bg-ink',
     },
   },
   {
@@ -109,7 +107,6 @@ export const projects: Project[] = [
       textDescription: 'text-ink/75',
       border: 'border-ink',
       shadow: 'shadow-[8px_10px_0_#1f1f1d]',
-      accent: 'bg-coral',
     },
   },
 ]

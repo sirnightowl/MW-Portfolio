@@ -127,7 +127,7 @@ export default function Home() {
                   {project.description}
                 </p>
                 <div className="mt-8">
-                  <Button href={`/projects/${project.id}`} variant="primary" size="md" className={style.text === 'text-paper' ? 'bg-white' : 'bg-white'}>
+                  <Button href={`/projects/${project.id}`} variant="primary" size="md" className="bg-white">
                     Read case study
                   </Button>
                 </div>

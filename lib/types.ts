@@ -5,7 +5,6 @@ export interface CardStyle {
   textDescription: string
   border: string
   shadow: string
-  accent?: string
 }
 
 export interface Project {

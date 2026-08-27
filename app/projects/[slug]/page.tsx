@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     },
     datePublished: `${project.year}`,
     keywords: project.technologies.join(', '),
-    url: project.liveUrl,
+    ...(project.liveUrl && { url: project.liveUrl }),
   }
 
   return (
