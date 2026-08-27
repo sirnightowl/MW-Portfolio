@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
+import { Instrument_Serif } from 'next/font/google'
 import '@fontsource-variable/nunito-sans'
 import './globals.css'
 import Navbar from '@/components/navigation/Navbar'
 import SocialLinks from '@/components/common/SocialLinks'
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-instrument-serif',
+  display: 'swap',
+})
 
 const SITE_URL = 'https://martwhitty.dev'
 
@@ -58,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={instrumentSerif.variable}>
       <body>
         <script
           type="application/ld+json"

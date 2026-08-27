@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Nunito Sans Variable"', '"Aptos"', '"Segoe UI"', 'sans-serif'],
+        serif: ['var(--font-instrument-serif)', 'Georgia', '"Times New Roman"', 'serif'],
+      },
       colors: {
         ink: '#1f1f1d',
         paper: '#fffaf2',
