@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Button from '@/components/common/Button'
+import { Blob, Star } from '@/components/common/DecorativeShapes'
 import Timeline from '@/components/about/Timeline'
 import YouTubeFacade from '@/components/about/YouTubeFacade'
 
@@ -20,34 +21,39 @@ export default function AboutPage() {
     <main>
       <section className="container-custom pt-24 md:pt-32 pb-20 md:pb-28">
         <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="grid gap-5 sm:min-h-[620px] sm:grid-cols-2 sm:gap-7">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] border-2 border-ink shadow-[8px_10px_0_#1f1f1d] sm:aspect-auto">
-              <Image
-                alt="Martin"
-                className="object-cover object-center"
-                fill
-                sizes="(min-width: 1024px) 270px, 45vw"
-                src="/images/about/about-portrait.jpg"
-              />
+          <div className="relative">
+            <div className="absolute -left-8 -top-8 -z-10 h-[140%] w-[120%] text-butter opacity-60 lg:-left-12 lg:-top-12">
+              <Blob />
             </div>
-            <div className="grid grid-cols-2 gap-5 sm:grid-cols-1 sm:gap-7">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border-2 border-ink shadow-[6px_8px_0_#1f1f1d] sm:aspect-auto">
+            <div className="grid gap-5 sm:min-h-[620px] sm:grid-cols-2 sm:gap-7">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] border-2 border-ink shadow-[8px_10px_0_#1f1f1d] sm:aspect-auto">
                 <Image
-                  alt="A personal travel snapshot"
-                  className="object-cover"
+                  alt="Martin"
+                  className="object-cover object-center"
                   fill
                   sizes="(min-width: 1024px) 270px, 45vw"
-                  src="/images/about/about-landscape.jpg"
+                  src="/images/about/about-portrait.jpg"
                 />
               </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border-2 border-ink shadow-[6px_8px_0_#1f1f1d] sm:aspect-auto">
-                <Image
-                  alt="A quiet personal moment"
-                  className="object-cover"
-                  fill
-                  sizes="(min-width: 1024px) 270px, 45vw"
-                  src="/images/about/about-wide.jpg"
-                />
+              <div className="grid grid-cols-2 gap-5 sm:grid-cols-1 sm:gap-7">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border-2 border-ink shadow-[6px_8px_0_#1f1f1d] sm:aspect-auto">
+                  <Image
+                    alt="A personal travel snapshot"
+                    className="object-cover"
+                    fill
+                    sizes="(min-width: 1024px) 270px, 45vw"
+                    src="/images/about/about-landscape.jpg"
+                  />
+                </div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border-2 border-ink shadow-[6px_8px_0_#1f1f1d] sm:aspect-auto">
+                  <Image
+                    alt="A quiet personal moment"
+                    className="object-cover"
+                    fill
+                    sizes="(min-width: 1024px) 270px, 45vw"
+                    src="/images/about/about-wide.jpg"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -56,13 +62,13 @@ export default function AboutPage() {
             <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
               About me
             </p>
-            <h1 className="mt-4 text-4xl font-black tracking-normal md:text-6xl">
+            <h1 className="mt-4 font-serif text-4xl font-black tracking-tight md:text-6xl">
               Practical builder, product brain, occasional cat supervisor.
             </h1>
             <div className="mt-8 flex flex-wrap gap-4">
               {traits.map((trait) => (
                 <span
-                  className={`${trait.color} rounded-[6px] border-2 border-ink px-5 py-3 text-base font-black shadow-[4px_5px_0_#1f1f1d]`}
+                  className={`${trait.color} rounded-[8px] border-2 border-ink px-5 py-3 text-base font-black shadow-[3px_3px_0_#1f1f1d]`}
                   key={trait.label}
                 >
                   {trait.label}
@@ -98,7 +104,7 @@ export default function AboutPage() {
               <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
                 What I do
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-normal md:text-4xl">
+              <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-4xl">
                 Digital experience design, front end build, and a bit of everything in between.
               </h2>
               <div className="mt-8 space-y-6 text-lg leading-8 text-ink/70">
@@ -130,7 +136,7 @@ export default function AboutPage() {
               <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
                 Tools &amp; tech
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-normal md:text-4xl">
+              <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-4xl">
                 The things I reach for every day.
               </h2>
               <div className="mt-8 grid grid-cols-2 gap-4">
@@ -159,10 +165,11 @@ export default function AboutPage() {
         <div className="container-custom">
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
-                Beyond the screen
-              </p>
-              <h2 className="mt-4 text-3xl font-black tracking-normal md:text-4xl">
+              <div className="flex items-center gap-3">
+                <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/40">Beyond the screen</p>
+                <Star aria-hidden="true" />
+              </div>
+              <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-4xl">
                 Drone flying, horror novels, and a cat called Bubbles.
               </h2>
               <p className="mt-6 text-lg leading-8 text-ink/70">
@@ -188,7 +195,7 @@ export default function AboutPage() {
           <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">
             Timeline
           </p>
-          <h2 className="mt-3 text-4xl font-black tracking-normal md:text-5xl">
+          <h2 className="mt-3 font-serif text-4xl font-black tracking-tight md:text-5xl">
             The path so far.
           </h2>
           <Timeline />
