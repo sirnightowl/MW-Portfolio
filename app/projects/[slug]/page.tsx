@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Check } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import Button from '@/components/common/Button'
+import { Squiggle } from '@/components/common/DecorativeShapes'
 import { projects } from '@/lib/data/projects'
 
 type ProjectPageProps = {
@@ -81,7 +82,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <span aria-hidden="true">·</span>
                 <span>{project.status}</span>
               </div>
-              <h1 className="mt-4 text-5xl font-black leading-[0.98] tracking-normal sm:text-6xl md:text-7xl">
+              <h1 className="mt-4 font-serif text-5xl font-black leading-[0.98] tracking-tight sm:text-6xl md:text-7xl">
                 {project.title}
               </h1>
               <p className="mt-7 max-w-3xl text-xl leading-9 text-ink/70 md:text-2xl md:leading-10">
@@ -108,7 +109,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[6px] border-2 border-ink bg-white shadow-[8px_10px_0_#1f1f1d]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[12px] border-2 border-ink bg-white shadow-[4px_4px_0_#1f1f1d]">
               <Image
                 alt={`${project.title} product interface`}
                 className="object-contain"
@@ -126,22 +127,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="space-y-14">
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">01 — The challenge</p>
-                <h2 className="mt-4 text-3xl font-black md:text-5xl">{project.challengeTitle}</h2>
+                <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-5xl">{project.challengeTitle}</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.challenge}</p>
               </div>
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">02 — The approach</p>
-                <h2 className="mt-4 text-3xl font-black md:text-5xl">{project.approachTitle}</h2>
+                <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-5xl">{project.approachTitle}</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.approach}</p>
               </div>
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">03 — The outcome</p>
-                <h2 className="mt-4 text-3xl font-black md:text-5xl">{project.outcomeTitle}</h2>
+                <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-5xl">{project.outcomeTitle}</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.outcome}</p>
               </div>
             </div>
 
-            <aside className="h-fit rounded-[6px] border-2 border-ink bg-paper p-7 shadow-[6px_8px_0_#1f1f1d] lg:sticky lg:top-28">
+            <aside className="h-fit rounded-[12px] border-2 border-ink bg-paper p-7 shadow-[4px_4px_0_#1f1f1d] lg:sticky lg:top-28">
               <p className="text-sm font-black uppercase tracking-[0.18em] text-ink/50">What shipped</p>
               <ul className="mt-6 space-y-4">
                 {project.highlights.map((highlight) => (
@@ -167,14 +168,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         <section className="container-custom py-16 md:py-24">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">More work</p>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">Keep exploring.</h2>
+          <div className="flex items-center gap-3">
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/40">More work</p>
+            <Squiggle aria-hidden="true" />
+          </div>
+          <h2 className="mt-3 font-serif text-3xl font-black tracking-tight md:text-5xl">Keep exploring.</h2>
           <div className="mt-9 grid gap-5 md:grid-cols-2">
             {otherProjects.map((item) => (
               <Link
                 key={item.id}
                 href={`/projects/${item.id}`}
-                className="group flex items-center justify-between rounded-[6px] border-2 border-ink bg-sage p-6 font-black shadow-[5px_7px_0_#1f1f1d] transition-transform hover:-translate-y-1"
+                className="group flex items-center justify-between rounded-[12px] border-2 border-ink bg-sage p-6 font-black shadow-[4px_4px_0_#1f1f1d] transition-transform hover:-translate-y-1"
               >
                 <span className="text-2xl">{item.title}</span>
                 <ArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
