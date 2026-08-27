@@ -1,3 +1,13 @@
+export interface CardStyle {
+  bg: string
+  text: string
+  textMuted: string
+  textDescription: string
+  border: string
+  shadow: string
+  accent?: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -12,11 +22,17 @@ export interface Project {
   featured: boolean
   year: number
   status: string
+  isLive?: boolean
+  leadMetric?: string
   role: string
   challenge: string
+  challengeTitle: string
   approach: string
+  approachTitle: string
   outcome: string
+  outcomeTitle: string
   highlights: string[]
+  cardStyle: CardStyle
 }
 
 export type TimelineEntryType = 'job' | 'project' | 'life' | 'education'

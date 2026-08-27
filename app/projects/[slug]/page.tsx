@@ -23,10 +23,18 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: `${project.title} case study`,
     description: project.description,
+    authors: [{ name: 'Martin Whitaker' }],
     openGraph: {
       title: `${project.title} — Martin Whitaker`,
       description: project.description,
       type: 'article',
+      images: [{ url: project.image, alt: `${project.title} product interface` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.title} — Martin Whitaker`,
+      description: project.description,
+      images: [project.image],
     },
   }
 }
@@ -39,8 +47,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const otherProjects = projects.filter((item) => item.id !== project.id)
 
+  const creativeWorkLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description,
+    creator: {
+      '@type': 'Person',
+      name: 'Martin Whitaker',
+      url: 'https://github.com/sirnightowl',
+    },
+    datePublished: `${project.year}`,
+    keywords: project.technologies.join(', '),
+    url: project.liveUrl,
+  }
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkLd) }}
+      />
       <article>
         <header className="container-custom pb-16 pt-28 md:pb-24 md:pt-36">
           <Button href="/#work" variant="ghost" size="sm">
@@ -99,17 +126,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="space-y-14">
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">01 — The challenge</p>
-                <h2 className="mt-4 text-3xl font-black md:text-5xl">Make a complicated space feel understandable.</h2>
+                <h2 className="mt-4 text-3xl font-black md:text-5xl">{project.challengeTitle}</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.challenge}</p>
               </div>
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">02 — The approach</p>
-                <h2 className="mt-4 text-3xl font-black md:text-5xl">Design the system, then sweat the interface.</h2>
+                <h2 className="mt-4 text-3xl font-black md:text-5xl">{project.approachTitle}</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.approach}</p>
               </div>
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">03 — The outcome</p>
-                <h2 className="mt-4 text-3xl font-black md:text-5xl">A useful product, not just a polished screen.</h2>
+                <h2 className="mt-4 text-3xl font-black md:text-5xl">{project.outcomeTitle}</h2>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.outcome}</p>
               </div>
             </div>
@@ -143,11 +170,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">More work</p>
           <h2 className="mt-3 text-3xl font-black md:text-5xl">Keep exploring.</h2>
           <div className="mt-9 grid gap-5 md:grid-cols-2">
-            {otherProjects.map((item, index) => (
+            {otherProjects.map((item) => (
               <Link
                 key={item.id}
                 href={`/projects/${item.id}`}
-                className={`group flex items-center justify-between rounded-[6px] border-2 border-ink p-6 font-black shadow-[5px_7px_0_#1f1f1d] transition-transform hover:-translate-y-1 ${index === 0 ? 'bg-coral' : 'bg-sage'}`}
+                className="group flex items-center justify-between rounded-[6px] border-2 border-ink bg-sage p-6 font-black shadow-[5px_7px_0_#1f1f1d] transition-transform hover:-translate-y-1"
               >
                 <span className="text-2xl">{item.title}</span>
                 <ArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1" />

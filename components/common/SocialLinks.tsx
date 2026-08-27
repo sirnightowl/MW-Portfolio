@@ -1,4 +1,4 @@
-import { Github, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface SocialLink {
@@ -11,13 +11,18 @@ const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
     url: 'https://github.com/sirnightowl',
-    icon: <Github size={20} />
+    icon: <Github size={20} />,
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/martin-whitaker',
+    icon: <Linkedin size={20} />,
   },
   {
     name: 'Email',
     url: 'mailto:martwhitty@gmail.com',
-    icon: <Mail size={20} />
-  }
+    icon: <Mail size={20} />,
+  },
 ]
 
 interface SocialLinksProps {
@@ -36,8 +41,7 @@ export default function SocialLinks({ className, iconClassName }: SocialLinksPro
           rel={social.url.startsWith('http') ? 'noopener noreferrer' : undefined}
           aria-label={social.name}
           className={cn(
-            'text-gray-500 hover:text-primary transition-colors duration-200',
-            'hover:scale-110 transform',
+            'text-ink/60 transition-colors duration-200 hover:text-ink',
             iconClassName
           )}
         >

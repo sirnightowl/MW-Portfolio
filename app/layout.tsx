@@ -4,7 +4,10 @@ import './globals.css'
 import Navbar from '@/components/navigation/Navbar'
 import SocialLinks from '@/components/common/SocialLinks'
 
+const SITE_URL = 'https://martwhitty.dev'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Martin Whitaker — Digital Experience Designer',
     template: '%s — Martin Whitaker',
@@ -20,14 +23,32 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_GB',
     siteName: 'Martin Whitaker Portfolio',
+    images: [{ url: '/images/bubbles.webp', width: 859, height: 1166, alt: 'Martin Whitaker portfolio hero' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Martin Whitaker — Digital Experience Designer',
     description: 'Accessible public services and characterful digital products, designed and built end to end.',
+    images: ['/images/bubbles.webp'],
   },
   formatDetection: {
     telephone: false,
+  },
+}
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Martin Whitaker',
+  jobTitle: 'Digital Experience Designer',
+  url: SITE_URL,
+  sameAs: [
+    'https://github.com/sirnightowl',
+    'https://www.linkedin.com/in/martin-whitaker',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Norfolk County Council',
   },
 }
 
@@ -39,6 +60,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+        />
         <Navbar />
         {children}
         <footer className="border-t-2 border-ink/10 py-8">

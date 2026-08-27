@@ -16,13 +16,6 @@ module.exports = {
         sky: '#dbe9f4',
         butter: '#f3d36b',
         clay: '#e8b58f',
-        primary: '#1f1f1d',
-        secondary: '#d8e4c6',
-        accent: '#ff9d91',
-      },
-      gradients: {
-        'primary-gradient': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-        'accent-gradient': 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',

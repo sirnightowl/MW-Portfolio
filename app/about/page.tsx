@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Button from '@/components/common/Button'
 import Timeline from '@/components/about/Timeline'
+import YouTubeFacade from '@/components/about/YouTubeFacade'
 
 const traits = [
   { label: 'Cat & human dad', color: 'bg-coral' },
@@ -177,17 +178,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="aspect-video overflow-hidden rounded-[6px] border-2 border-ink shadow-[8px_10px_0_#1f1f1d]">
-              <iframe
-                src="https://www.youtube.com/embed/Fv7KKBjETvY?start=25"
-                title="Drone footage over Norfolk"
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
-              />
-            </div>
+            <YouTubeFacade />
           </div>
         </div>
       </section>
