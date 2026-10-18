@@ -13,7 +13,7 @@ export default function YouTubeFacade() {
 
   if (active) {
     return (
-      <div className="aspect-video overflow-hidden rounded-[12px] border-2 border-ink shadow-[4px_4px_0_#1f1f1d]">
+      <div className="aspect-video overflow-hidden rounded-xl border border-ink/15 dark:border-white/15">
         <iframe
           src={`https://www.youtube.com/embed/${YOUTUBE_ID}?start=${YOUTUBE_START}&autoplay=1`}
           title="Drone footage over Norfolk"
@@ -32,7 +32,7 @@ export default function YouTubeFacade() {
       type="button"
       onClick={() => setActive(true)}
       aria-label="Play drone footage over Norfolk"
-      className="group relative aspect-video overflow-hidden rounded-[12px] border-2 border-ink shadow-[4px_4px_0_#1f1f1d] focus:outline-none focus:ring-2 focus:ring-butter focus:ring-offset-2"
+      className="group relative aspect-video w-full overflow-hidden rounded-xl border border-ink/15 dark:border-white/15"
     >
       <Image
         alt="Drone footage over Norfolk — still frame"
@@ -43,7 +43,7 @@ export default function YouTubeFacade() {
         unoptimized
       />
       <span className="absolute inset-0 bg-ink/35 transition-opacity group-hover:bg-ink/25" />
-      <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-paper bg-coral shadow-[3px_3px_0_#1f1f1d] transition-transform group-hover:scale-105">
+      <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-paper/50 bg-lilac transition-transform group-hover:scale-105">
         <Play aria-hidden="true" size={26} className="translate-x-0.5 fill-ink text-ink" />
       </span>
     </button>

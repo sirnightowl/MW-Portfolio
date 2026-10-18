@@ -5,6 +5,10 @@ out/
 coverage/
 *.tsbuildinfo
 
+# Test artifacts
+test-results/
+playwright-report/
+
 # Local configuration and secrets
 .env*
 !.env.example
@@ -36,4 +40,5 @@ Thumbs.db
 .idea/
 .vscode/
 npm-debug.log*
+dev-output.txt
 .worktrees/

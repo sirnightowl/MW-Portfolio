@@ -1,45 +1,28 @@
 import { type TimelineEntry as TimelineEntryData, TimelineEntryType } from '@/lib/types'
+import { Briefcase, Code2, Heart, GraduationCap } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const typeColors: Record<TimelineEntryType, string> = {
-  job: 'bg-coral',
-  project: 'bg-sage',
-  life: 'bg-butter',
-  education: 'bg-sky',
-}
-
-const typeIcons: Record<TimelineEntryType, string> = {
-  job: '💼',
-  project: '🔧',
-  life: '🌟',
-  education: '🎓',
+const typeStyles: Record<TimelineEntryType, { dot: string; icon: React.ReactNode }> = {
+  job: { dot: 'bg-coral', icon: <Briefcase size={16} strokeWidth={2.5} /> },
+  project: { dot: 'bg-lilac', icon: <Code2 size={16} strokeWidth={2.5} /> },
+  life: { dot: 'bg-butter', icon: <Heart size={16} strokeWidth={2.5} /> },
+  education: { dot: 'bg-sage', icon: <GraduationCap size={16} strokeWidth={2.5} /> },
 }
 
 interface TimelineEntryProps {
   entry: TimelineEntryData
-  side: 'left' | 'right'
 }
 
-function Content({ entry, alignRight }: { entry: TimelineEntryData; alignRight?: boolean }) {
+function Content({ entry }: { entry: TimelineEntryData }) {
   return (
-    <div className={cn(alignRight ? 'text-right' : '')}>
-      <p className="text-xs font-black uppercase tracking-[0.15em] text-ink/50">
-        {entry.displayDate}
-      </p>
-      <h3 className="mt-1 text-xl font-black">{entry.title}</h3>
-      {entry.subtitle && (
-        <p className="mt-0.5 text-base font-semibold text-ink/70">{entry.subtitle}</p>
-      )}
-      <p className="mt-2 text-base leading-7 text-ink/70">{entry.description}</p>
+    <div className="col-start-2 min-w-0 sm:col-start-auto">
+      <h3 className="text-xl font-bold tracking-tight">{entry.title}</h3>
+      {entry.subtitle && <p className="mt-1 text-base font-semibold text-ink/65 dark:text-white/65">{entry.subtitle}</p>}
+      <p className="mt-2 text-base leading-7 text-ink/70 dark:text-white/70">{entry.description}</p>
       {entry.tags && entry.tags.length > 0 && (
-        <div className={cn('mt-3 flex flex-wrap gap-2', alignRight ? 'justify-end' : '')}>
+        <div className="mt-4 flex flex-wrap gap-2">
           {entry.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-[4px] border border-ink/20 bg-ink/5 px-2.5 py-0.5 text-xs font-semibold text-ink/60"
-            >
-              {tag}
-            </span>
+            <span key={tag} className="tag text-ink/70 dark:text-white/70">{tag}</span>
           ))}
         </div>
       )}
@@ -48,45 +31,20 @@ function Content({ entry, alignRight }: { entry: TimelineEntryData; alignRight?:
 }
 
 function Dot({ entry }: { entry: TimelineEntryData }) {
+  const style = typeStyles[entry.type]
   return (
-    <div
-      className={cn(
-        'relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-ink text-sm shadow-[2px_3px_0_#1f1f1d]',
-        typeColors[entry.type]
-      )}
-    >
-      {typeIcons[entry.type]}
+    <div className={cn('relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink', style.dot)}>
+      {style.icon}
     </div>
   )
 }
 
-export default function TimelineEntry({ entry, side }: TimelineEntryProps) {
-  const isLeft = side === 'left'
-
+export default function TimelineEntry({ entry }: TimelineEntryProps) {
   return (
-    <>
-      <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:gap-6">
-        {isLeft ? (
-          <>
-            <Content entry={entry} alignRight />
-            <Dot entry={entry} />
-            <div />
-          </>
-        ) : (
-          <>
-            <div />
-            <Dot entry={entry} />
-            <Content entry={entry} />
-          </>
-        )}
-      </div>
-
-      <div className="flex gap-4 md:hidden">
-        <Dot entry={entry} />
-        <div className="min-w-0 flex-1">
-          <Content entry={entry} />
-        </div>
-      </div>
-    </>
+    <div className="grid grid-cols-[44px_minmax(0,1fr)] items-start gap-x-5 gap-y-3 sm:grid-cols-[44px_150px_minmax(0,1fr)] lg:gap-x-8">
+      <Dot entry={entry} />
+      <p className="pt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink/65 dark:text-white/65">{entry.displayDate}</p>
+      <Content entry={entry} />
+    </div>
   )
 }

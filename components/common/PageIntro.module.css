@@ -1,0 +1,39 @@
+.hero { position: relative; overflow: hidden; color: #fff; background: #0b0715 radial-gradient(ellipse at 90% 40%, #242035, transparent 60%); }
+.inner { padding-top: 156px; padding-bottom: 26px; }
+.layout { position: relative; }
+.copy { position: relative; z-index: 1; min-width: 0; }
+.kicker { display: flex; align-items: center; gap: 12px; color: #c6c0d3; font-size: 11px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.kicker > span { height: 6px; width: 6px; border-radius: 50%; background: #c6a7ff; flex-shrink: 0; }
+.title { margin-top: 25px; max-width: 930px; font-size: clamp(2.75rem, 5.4vw, 4.75rem); line-height: 1.04; font-weight: 800; letter-spacing: -.055em; text-wrap: balance; overflow-wrap: break-word; }
+.title span { color: #c6a7ff; }
+.description { margin-top: 26px; max-width: 570px; color: #b9b3c5; font-size: 17px; line-height: 1.8; text-wrap: pretty; }
+.split { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); align-items: center; gap: 64px; }
+.split .title { font-size: clamp(2.75rem, 4.5vw, 4rem); }
+.aside { min-width: 0; }
+.content { margin-top: 30px; }
+.footer { position: relative; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #ffffff20; margin-top: 55px; padding-top: 22px; color: #b9b3c5; font-size: 11px; letter-spacing: .025em; line-height: 1.6; }
+.signature { white-space: nowrap; }
+.signature > span { margin-inline: 10px; color: #c6a7ff; }
+.back { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: -20px; margin-bottom: 25px; color: #c6c0d3; font-size: 12px; font-weight: 650; transition: color .2s; }
+.back:hover { color: #c6a7ff; }
+.star { position: absolute; right: 24px; top: 12px; width: 44px; height: 44px; color: #ff7d78; transform: rotate(12deg); }
+.article .title { max-width: 1020px; font-size: clamp(2.3rem,4.5vw,4rem); line-height: 1.1; }
+.article .description { max-width: 720px; }
+.project .title { color: #c6a7ff; font-size: clamp(2.6rem,5vw,4.5rem); }
+
+@media (max-width: 1023px) {
+  .inner { padding-top: 130px; }
+  .split { grid-template-columns: 1fr; gap: 40px; }
+  .aside { max-width: 640px; width: 100%; }
+  .split .title { max-width: 740px; font-size: clamp(2.75rem,6vw,4rem); }
+  .star { top: -20px; right: 0; width: 28px; height: 28px; }
+}
+@media (max-width: 639px) {
+  .inner { padding-top: 120px; padding-bottom: 22px; }
+  .title, .split .title { font-size: clamp(2.4rem,10vw,3.4rem); }
+  .description { font-size: 16px; line-height: 1.75; margin-top: 22px; }
+  .footer { margin-top: 36px; font-size: 10px; }
+  .signature { display: none; }
+  .back { margin-top: -18px; margin-bottom: 20px; }
+  .star { width: 22px; height: 22px; top: -20px; }
+}

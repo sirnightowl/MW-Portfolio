@@ -14,21 +14,21 @@ type ButtonAnchorProps = ButtonProps & AnchorHTMLAttributes<HTMLAnchorElement>
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonAnchorProps>(
   ({ className, variant = 'primary', size = 'md', href, ...props }, ref) => {
     const classes = cn(
-      'inline-flex items-center justify-center rounded-[8px] border-2 border-ink font-semibold tracking-normal transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-butter focus:bg-butter focus:ring-offset-2 disabled:pointer-events-none disabled:translate-x-0 disabled:translate-y-0 disabled:opacity-50 active:scale-[0.98]',
+      'inline-flex min-h-11 items-center justify-center rounded-[10px] border font-bold tracking-[-0.01em] transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
       {
-        'bg-butter text-ink shadow-[4px_4px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#1f1f1d] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d]':
+        'border-ink bg-ink text-white hover:-translate-y-0.5 hover:bg-[#29243f] dark:border-lilac dark:bg-lilac dark:text-night dark:hover:bg-[#d8c3ff]':
           variant === 'primary',
-        'bg-sage text-ink shadow-[4px_4px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#1f1f1d] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d]':
+        'border-lilac bg-lilac text-ink hover:-translate-y-0.5 hover:bg-[#d8c3ff]':
           variant === 'secondary',
-        'bg-paper text-ink shadow-[4px_4px_0_#1f1f1d] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[6px_6px_0_#1f1f1d] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0_#1f1f1d]':
+        'border-ink/20 bg-white/70 text-ink hover:-translate-y-1 hover:border-ink/40 hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/20':
           variant === 'outline',
-        'border-transparent bg-transparent text-ink/70 hover:bg-ink/5 hover:text-ink active:scale-[0.98]':
+        'border-transparent bg-transparent text-ink/70 hover:bg-ink/5 hover:text-ink active:scale-[0.98] dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white':
           variant === 'ghost',
       },
       {
-        'px-4 py-2 text-sm': size === 'sm',
-        'px-6 py-3 text-base': size === 'md',
-        'px-8 py-4 text-lg': size === 'lg',
+        'px-5 py-2.5 text-sm': size === 'sm',
+        'px-7 py-3.5 text-base': size === 'md',
+        'px-6 py-3.5 text-base': size === 'lg',
       },
       className
     )

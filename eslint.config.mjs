@@ -10,5 +10,6 @@ export default defineConfig([
     'out/**',
     'coverage/**',
     'next-env.d.ts',
+    'playwright.config.ts',
   ]),
 ])

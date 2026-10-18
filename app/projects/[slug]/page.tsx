@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowUpRight, Check } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import Button from '@/components/common/Button'
 import { Squiggle } from '@/components/common/DecorativeShapes'
+import PageIntro from '@/components/common/PageIntro'
+import ProjectCard from '@/components/common/ProjectCard'
 import { projects } from '@/lib/data/projects'
+import { jsonLd, SITE_URL } from '@/lib/site'
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>
@@ -18,9 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params
   const project = projects.find((item) => item.id === slug)
-
   if (!project) return {}
-
   return {
     title: `${project.title} case study`,
     description: project.description,
@@ -43,7 +43,6 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params
   const project = projects.find((item) => item.id === slug)
-
   if (!project) notFound()
 
   const otherProjects = projects.filter((item) => item.id !== project.id)
@@ -53,136 +52,94 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     '@type': 'CreativeWork',
     name: project.title,
     description: project.description,
-    creator: {
-      '@type': 'Person',
-      name: 'Martin Whitaker',
-      url: 'https://github.com/sirnightowl',
-    },
+    creator: { '@type': 'Person', name: 'Martin Whitaker', url: 'https://github.com/sirnightowl' },
     datePublished: `${project.year}`,
     keywords: project.technologies.join(', '),
+    mainEntityOfPage: `${SITE_URL}/projects/${project.id}`,
     ...(project.liveUrl && { url: project.liveUrl }),
   }
 
   return (
-    <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkLd) }}
-      />
+    <main id="main" tabIndex={-1}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(creativeWorkLd) }} />
       <article>
-        <header className="container-custom pb-16 pt-28 md:pb-24 md:pt-36">
-          <Button href="/#work" variant="ghost" size="sm">
-            ← Back to selected work
-          </Button>
+        <PageIntro
+          eyebrow="Case study"
+          title={project.title}
+          description={project.longDescription ?? project.description}
+          variant="project"
+          back={{ href: '/work', label: 'Back to selected work' }}
+          note={project.leadMetric ?? `${project.year} / ${project.status}`}
+          aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={`${project.title} product interface`} className="object-cover" fill preload sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
+        >
+          {project.liveUrl && (
+            <Button href={project.liveUrl} target="_blank" rel="noopener noreferrer" size="lg" className="hero-button">Visit live product <ArrowUpRight aria-hidden="true" className="ml-4 h-4 w-4" /></Button>
+          )}
+        </PageIntro>
 
-          <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.8fr)] lg:items-center">
+        <div className="container-custom">
+          <dl className="grid gap-6 border-b border-ink/15 py-8 dark:border-white/15 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
             <div>
-              <div className="flex flex-wrap items-center gap-3 text-sm font-black uppercase tracking-[0.16em] text-ink/50">
-                <span>Case study</span>
-                <span aria-hidden="true">·</span>
-                <span>{project.status}</span>
-              </div>
-              <h1 className="mt-4 font-serif text-5xl font-black leading-[0.98] tracking-tight sm:text-6xl md:text-7xl">
-                {project.title}
-              </h1>
-              <p className="mt-7 max-w-3xl text-xl leading-9 text-ink/70 md:text-2xl md:leading-10">
-                {project.longDescription}
-              </p>
-
-              <dl className="mt-10 grid gap-6 border-y-2 border-ink/15 py-7 sm:grid-cols-2">
-                <div>
-                  <dt className="text-xs font-black uppercase tracking-[0.18em] text-ink/45">My role</dt>
-                  <dd className="mt-2 font-bold leading-6 text-ink/80">{project.role}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-black uppercase tracking-[0.18em] text-ink/45">Year / status</dt>
-                  <dd className="mt-2 font-bold leading-6 text-ink/80">{project.year} · {project.status}</dd>
-                </div>
-              </dl>
-
-              {project.liveUrl && (
-                <div className="mt-9">
-                  <Button href={project.liveUrl} target="_blank" rel="noreferrer" variant="primary" size="lg">
-                    Visit live product
-                  </Button>
-                </div>
-              )}
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65 dark:text-white/65">My role</dt>
+              <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{project.role}</dd>
             </div>
-
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[12px] border-2 border-ink bg-white shadow-[4px_4px_0_#1f1f1d]">
-              <Image
-                alt={`${project.title} product interface`}
-                className="object-contain"
-                fill
-                priority
-                sizes="(min-width: 1024px) 48vw, calc(100vw - 32px)"
-                src={project.image}
-              />
+            <div>
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65 dark:text-white/65">Year / status</dt>
+              <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{project.year} · {project.status}</dd>
             </div>
-          </div>
-        </header>
+          </dl>
+        </div>
 
-        <section className="border-y-2 border-ink bg-cream py-16 md:py-24">
-          <div className="container-custom grid gap-12 lg:grid-cols-[minmax(0,0.75fr)_minmax(320px,0.45fr)] lg:gap-24">
+        <section className="page-section">
+          <div className="container-custom grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-16">
             <div className="space-y-14">
-              <div>
-                <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">01 — The challenge</p>
-                <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-5xl">{project.challengeTitle}</h2>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.challenge}</p>
-              </div>
-              <div>
-                <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">02 — The approach</p>
-                <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-5xl">{project.approachTitle}</h2>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.approach}</p>
-              </div>
-              <div>
-                <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/50">03 — The outcome</p>
-                <h2 className="mt-4 font-serif text-3xl font-black tracking-tight md:text-5xl">{project.outcomeTitle}</h2>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 md:text-xl md:leading-9">{project.outcome}</p>
-              </div>
+              <section className="case-section">
+                <p className="eyebrow">01 — The challenge</p>
+                <h2 className="section-heading mt-3">{project.challengeTitle}</h2>
+                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.challenge}</p>
+              </section>
+              <section className="case-section">
+                <p className="eyebrow">02 — The approach</p>
+                <h2 className="section-heading mt-3">{project.approachTitle}</h2>
+                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.approach}</p>
+              </section>
+              <section className="case-section">
+                <p className="eyebrow">03 — The outcome</p>
+                <h2 className="section-heading mt-3">{project.outcomeTitle}</h2>
+                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.outcome}</p>
+              </section>
             </div>
-
-            <aside className="h-fit rounded-[12px] border-2 border-ink bg-paper p-7 shadow-[4px_4px_0_#1f1f1d] lg:sticky lg:top-28">
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-ink/50">What shipped</p>
+            <aside className="surface-card h-fit bg-lilacbg p-6 dark:bg-[#1a1530] sm:p-7">
+              <p className="eyebrow">What shipped</p>
               <ul className="mt-6 space-y-4">
                 {project.highlights.map((highlight) => (
-                  <li key={highlight} className="flex gap-3 font-bold leading-6 text-ink/80">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-sage">
+                  <li key={highlight} className="flex gap-3 text-sm font-medium leading-6 text-ink/80 dark:text-white/80">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-butter/40">
                       <Check aria-hidden="true" size={14} strokeWidth={3} />
                     </span>
                     {highlight}
                   </li>
                 ))}
               </ul>
-
-              <p className="mt-8 text-sm font-black uppercase tracking-[0.18em] text-ink/50">Built with</p>
+              <p className="eyebrow mt-8">Built with</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.technologies.map((technology) => (
-                  <span key={technology} className="rounded-[5px] border-2 border-ink/70 bg-white px-3 py-1 text-sm font-black">
-                    {technology}
-                  </span>
+                  <span key={technology} className="tag">{technology}</span>
                 ))}
               </div>
             </aside>
           </div>
         </section>
 
-        <section className="container-custom py-16 md:py-24">
+        <section className="container-custom pb-16 md:pb-24">
           <div className="flex items-center gap-3">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/40">More work</p>
+            <p className="eyebrow">More work</p>
             <Squiggle aria-hidden="true" />
           </div>
-          <h2 className="mt-3 font-serif text-3xl font-black tracking-tight md:text-5xl">Keep exploring.</h2>
-          <div className="mt-9 grid gap-5 md:grid-cols-2">
+          <h2 className="display-title mt-3 text-3xl md:text-5xl">Keep exploring.</h2>
+          <div className="mt-9 grid gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {otherProjects.map((item) => (
-              <Link
-                key={item.id}
-                href={`/projects/${item.id}`}
-                className="group flex items-center justify-between rounded-[12px] border-2 border-ink bg-sage p-6 font-black shadow-[4px_4px_0_#1f1f1d] transition-transform hover:-translate-y-1"
-              >
-                <span className="text-2xl">{item.title}</span>
-                <ArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-              </Link>
+              <ProjectCard key={item.id} project={item} heading="h3" />
             ))}
           </div>
         </section>

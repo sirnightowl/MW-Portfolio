@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Button from '@/components/common/Button'
-import { DotCluster } from '@/components/common/DecorativeShapes'
+import PageIntro from '@/components/common/PageIntro'
 
 export const metadata: Metadata = {
   title: 'Uses',
@@ -52,44 +52,29 @@ const groups = [
 
 export default function UsesPage() {
   return (
-    <main className="container-custom pt-28 pb-20 md:pt-36 md:pb-28">
-      <div className="flex items-start gap-4">
-        <DotCluster aria-hidden="true" className="mt-2 text-coral" />
-        <div>
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-ink/40">Uses</p>
-          <h1 className="mt-3 font-serif text-5xl font-black tracking-tight md:text-7xl">
-            What I reach for every day.
-          </h1>
+    <main id="main" tabIndex={-1}>
+      <PageIntro eyebrow="Uses" title={<>What I reach for<br /><span>every day.</span></>} description="The tools, stack, and setup behind my design and front-end work — at Norfolk County Council and on my own products." note="A working toolkit / From paper to production" />
+
+      <section aria-label="My toolkit" className="container-custom page-section">
+        <div className="grid gap-x-16 gap-y-14 md:grid-cols-2">
+          {groups.map((group, index) => (
+            <div key={group.cat} className="tool-group">
+              <div className="mb-5 flex items-center justify-between"><h2 className="display-title text-2xl">{group.cat}</h2><span className="category-label">0{index + 1}</span></div>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item.name}>
+                    <h3 className="font-bold leading-6">{item.name}</h3>
+                    <p className="mt-1 text-sm leading-6 text-ink/65 dark:text-white/65">{item.note}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      </div>
-      <p className="mt-6 max-w-2xl text-xl leading-8 text-ink/70">
-        The tools, stack, and setup behind my design and front-end work — at Norfolk County Council and on my own products.
-      </p>
-
-      <div className="mt-14 grid gap-6 sm:grid-cols-2">
-        {groups.map((group) => (
-          <section
-            key={group.cat}
-            className="rounded-[12px] border-2 border-ink bg-cream p-7 shadow-[4px_4px_0_#1f1f1d]"
-          >
-            <h2 className="text-xs font-black uppercase tracking-[0.18em] text-ink/40">{group.cat}</h2>
-            <ul className="mt-5 space-y-4">
-              {group.items.map((item) => (
-                <li key={item.name}>
-                  <p className="text-lg font-black">{item.name}</p>
-                  <p className="text-sm font-medium text-ink/65">{item.note}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-
-      <div className="mt-14">
-        <Button href="/" variant="outline" size="lg">
-          Back to home
-        </Button>
-      </div>
+        <div className="mt-14 flex justify-center">
+          <Button href="/" variant="outline" size="lg">Back to home</Button>
+        </div>
+      </section>
     </main>
   )
 }

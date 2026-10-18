@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ['selector', '[data-theme="dark"]'],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,18 +9,22 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Nunito Sans Variable"', '"Aptos"', '"Segoe UI"', 'sans-serif'],
-        serif: ['var(--font-instrument-serif)', 'Georgia', '"Times New Roman"', 'serif'],
+        sans: ['"TikTok Sans Variable"', '"Aptos"', '"Segoe UI"', 'sans-serif'],
+        serif: ['"TikTok Sans Variable"', '"Aptos"', '"Segoe UI"', 'sans-serif'],
       },
       colors: {
-        ink: '#1f1f1d',
-        paper: '#fffaf2',
-        cream: '#f6efe3',
-        coral: '#ff9d91',
-        sage: '#d8e4c6',
-        sky: '#dbe9f4',
-        butter: '#f3d36b',
-        clay: '#e8b58f',
+        ink: '#151326',
+        paper: '#fbfaff',
+        cream: '#f2eff9',
+        coral: '#ff7d78',
+        sage: '#dce8ff',
+        sky: '#e8ddff',
+        butter: '#d8b4fe',
+        clay: '#ffd6c8',
+        night: '#0b0715',
+        grape: '#8f68ff',
+        lilac: '#c6a7ff',
+        lilacbg: '#f0ebff',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',
@@ -37,5 +42,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
 }

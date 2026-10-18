@@ -32,7 +32,7 @@ interface SocialLinksProps {
 
 export default function SocialLinks({ className, iconClassName }: SocialLinksProps) {
   return (
-    <div className={cn('flex items-center gap-4', className)}>
+    <div className={cn('flex flex-wrap items-center gap-2', className)}>
       {socialLinks.map((social) => (
         <a
           key={social.name}
@@ -41,7 +41,7 @@ export default function SocialLinks({ className, iconClassName }: SocialLinksPro
           rel={social.url.startsWith('http') ? 'noopener noreferrer' : undefined}
           aria-label={social.name}
           className={cn(
-            'text-ink/60 transition-colors duration-200 hover:text-ink',
+            'flex h-11 w-11 items-center justify-center rounded-lg border border-ink/15 text-ink/70 transition-colors duration-200 hover:bg-cream hover:text-ink dark:border-white/15 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white',
             iconClassName
           )}
         >
