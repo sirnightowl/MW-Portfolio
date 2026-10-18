@@ -18,6 +18,9 @@ const cspDirectives = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: '/projects/the-diver', destination: '/projects/stay-with-me-deep-sea', permanent: true }]
+  },
   async headers() {
     return [
       {

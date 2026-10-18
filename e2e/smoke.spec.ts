@@ -15,6 +15,15 @@ test('homepage navigates to a project case study', async ({ page }) => {
   await expect(page.locator('main h1')).toContainText('Horrorometer')
 })
 
+test('the former Diver link redirects to the renamed game with its new artwork', async ({ page }) => {
+  await page.goto('/projects/the-diver')
+  await expect(page).toHaveURL('/projects/stay-with-me-deep-sea')
+  await expect(page.locator('main h1')).toHaveText('Stay With Me: Deep Sea')
+  const artwork = page.getByRole('img', { name: 'Halcyon research station on the dark ocean floor, lit by a small submersible' })
+  await expect(artwork).toBeVisible()
+  await expect.poll(() => artwork.evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+})
+
 test('blog index lists all published articles', async ({ page }) => {
   await page.goto('/blog')
   const articleCards = page.locator('a[href^="/blog/"]')

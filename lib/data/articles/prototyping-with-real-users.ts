@@ -42,5 +42,5 @@ A prototype with polished visuals collects feedback about the visuals \u2014 spa
 
 ## Why this holds for solo products too
 
-The indie products get the same discipline at smaller scale \u2014 Horrorometer\u2019s rating axes, SENDadvisor\u2019s search-first homepage, The Diver\u2019s first-hour pacing, all prototyped and watched before being built properly. The difference between solo work and council work is the budget, not the principle: five real users, an honest question, and the humility to change the plan is a portable method. It fits in a founder\u2019s week, and it\u2019s still the cheapest insurance in the industry.`,
+The indie products get the same discipline at smaller scale \u2014 Horrorometer\u2019s rating axes, SENDadvisor\u2019s search-first homepage, Stay With Me: Deep Sea\u2019s first-hour pacing, all prototyped and watched before being built properly. The difference between solo work and council work is the budget, not the principle: five real users, an honest question, and the humility to change the plan is a portable method. It fits in a founder\u2019s week, and it\u2019s still the cheapest insurance in the industry.`,
 }

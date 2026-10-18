@@ -7,7 +7,7 @@ export default function ProjectCard({ project, heading: Heading = 'h2' }: { proj
   return (
     <Link href={`/projects/${project.id}`} className="project-card group">
       <div className="project-card-image">
-        <Image alt={`${project.title} screenshot`} className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]" fill sizes="(min-width: 1280px) 572px, (min-width: 640px) 50vw, 100vw" src={project.image} />
+        <Image alt={project.imageAlt ?? `${project.title} screenshot`} className="object-cover transition-transform duration-500 group-hover:scale-[1.025]" style={{ objectPosition: project.imagePosition ?? 'center' }} fill sizes="(min-width: 1280px) 572px, (min-width: 640px) 50vw, 100vw" src={project.image} />
       </div>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div className="min-w-0">

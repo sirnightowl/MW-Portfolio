@@ -13,6 +13,9 @@ export interface Project {
   description: string
   longDescription?: string
   image: string
+  imageAlt?: string
+  imagePosition?: string
+  gallery?: { src: string; alt: string; caption: string }[]
   thumbnail?: string
   technologies: string[]
   category: string

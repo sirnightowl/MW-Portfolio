@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.title} — Martin Whitaker`,
       description: project.description,
       type: 'article',
-      images: [{ url: project.image, alt: `${project.title} product interface` }],
+      images: [{ url: project.image, alt: project.imageAlt ?? `${project.title} product interface` }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -70,7 +70,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           variant="project"
           back={{ href: '/work', label: 'Back to selected work' }}
           note={project.leadMetric ?? `${project.year} / ${project.status}`}
-          aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={`${project.title} product interface`} className="object-cover" fill preload sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
+          aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={project.imageAlt ?? `${project.title} product interface`} className="object-cover" style={{ objectPosition: project.imagePosition ?? 'center' }} fill preload sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
         >
           {project.liveUrl && (
             <Button href={project.liveUrl} target="_blank" rel="noopener noreferrer" size="lg" className="hero-button">Visit live product <ArrowUpRight aria-hidden="true" className="ml-4 h-4 w-4" /></Button>
@@ -89,6 +89,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </dl>
         </div>
+
+        {project.gallery && (
+          <section className="container-custom pt-14 md:pt-20" aria-labelledby="project-gallery-title">
+            <p className="eyebrow">Inside the experience</p>
+            <h2 id="project-gallery-title" className="section-heading mt-3">The world behind the messages.</h2>
+            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+              {project.gallery.map((item) => (
+                <figure key={item.src}>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-ink/15 bg-night dark:border-white/15">
+                    <Image src={item.src} alt={item.alt} fill sizes="(min-width: 1280px) 572px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                  </div>
+                  <figcaption className="mt-3 text-sm leading-6 text-ink/70 dark:text-white/70">{item.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="page-section">
           <div className="container-custom grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-16">

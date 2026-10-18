@@ -2,14 +2,14 @@ import type { Article } from './types'
 
 export const article: Article = {
   id: 'vine-not-a-tree-branching',
-  title: 'A vine, not a tree: how The Diver stays shippable',
+  title: 'A vine, not a tree: how Stay With Me: Deep Sea stays shippable',
   excerpt: 'Branching stories die of unsustainability. The design rules \u2014 from Lifeline\u2019s creators \u2014 that keep a 30,000-word real-time narrative buildable.',
   date: '2026-02-21',
   displayDate: '21 February 2026',
   readTime: '7 min read',
   category: 'Game Design',
   published: true,
-  body: `The Diver is a real-time text-narrative game: you\u2019re the only contact for Mara, a marine biologist trapped 412 metres down, and messages arrive over real minutes and hours across a three-day playthrough. Building it meant solving the two problems that kill every real-time fiction project: the story branches into a tree nobody can sustain, and the notification engine \u2014 the core mechanic \u2014 dies the moment the app is killed.
+  body: `Stay With Me: Deep Sea is a real-time text-narrative game: you\u2019re the only contact for Mara, a marine biologist trapped 412 metres down, and messages arrive over real minutes and hours across a three-day playthrough. Building it meant solving the two problems that kill every real-time fiction project: the story branches into a tree nobody can sustain, and the notification engine \u2014 the core mechanic \u2014 dies the moment the app is killed.
 
 Before writing a line of story, I went to the source: Mars Jokela (3 Minute Games, Lifeline), Dave Justus, and Emily Short\u2019s critical analysis. Nine design rules came out of that research, and every engine decision traces back to one.
 
@@ -19,7 +19,7 @@ The single most important rule, and it\u2019s Justus\u2019s: **branch sparingly,
 
 A tree grows exponentially \u2014 every choice doubles the branches, and by act three you\u2019re writing scenes nobody will see on a budget that doesn\u2019t exist. A vine branches when it matters and rejoins the main stem quickly: the player\u2019s choices change *how* they experience the next beat \u2014 tone, information, flags \u2014 but the spine of the story holds.
 
-In The Diver that means: choices set flags (oxygen, power, trust), flags gate how later beats play out, and alternate lines exist where they carry moral weight \u2014 not as decoration. The three endings (Mother / Cure / Compromise) are reachable from the spine, but only via different earned routes.
+In Stay With Me: Deep Sea that means: choices set flags (oxygen, power, trust), flags gate how later beats play out, and alternate lines exist where they carry moral weight \u2014 not as decoration. The three endings (Mother / Cure / Compromise) are reachable from the spine, but only via different earned routes.
 
 ## Real time must be visible
 
