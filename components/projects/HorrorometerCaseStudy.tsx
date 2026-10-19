@@ -61,7 +61,7 @@ export default function HorrorometerCaseStudy({ project }: { project: Project })
         ].map(([id, label]) => <a href={`#${id}`} key={id}>{label}</a>)}
       </nav>
 
-      <section id="context" aria-labelledby="context-title" className={styles.context}>
+      <section tabIndex={-1} id="context" aria-labelledby="context-title" className={styles.context}>
         <div>
           <p className="eyebrow">The design problem</p>
           <h2 id="context-title" className={styles.title}>{project.challengeTitle}</h2>
@@ -76,13 +76,13 @@ export default function HorrorometerCaseStudy({ project }: { project: Project })
 
       {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
 
-      <section id="implementation" aria-labelledby="implementation-title" className={styles.review}>
+      <section tabIndex={-1} id="implementation" aria-labelledby="implementation-title" className={styles.review}>
         <p className="eyebrow">04 / Behind the interface</p>
         <h2 id="implementation-title" className={styles.title}>Keep the interface and its contracts aligned.</h2>
         <p className={styles.body}>A control, a request schema, and an upstream API have different responsibilities. These four implementation boundaries explain what supports the public experience; they are not stages of a single transaction.</p>
-        <ol className={styles.pipeline} aria-label="Horrorometer implementation boundaries">
+        <ol role="list" className={styles.pipeline} aria-label="Horrorometer implementation boundaries">
           {boundaries.map(([title, text], index) => (
-            <li key={title}><span className={styles.stageNumber}>0{index + 1}</span><h3>{title}</h3><p>{text}</p></li>
+            <li key={title}><span aria-hidden="true" className={styles.stageNumber}>0{index + 1}</span><h3>{title}</h3><p>{text}</p></li>
           ))}
         </ol>
         <div className={styles.reviewNotes}>
@@ -91,7 +91,7 @@ export default function HorrorometerCaseStudy({ project }: { project: Project })
         </div>
       </section>
 
-      <section id="reflection" aria-labelledby="reflection-title" className={styles.reflection}>
+      <section tabIndex={-1} id="reflection" aria-labelledby="reflection-title" className={styles.reflection}>
         <div>
           <p className="eyebrow">05 / Outcome &amp; reflection</p>
           <h2 id="reflection-title" className={styles.title}>{project.outcomeTitle}</h2>

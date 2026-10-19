@@ -66,6 +66,12 @@ Blog posts describe verifiable project work. Keep implementation details traceab
 
 The review of all 21 posts is recorded in `docs/blog-evidence-review.json`, including source paths, corrected claims, and earlier displayed dates. The corrected editions use 19 October 2026. Keep existing article IDs to preserve URLs, and update the evidence record when substantive claims change. Kanaboards and Stay With Me: Deep Sea remain unreleased.
 
+## Case study accessibility
+
+All four case studies share screenshot framing and captions. Keep release-status labels visible at mobile widths, give live-source links distinct names, and preserve focusable section targets for keyboard contents navigation. The focused screenshot outline sits outside the image frame to avoid clipping. Custom-styled annotation and implementation lists retain explicit list semantics.
+
+`e2e/case-studies.spec.ts` checks 320px and 768px layouts in both themes, text-spacing overrides, automated accessibility and section-link keyboard focus. The review is recorded in `docs/project-evidence-review.json`; automated checks do not replace screen-reader or real-device testing.
+
 ## Roll back
 
 Use `npx wrangler rollback` to restore the previous Cloudflare deployment. Revert the corresponding commit on `main` before publishing again so the next deployment keeps the rollback.

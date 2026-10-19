@@ -418,5 +418,27 @@
       "note": "Unreleased game. Authored fiction and project artwork; not research evidence or real underwater footage. Actual Ocean Floor subtitle retained; portfolio title is Stay With Me: Deep Sea. Browser capture does not verify native notifications or full story completion.",
       "sha256": "7441d705c681edaa21f4385211eedf7b160b6766ada517f9886090c205f8e3ab"
     }
-  ]
+  ],
+  "consistencyAccessibilityReview": {
+    "reviewedAt": "2026-10-19",
+    "scope": "All four visual case studies: structure, heading hierarchy, screenshot descriptions and provenance, release status, source-link names, keyboard navigation, responsive layout and text spacing.",
+    "fixes": [
+      "Keep screenshot status labels visible on narrow screens, including unreleased build context.",
+      "Make fragment-target sections programmatically focusable so keyboard section navigation transfers focus.",
+      "Place screenshot keyboard-focus outlines on the enclosing frame to avoid clipping by its rounded overflow boundary.",
+      "Give public-source links distinct accessible names and announce their new-tab behaviour.",
+      "Use consistent 12px screenshot frame labels and captions, with stacked frame labels on mobile.",
+      "Keep explicit list roles for custom-styled annotation and implementation lists; hide decorative stage numbers from assistive technology."
+    ],
+    "regressions": "e2e/case-studies.spec.ts checks all four pages at 320px and 768px in light/dark themes, including visible screenshot status, named links, screenshot focus indication, text-spacing reflow and automated accessibility. It also checks keyboard focus and fixed-navigation clearance for every contents link. Existing smoke checks cover screenshots, release labels and 320px/768px reflow; existing accessibility checks cover all routes at desktop width.",
+    "evidencePolicy": "Project claims, release status and original screenshot assets remain unchanged.",
+    "limitations": "Automated accessibility and keyboard checks use Chromium. They do not constitute WCAG certification or a screen-reader/physical-device usability study.",
+    "verification": {
+      "lint": "passed",
+      "unitTests": "11 passed across 6 files",
+      "browserTests": "101 passed, including 5 new case-study regression tests",
+      "visualReview": "Reviewed first screenshot frames and captions for all four projects at 320px in both themes, plus the desktop screenshot keyboard-focus indicator.",
+      "result": "No violations reported by the automated checks in the tested configurations."
+    }
+  }
 }

@@ -20,7 +20,7 @@ export interface CaseStudyScreenContent {
 
 export default function CaseStudyScreen({ screen }: { screen: CaseStudyScreenContent }) {
   return (
-    <section id={screen.id} aria-labelledby={`${screen.id}-title`} className={styles.screenSection}>
+    <section id={screen.id} tabIndex={-1} aria-labelledby={`${screen.id}-title`} className={styles.screenSection}>
       <div className={styles.sectionHeading}>
         <span className={styles.number} aria-hidden="true">{screen.number}</span>
         <div>
@@ -35,9 +35,9 @@ export default function CaseStudyScreen({ screen }: { screen: CaseStudyScreenCon
             <Image src={screen.image} alt={screen.alt} width={screen.width ?? 1249} height={screen.height} sizes="(min-width: 1280px) 1160px, calc(100vw - 40px)" className={styles.screenshot} />
           </a>
         </div>
-        <figcaption><span>{screen.captureNote ?? 'Select the image to view it larger.'}</span>{screen.url && <a href={screen.url} target="_blank" rel="noopener noreferrer">View the live page <ArrowUpRight size={14} aria-hidden="true" /></a>}</figcaption>
+        <figcaption><span>{screen.captureNote ?? 'Select the image to view it larger.'}</span>{screen.url && <a href={screen.url} aria-label={`View the live page: ${screen.label} (opens in a new tab)`} target="_blank" rel="noopener noreferrer">View the live page <ArrowUpRight size={14} aria-hidden="true" /></a>}</figcaption>
       </figure>
-      <ol className={styles.notes}>
+      <ol role="list" className={styles.notes}>
         {screen.notes.map(([title, text], index) => (
           <li key={title}><span className={styles.noteNumber} aria-hidden="true">{index + 1}</span><h3>{title}</h3><p>{text}</p></li>
         ))}
