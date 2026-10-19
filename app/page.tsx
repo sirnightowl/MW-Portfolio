@@ -22,10 +22,10 @@ const traits = [
 ]
 
 const stats = [
-  { to: 4, suffix: '', prefix: '', label: 'Products designed and built' },
+  { to: projects.length, suffix: '', prefix: '', label: 'Projects in this portfolio' },
   { to: 12, suffix: '+', prefix: '', label: 'Years building for the web' },
-  { to: 11000, suffix: '+', prefix: '', label: 'Live listings in production' },
-  { to: 153, suffix: '', prefix: '', label: 'Local authorities covered' },
+  { to: projects.filter((project) => project.isLive).length, suffix: '', prefix: '', label: 'Live products' },
+  { to: projects.filter((project) => !project.isLive).length, suffix: '', prefix: '', label: 'Unreleased projects' },
 ]
 
 const disciplines = [
@@ -84,7 +84,7 @@ export default function Home() {
         <div className="mb-14 max-w-2xl">
           <p className="eyebrow">By the numbers</p>
           <h2 className="display-title mt-3 text-4xl md:text-5xl">Real projects, designed and built.</h2>
-          <p className="mt-5 text-lg leading-7 text-ink/65 dark:text-white/65">A few measurable outcomes from products I&apos;ve designed and built end to end.</p>
+          <p className="mt-5 text-lg leading-7 text-ink/65 dark:text-white/65">Two live products, two projects in development, and a background in design and front-end work.</p>
         </div>
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((stat) => (

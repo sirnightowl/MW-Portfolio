@@ -1,0 +1,206 @@
+{
+  "reviewedAt": "2026-10-19",
+  "policy": "Verifiable project work only. Implementation descriptions and observed public interfaces do not establish research findings, adoption, measured impact, operational routines, exhaustive testing, or sole authorship.",
+  "scope": "All four project pages, shared project cards and metadata; related unsupported homepage counts.",
+  "dates": "The displayed year is the reviewed case-study edition, not a claim about the project start or public launch. Structured data uses dateModified, not an unverified publication date.",
+  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions.",
+  "projects": [
+    {
+      "id": "sendadvisor",
+      "previousDisplayedYear": 2025,
+      "removedOrCorrected": [
+        "Unverified 11,000+ listing and complete authority-coverage claims",
+        "Invented comprehensive research audit and family behaviour findings",
+        "Claims of universally verified data and guarantees about every production write",
+        "Recurring backup success and monthly restore-drill claims without run records",
+        "Unverified chronology and delivery-process claims"
+      ],
+      "evidence": [
+        {
+          "path": "sendadvisor/app/(site)/page.tsx",
+          "sha256": "fb7f7262c1279fd5b30b58899bb54e279dc8913ffb0e58361f83258f5cf2fc0f"
+        },
+        {
+          "path": "sendadvisor/components/search/HeroSearchBar.tsx",
+          "sha256": "51f678b73f87af4a78455cedbcea7b5c1dc6fc51c3bdb021d8565fde83c0e90a"
+        },
+        {
+          "path": "sendadvisor/app/(site)/days-out/page.tsx",
+          "sha256": "a8529954aa181cddd5bb29095b57955c7b3c025724df06c9699f4be46b15c977"
+        },
+        {
+          "path": "sendadvisor/app/(site)/councils/[slug]/page.tsx",
+          "sha256": "e51060a7bf583deed3d84e43a15a3b12494c888e2bc356503d3269138cb791ba"
+        },
+        {
+          "path": "sendadvisor/scripts/enrichment-audit-server.mjs",
+          "sha256": "85600c2f9623c9bee9b6445d9b761af1e7bf6ab5a397bac899dafdf0d0f321fa"
+        },
+        {
+          "path": "sendadvisor/scripts/prepare-go-live-diff.mjs",
+          "sha256": "82317b3eb03068cabef6bc5c6c77f731b8ad3803efd4b61347872e00134533ba"
+        },
+        {
+          "path": "sendadvisor/docs/adr/0007-enrichment-audit-server-pipeline.md",
+          "sha256": "2ff1958ca2981f4c1a2c65e85b0c4fa98082257aa8dd3ee8ee14e90730fb40d6"
+        },
+        {
+          "path": "sendadvisor/scripts/backup-d1-to-r2.mjs",
+          "sha256": "cad6a59481e4138f3ca6463059e7d87a8cff6908d715a8fe08b888b7f484806f"
+        },
+        {
+          "path": "sendadvisor/scripts/restore-d1-from-r2.mjs",
+          "sha256": "fd80eab967ef0db526e3ce72f3c8004d615306612344d90963d472b0d4ff2e75"
+        },
+        {
+          "path": "sendadvisor/package.json",
+          "sha256": "cacf7cac09b74f650cf2f08c7e535faf49974ed542b8e9aa416c68aa3f1bfc29"
+        },
+        {
+          "path": "sendadvisor/scripts/export-approved-batch.mjs",
+          "sha256": "3c1b86471858328a2360772d3b9c5002ed91cddfc276c0ef6908457d5f9b9aff"
+        }
+      ]
+    },
+    {
+      "id": "horrorometer",
+      "previousDisplayedYear": 2025,
+      "removedOrCorrected": [
+        "Incorrect claim that genre dimensions replace overall ratings",
+        "Unqualified outage resilience and full race-condition coverage",
+        "Unsupported formal audit dates, issue totals, and route counts",
+        "Fixed patch-script counts and unverified product adoption"
+      ],
+      "evidence": [
+        {
+          "path": "horrorometer/src/lib/validation/schemas.ts",
+          "sha256": "f42545a731ad0a00fe0f3d1a195c477a26d28b537eaafff9ab4ff5da219c614a"
+        },
+        {
+          "path": "horrorometer/src/lib/utils/circuit-breaker.ts",
+          "sha256": "69149b7742fca76594e016689c0a09c1d8550fd73680edc7bb2b47e55c75f395"
+        },
+        {
+          "path": "horrorometer/src/app/api/tmdb-proxy/[[...slug]]/route.ts",
+          "sha256": "2455d96e9863f57461936e5eb6edb3f2c09e0f900dae7e22b4ab89c5f57fad4b"
+        },
+        {
+          "path": "horrorometer/src/lib/services/oauth-device-service.ts",
+          "sha256": "5b1c6df87dc15691731f1b7b50b88b06906c2ff39331f0223ae405cab3018f7d"
+        },
+        {
+          "path": "horrorometer/src/lib/services/__tests__/oauth-device-service.test.ts",
+          "sha256": "d08235c44747da923535b27628dc62211db1b06f90dff4bbde79f9379093aba0"
+        },
+        {
+          "path": "horrorometer/package.json",
+          "sha256": "1549ed75d4fc8b2ac508e17f362c6242776cdf3b2739bfcb0c9d4f8269925e3d"
+        }
+      ]
+    },
+    {
+      "id": "kanaboards",
+      "previousDisplayedYear": 2024,
+      "removedOrCorrected": [
+        "Unverified fixed MCP-tool and migration counts",
+        "Absolute claims about agent capabilities, permission coverage, and stale-run recovery",
+        "Unsupported development history and measured workflow improvements"
+      ],
+      "evidence": [
+        {
+          "path": "kanaboards/src/worker-mcp.ts",
+          "sha256": "12574c9d47eac8690e10721e6dd0f0a1d1dfb757bd6282be756032502438052d"
+        },
+        {
+          "path": "kanaboards/src/worker-mcp-agent-tools.ts",
+          "sha256": "89b2963ecc7c70bcbce790b41521cbc2558c5ec803e9e45186bea98d5bda7f6e"
+        },
+        {
+          "path": "kanaboards/opencode-kanaboards-agent/src/daemon.ts",
+          "sha256": "2e41bb009bb2cadda8ac1a6240bf4be5b2ace2fcc9ce70c0811dad70eed5c17c"
+        },
+        {
+          "path": "kanaboards/opencode-kanaboards-agent/src/runners/registry.ts",
+          "sha256": "d05bb18cea9ba270ada613c51660e60de47c3dfcf992ec3d6621a74fd030dcbc"
+        },
+        {
+          "path": "kanaboards/package.json",
+          "sha256": "6fa8047a5645733552e630ccc062e40c4086d17833a4d32e24dc12980f9c1077"
+        }
+      ]
+    },
+    {
+      "id": "stay-with-me-deep-sea",
+      "previousDisplayedYear": 2026,
+      "removedOrCorrected": [
+        "Unverified completion, ending-quality and exhaustive testing claims",
+        "Always-visible radar and native-delivery guarantees inferred from component existence",
+        "Unsupported first-person goals, playtesting outcomes, and release-hardening claims"
+      ],
+      "evidence": [
+        {
+          "path": "Echoes/packages/engine/src/engine.ts",
+          "sha256": "24a7015d584acdb15c47d7e59b60a78d1b40d6a3af57958c0879d0f53c1af1aa"
+        },
+        {
+          "path": "Echoes/packages/engine/src/types.ts",
+          "sha256": "677c4b05ee5c7fe8c5ae7c7866f5ad68ec4a7702344678ee68459a02c835f079"
+        },
+        {
+          "path": "Echoes/packages/engine/tests/validate.test.ts",
+          "sha256": "a615f609fb10dcef05e67015a1a77388d19f4a56d6b57414c16e27bd800734d2"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/archive/ArchiveProvider.tsx",
+          "sha256": "908f127a135f7f3a8a931034356e3ba2803b903804345f9ea3d6c4a3d63ffe30"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/notifications/localNotifications.ts",
+          "sha256": "7627665ae335bdad91772712b2282f434b5a16ceb76ab0c542dc53243245a568"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/notifications/localNotifications.web.ts",
+          "sha256": "225cf1e7b3bca44af11a9def53d7f46474e7e3cbec683a5255966ca85af24f97"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/content/act1.ts",
+          "sha256": "e26bb5df7042feb664526501f1d83a0a6e42ee96432074eb3cbf6556d3f4bb81"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/content/act2.ts",
+          "sha256": "2819c4d1fa54bd74e53c44c82802cd3bbd3a5bb0a7613a3efa6fadf82dcd36ea"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/content/act3.ts",
+          "sha256": "1f7ea9ed8412ccf2e1cf928d2cb07a94187e441608f6408532a5abaee7164b8b"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "public/images/projects/sendadvisor-case-study/home.webp",
+      "sourceUrl": "https://sendadvisor.co.uk/",
+      "capturedAt": "2026-10-19",
+      "capture": "Desktop viewport, 1265 × 716 pixels. Cropped 100 pixels from the top to exclude the account/navigation header and 12 pixels from the right to exclude the scrollbar. Saved as WebP; interface content unchanged.",
+      "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
+      "sha256": "874ad7880885dfdd1ccc5f3132270886a2f1847c17f71c850541f99ec82984e8"
+    },
+    {
+      "path": "public/images/projects/sendadvisor-case-study/results.webp",
+      "sourceUrl": "https://sendadvisor.co.uk/days-out",
+      "capturedAt": "2026-10-19",
+      "capture": "Desktop viewport, 1265 × 716 pixels, scrolled to show directory controls and result images. Cropped 135 pixels from the top and 12 pixels from the right. Saved as WebP; interface content unchanged.",
+      "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
+      "sha256": "f5e933bc8802ab286c8d66c08dc898a23a9966f681f722b4cfd8eb295d3b2987"
+    },
+    {
+      "path": "public/images/projects/sendadvisor-case-study/council.webp",
+      "sourceUrl": "https://sendadvisor.co.uk/councils/norfolk",
+      "capturedAt": "2026-10-19",
+      "capture": "Desktop viewport, 1265 × 716 pixels. Cropped 100 pixels from the top to exclude the account/navigation header and 12 pixels from the right to exclude the scrollbar. Saved as WebP; interface content unchanged.",
+      "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
+      "sha256": "13f06901304c937f3f5c39e3694a4fb5f24ae523ff5bbc895b959b524151b838"
+    }
+  ]
+}

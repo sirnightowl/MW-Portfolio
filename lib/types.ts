@@ -23,6 +23,7 @@ export interface Project {
   githubUrl?: string
   featured: boolean
   year: number
+  reviewedAt: string
   status: string
   isLive?: boolean
   leadMetric?: string

@@ -6,6 +6,7 @@ import Button from '@/components/common/Button'
 import { Squiggle } from '@/components/common/DecorativeShapes'
 import PageIntro from '@/components/common/PageIntro'
 import ProjectCard from '@/components/common/ProjectCard'
+import SendadvisorCaseStudy from '@/components/projects/SendadvisorCaseStudy'
 import { projects } from '@/lib/data/projects'
 import { jsonLd, SITE_URL } from '@/lib/site'
 
@@ -53,7 +54,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     name: project.title,
     description: project.description,
     creator: { '@type': 'Person', name: 'Martin Whitaker', url: 'https://github.com/sirnightowl' },
-    ...(project.isLive ? { datePublished: `${project.year}` } : { dateCreated: `${project.year}` }),
+    dateModified: project.reviewedAt,
     keywords: project.technologies.join(', '),
     mainEntityOfPage: `${SITE_URL}/projects/${project.id}`,
     ...(project.isLive && project.liveUrl && { url: project.liveUrl }),
@@ -84,69 +85,75 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{project.role}</dd>
             </div>
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65 dark:text-white/65">Year / status</dt>
-              <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{project.year} · {project.status}</dd>
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65 dark:text-white/65">Reviewed / status</dt>
+              <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(project.reviewedAt))} · {project.status}</dd>
             </div>
           </dl>
         </div>
 
-        {project.gallery && (
-          <section className="container-custom pt-14 md:pt-20" aria-labelledby="project-gallery-title">
-            <p className="eyebrow">Inside the experience</p>
-            <h2 id="project-gallery-title" className="section-heading mt-3">The world behind the messages.</h2>
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
-              {project.gallery.map((item) => (
-                <figure key={item.src}>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-ink/15 bg-night dark:border-white/15">
-                    <Image src={item.src} alt={item.alt} fill sizes="(min-width: 1280px) 572px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
-                  </div>
-                  <figcaption className="mt-3 text-sm leading-6 text-ink/70 dark:text-white/70">{item.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        )}
+        {project.id === 'sendadvisor' ? (
+          <SendadvisorCaseStudy project={project} />
+        ) : (
+          <>
+            {project.gallery && (
+              <section className="container-custom pt-14 md:pt-20" aria-labelledby="project-gallery-title">
+                <p className="eyebrow">Inside the experience</p>
+                <h2 id="project-gallery-title" className="section-heading mt-3">The world behind the messages.</h2>
+                <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                  {project.gallery.map((item) => (
+                    <figure key={item.src}>
+                      <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-ink/15 bg-night dark:border-white/15">
+                        <Image src={item.src} alt={item.alt} fill sizes="(min-width: 1280px) 572px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                      </div>
+                      <figcaption className="mt-3 text-sm leading-6 text-ink/70 dark:text-white/70">{item.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            )}
 
-        <section className="page-section">
-          <div className="container-custom grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-16">
-            <div className="space-y-14">
-              <section className="case-section">
-                <p className="eyebrow">01 — The challenge</p>
-                <h2 className="section-heading mt-3">{project.challengeTitle}</h2>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.challenge}</p>
-              </section>
-              <section className="case-section">
-                <p className="eyebrow">02 — The approach</p>
-                <h2 className="section-heading mt-3">{project.approachTitle}</h2>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.approach}</p>
-              </section>
-              <section className="case-section">
-                <p className="eyebrow">03 — The outcome</p>
-                <h2 className="section-heading mt-3">{project.outcomeTitle}</h2>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.outcome}</p>
-              </section>
-            </div>
-            <aside className="surface-card h-fit bg-lilacbg p-6 dark:bg-[#1a1530] sm:p-7">
-              <p className="eyebrow">What shipped</p>
-              <ul className="mt-6 space-y-4">
-                {project.highlights.map((highlight) => (
-                  <li key={highlight} className="flex gap-3 text-sm font-medium leading-6 text-ink/80 dark:text-white/80">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-butter/40">
-                      <Check aria-hidden="true" size={14} strokeWidth={3} />
-                    </span>
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
-              <p className="eyebrow mt-8">Built with</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.technologies.map((technology) => (
-                  <span key={technology} className="tag">{technology}</span>
-                ))}
+            <section className="page-section">
+              <div className="container-custom grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-16">
+                <div className="space-y-14">
+                  <section className="case-section">
+                    <p className="eyebrow">01 — The challenge</p>
+                    <h2 className="section-heading mt-3">{project.challengeTitle}</h2>
+                    <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.challenge}</p>
+                  </section>
+                  <section className="case-section">
+                    <p className="eyebrow">02 — The approach</p>
+                    <h2 className="section-heading mt-3">{project.approachTitle}</h2>
+                    <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.approach}</p>
+                  </section>
+                  <section className="case-section">
+                    <p className="eyebrow">03 — The outcome</p>
+                    <h2 className="section-heading mt-3">{project.outcomeTitle}</h2>
+                    <p className="mt-6 max-w-3xl text-lg leading-8 text-ink/70 dark:text-white/70">{project.outcome}</p>
+                  </section>
+                </div>
+                <aside className="surface-card h-fit bg-lilacbg p-6 dark:bg-[#1a1530] sm:p-7">
+                  <p className="eyebrow">{project.isLive ? 'Implemented capabilities' : 'In the unreleased build'}</p>
+                  <ul className="mt-6 space-y-4">
+                    {project.highlights.map((highlight) => (
+                      <li key={highlight} className="flex gap-3 text-sm font-medium leading-6 text-ink/80 dark:text-white/80">
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-butter/40">
+                          <Check aria-hidden="true" size={14} strokeWidth={3} />
+                        </span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="eyebrow mt-8">Built with</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.technologies.map((technology) => (
+                      <span key={technology} className="tag">{technology}</span>
+                    ))}
+                  </div>
+                </aside>
               </div>
-            </aside>
-          </div>
-        </section>
+            </section>
+          </>
+        )}
 
         <section className="container-custom pb-16 md:pb-24">
           <div className="flex items-center gap-3">

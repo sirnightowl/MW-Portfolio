@@ -11,7 +11,7 @@ export default function ProjectCard({ project, heading: Heading = 'h2' }: { proj
       </div>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="eyebrow !text-[10px]">{project.status} <span aria-hidden="true">·</span> {project.year}</p>
+          <p className="eyebrow !text-[10px]">{project.status} <span aria-hidden="true">·</span> Reviewed {project.year}</p>
           <Heading className="display-title mt-2 text-2xl transition-colors group-hover:text-[#7751bb] dark:group-hover:text-lilac sm:text-3xl">{project.title}</Heading>
         </div>
         <span className="project-card-arrow"><ArrowUpRight aria-hidden="true" size={18} /></span>

@@ -68,7 +68,8 @@ test('reduced motion keeps counters at their final values', async ({ page }) => 
   await page.goto('/')
   await expect(page.getByText('4', { exact: true })).toHaveText('4')
   await expect(page.getByText('12+', { exact: true })).toHaveText('12+')
-  await expect(page.getByText('11,000+', { exact: true })).toHaveText('11,000+')
+  await expect(page.getByText('2 Live products', { exact: true })).toBeVisible()
+  await expect(page.getByText('2 Unreleased projects', { exact: true })).toBeVisible()
 })
 
 for (const theme of ['light', 'dark']) {
