@@ -6,6 +6,7 @@ import ChevronUpRight from '@/components/common/ChevronUpRight'
 import { Squiggle, Star } from '@/components/common/DecorativeShapes'
 import Reveal from '@/components/common/Reveal'
 import ContactForm from '@/components/contact/ContactForm'
+import EmailContact from '@/components/contact/EmailContact'
 import { projects } from '@/lib/data/projects'
 import { articles } from '@/lib/data/articles'
 import ArticleCard from '@/components/common/ArticleCard'
@@ -215,7 +216,7 @@ export default function Home() {
             <p className="mt-6 max-w-md text-lg leading-7 text-white/60">Currently taking on small freelance projects alongside my day job. I usually reply within a couple of days.</p>
             <div className="mt-8 rounded-[20px] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-white/60">Prefer email?</p>
-              <a href="mailto:martwhitty@gmail.com" className="mt-1 block text-lg font-black underline underline-offset-4">martwhitty@gmail.com</a>
+              <EmailContact className="mt-1 inline-flex min-h-11 items-center gap-2 text-left text-lg font-black underline underline-offset-4" />
             </div>
           </div>
           <div className="mt-10 rounded-[24px] bg-white p-6 text-ink dark:bg-[#151326] dark:text-white sm:p-8 lg:mt-0"><ContactForm /></div>

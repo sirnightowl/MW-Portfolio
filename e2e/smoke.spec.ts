@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { articles } from '../lib/data/articles'
+import { getContactEmail } from '../lib/contact'
 
 const publishedCount = articles.filter((a) => a.published).length
 
@@ -44,7 +45,7 @@ test('contact form shows validation errors', async ({ page }) => {
   await expect(page.locator('#message-error')).toBeVisible()
 })
 
-test('CV is reachable from About and offers the original PDF download', async ({ page, request }) => {
+test('CV is reachable from About and offers the public PDF download', async ({ page, request }) => {
   await page.goto('/about')
   await page.getByRole('link', { name: 'Read my CV' }).click()
   await expect(page).toHaveURL('/cv')
@@ -59,6 +60,27 @@ test('CV is reachable from About and offers the original PDF download', async ({
   expect(response.status()).toBe(200)
   expect(response.headers()['content-type']).toContain('application/pdf')
   expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-')
+})
+
+test('contact details stay out of page HTML and email can be revealed with the keyboard', async ({ page, request }) => {
+  const email = getContactEmail()
+  for (const route of ['/', '/contact', '/cv']) {
+    const response = await request.get(route)
+    const html = await response.text()
+    expect(html).not.toContain(email)
+    expect(html).not.toContain('tel:')
+    await page.goto(route)
+    await expect(page.getByRole('link', { name: email, exact: true })).toHaveCount(0)
+    const reveal = page.getByRole('button', { name: 'Reveal email address', exact: true })
+    await reveal.focus()
+    await page.keyboard.press('Enter')
+    const emailLink = page.getByRole('link', { name: email, exact: true })
+    await expect(emailLink).toHaveAttribute('href', `mailto:${email}`)
+    await expect(emailLink).toBeFocused()
+  }
+  const pdf = await request.get('/downloads/Martin-Whitaker-CV-2026.pdf')
+  expect(pdf.headers()['x-robots-tag']).toContain('noindex')
+  expect(pdf.headers()['cache-control']).toContain('no-store')
 })
 
 test('404 page is shown for unknown routes', async ({ page }) => {

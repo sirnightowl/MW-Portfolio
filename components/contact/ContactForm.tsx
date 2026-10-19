@@ -7,8 +7,7 @@ import { z } from 'zod'
 import { Check, Copy } from 'lucide-react'
 import Button from '@/components/common/Button'
 import { cn } from '@/lib/utils'
-
-const EMAIL = 'martwhitty@gmail.com'
+import { getContactEmail } from '@/lib/contact'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your name'),
@@ -45,14 +44,14 @@ export default function ContactForm() {
   const onSubmit = (values: ContactValues) => {
     const subject = encodeURIComponent(`Portfolio enquiry from ${values.name}`)
     const body = encodeURIComponent(`${values.message}\n\n— ${values.name}\n${values.email}`)
-    window.location.assign(`mailto:${EMAIL}?subject=${subject}&body=${body}`)
+    window.location.assign(`mailto:${getContactEmail()}?subject=${subject}&body=${body}`)
     setHasSubmitted(true)
     setSubmitted(true)
   }
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText(EMAIL)
+      await navigator.clipboard.writeText(getContactEmail())
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
@@ -61,6 +60,7 @@ export default function ContactForm() {
   }
 
   if (submitted) {
+    const email = getContactEmail()
     return (
       <div ref={confirmationRef} tabIndex={-1} role="status" className="rounded-xl border border-ink/15 bg-sage/50 p-6 dark:border-white/15 dark:bg-white/5">
         <p className="text-lg font-black">Thanks — your mail client should be opening.</p>
@@ -68,8 +68,8 @@ export default function ContactForm() {
           If nothing happened, copy the address below and email me directly.
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
-          <a className="font-bold underline underline-offset-4" href={`mailto:${EMAIL}`}>
-            {EMAIL}
+          <a className="font-bold underline underline-offset-4" href={`mailto:${email}`}>
+            {email}
           </a>
           <button
             type="button"

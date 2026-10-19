@@ -30,7 +30,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     name: 'Email',
-    url: 'mailto:martwhitty@gmail.com',
+    url: '/contact',
     icon: <Mail size={20} />,
   },
 ]

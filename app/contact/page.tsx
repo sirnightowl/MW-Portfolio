@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ContactForm from '@/components/contact/ContactForm'
 import SocialLinks from '@/components/common/SocialLinks'
 import PageIntro from '@/components/common/PageIntro'
-import { ArrowUpRight } from 'lucide-react'
+import EmailContact from '@/components/contact/EmailContact'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -23,7 +23,7 @@ export default function ContactPage() {
           <div className="order-2 space-y-9 lg:order-1">
             <div className="rule-panel">
               <p className="eyebrow">Prefer email?</p>
-              <a href="mailto:martwhitty@gmail.com" className="mt-3 inline-flex min-h-11 items-center gap-3 text-lg font-bold underline decoration-ink/25 underline-offset-8 dark:decoration-white/30">martwhitty@gmail.com<ArrowUpRight aria-hidden="true" size={18} className="shrink-0" /></a>
+              <EmailContact className="mt-3 inline-flex min-h-11 items-center gap-3 text-left text-lg font-bold underline decoration-ink/25 underline-offset-8 dark:decoration-white/30" />
             </div>
             <div className="rule-panel">
               <p className="eyebrow">Find me online</p>

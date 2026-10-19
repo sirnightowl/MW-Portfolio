@@ -52,6 +52,12 @@ Cloudflare Workers Builds uses this production configuration:
 
 All pages and social preview images are generated at build time. The small Worker in `worker/index.ts` redirects the `www` hostname and delegates all other requests to static assets. Contact uses the visitor's email client, so it does not need a server or email API.
 
+## Public contact details
+
+The public CV PDF omits the phone number and email address and links to `/contact` instead. Keep those details out when replacing the public download; the owner's original PDF is separate.
+
+`EmailContact` reveals the email only after activation, and the contact form decodes it when opening a draft. This deters basic harvesting; the encoded address in client code is not a secret and cannot prevent determined crawlers or all spam. Download responses carry `noindex` and `no-store` headers.
+
 ## Blog evidence
 
 Blog posts describe verifiable project work. Keep implementation details traceable to source files; code and automated tests do not establish personal anecdotes, user-research findings, adoption, measured impact, or recurring operational practice. Those claims need their own records before publication.

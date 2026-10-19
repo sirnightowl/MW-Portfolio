@@ -9,3 +9,7 @@
 
 /opengraph-image
   Content-Type: image/png
+
+/downloads/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store

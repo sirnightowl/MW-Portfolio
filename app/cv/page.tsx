@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { ArrowDown, ArrowUpRight, Download, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Download, MapPin } from 'lucide-react'
 import Button from '@/components/common/Button'
 import PageIntro from '@/components/common/PageIntro'
+import EmailContact from '@/components/contact/EmailContact'
 import { cvDownload, cvExperience, cvSkills } from '@/lib/data/cv'
 import styles from './page.module.css'
 
@@ -37,8 +38,7 @@ export default function CvPage() {
           <div className={styles.contact}>
             <p className={styles.contactLabel}>Let’s connect</p>
             <p className={styles.location}><MapPin size={17} aria-hidden="true" /> Based in Norfolk</p>
-            <a href="mailto:martwhitty@gmail.com"><Mail size={17} aria-hidden="true" /><span>martwhitty@gmail.com</span><ArrowUpRight size={16} aria-hidden="true" /></a>
-            <a href="tel:+447824661571"><Phone size={17} aria-hidden="true" /><span>07824 661571</span><ArrowUpRight size={16} aria-hidden="true" /></a>
+            <EmailContact showIcon />
             <div className={styles.profiles}>
               <a href="https://codepen.io/sirnightowl">CodePen <ArrowUpRight size={15} aria-hidden="true" /></a>
               <a href="https://dribbble.com/sirnightowl">Dribbble <ArrowUpRight size={15} aria-hidden="true" /></a>
