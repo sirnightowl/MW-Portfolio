@@ -23,7 +23,7 @@
 
   body {
     @apply bg-paper text-ink antialiased dark:bg-night dark:text-white;
-    font-family: "TikTok Sans Variable", "Aptos", "Segoe UI", sans-serif;
+    font-family: var(--font-tiktok), "Aptos", "Segoe UI", sans-serif;
     overflow-wrap: break-word;
   }
 
@@ -36,7 +36,7 @@
   .prose-ink p,
   .prose-ink li,
   .prose-ink a {
-    font-family: "TikTok Sans Variable", "Aptos", "Segoe UI", sans-serif;
+    font-family: var(--font-tiktok), "Aptos", "Segoe UI", sans-serif;
   }
 
   .prose-ink h2 {
@@ -114,7 +114,7 @@
   }
 
   .font-serif {
-    font-family: "TikTok Sans Variable", "Aptos", "Segoe UI", sans-serif;
+    font-family: var(--font-tiktok), "Aptos", "Segoe UI", sans-serif;
   }
 
   ::selection {

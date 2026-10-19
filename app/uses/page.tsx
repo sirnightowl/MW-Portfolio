@@ -1,15 +1,12 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import Button from '@/components/common/Button'
 import PageIntro from '@/components/common/PageIntro'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Uses',
   description: 'The tools, hardware, and setup Martin Whitaker reaches for to design and build accessible websites and products.',
-  openGraph: {
-    title: 'Uses — Martin Whitaker',
-    type: 'website',
-  },
-}
+  path: '/uses',
+})
 
 const groups = [
   {

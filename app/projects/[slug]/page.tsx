@@ -12,6 +12,7 @@ import KanaboardsCaseStudy from '@/components/projects/KanaboardsCaseStudy'
 import DeepSeaCaseStudy from '@/components/projects/DeepSeaCaseStudy'
 import { projects } from '@/lib/data/projects'
 import { jsonLd, SITE_URL } from '@/lib/site'
+import { pageMetadata } from '@/lib/metadata'
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>
@@ -25,23 +26,15 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { slug } = await params
   const project = projects.find((item) => item.id === slug)
   if (!project) return {}
-  return {
+  return pageMetadata({
     title: `${project.title} case study`,
     description: project.description,
-    authors: [{ name: 'Martin Whitaker' }],
-    openGraph: {
-      title: `${project.title} — Martin Whitaker`,
-      description: project.description,
-      type: 'article',
-      images: [{ url: project.image, alt: project.imageAlt ?? `${project.title} product interface` }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${project.title} — Martin Whitaker`,
-      description: project.description,
-      images: [project.image],
-    },
-  }
+    path: `/projects/${project.id}`,
+    type: 'article',
+    modifiedTime: project.reviewedAt,
+    image: `/social/${project.id}.png`,
+    imageAlt: `${project.title} case study — ${project.status} — Martin Whitaker`,
+  })
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -74,7 +67,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           variant="project"
           back={{ href: '/work', label: 'Back to selected work' }}
           note={project.leadMetric ?? `${project.year} / ${project.status}`}
-          aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={project.imageAlt ?? `${project.title} product interface`} className="object-cover" style={{ objectPosition: project.imagePosition ?? 'center' }} fill preload sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
+          aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={project.imageAlt ?? `${project.title} product interface`} className="object-cover" style={{ objectPosition: project.imagePosition ?? 'center' }} fill preload fetchPriority="high" sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
         >
           {project.isLive && project.liveUrl && (
             <Button href={project.liveUrl} target="_blank" rel="noopener noreferrer" size="lg" className="hero-button">Visit live product <ArrowUpRight aria-hidden="true" className="ml-4 h-4 w-4" /></Button>

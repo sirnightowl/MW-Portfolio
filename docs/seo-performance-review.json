@@ -1,0 +1,191 @@
+{
+  "reviewedAt": "2026-10-19",
+  "scope": "Entire portfolio metadata/indexing plus homepage and four case-study social previews and mobile performance.",
+  "findingsAndFixes": [
+    "Added self-canonical and Open Graph URLs for all indexable pages.",
+    "Centralised full Open Graph and Twitter metadata so nested pages do not drop descriptions/images or inherit homepage Twitter copy.",
+    "Added statically generated 1200 × 630 PNG previews for all four case studies with visible release status and image alternative text.",
+    "Sitemap uses maintained project/article dates and omits dates for static pages without a maintained timestamp instead of setting every date to each build time.",
+    "Converted large hero and supporting photo assets to WebP; retained originals and evidence screenshots.",
+    "Preload the existing Latin variable font through next/font/local with font-metric fallback adjustment; preload hero images with high priority; keep screenshots lazy-loaded.",
+    "Added one-hour browser caching with stale-while-revalidate for mutable image and social-card paths.",
+    "Added CI export checks across all 32 indexable pages and runtime checks for crawler metadata, preview dimensions/types, redirects, 404 noindex, image budgets and cache headers."
+  ],
+  "assetDerivatives": [
+    {
+      "source": "public/images/martin-cutout.png",
+      "derivative": "public/images/martin-cutout.webp",
+      "originalBytes": 1524337,
+      "optimizedBytes": 188416,
+      "sha256": "10ed280bffbdbff42052ebd36353f256eb84ce79f663924fc727a9a336048d66"
+    },
+    {
+      "source": "public/images/projects/stay-with-me-deep-sea.png",
+      "derivative": "public/images/projects/stay-with-me-deep-sea.webp",
+      "originalBytes": 1869734,
+      "optimizedBytes": 89338,
+      "sha256": "ec713845348a5a1caf427e22c15391a4d9afef57b2132d500eb02e2d9f381842"
+    },
+    {
+      "source": "public/images/projects/sendadvisor-card.png",
+      "derivative": "public/images/projects/sendadvisor-card.webp",
+      "originalBytes": 251745,
+      "optimizedBytes": 44192,
+      "sha256": "ee7408333085a7c939c8bd6d8642d865e99b1498e00d22a27c09a7fbabddd1bd"
+    },
+    {
+      "source": "public/images/about/about-portrait.jpg",
+      "derivative": "public/images/about/about-portrait.webp",
+      "originalBytes": 288546,
+      "optimizedBytes": 230272,
+      "sha256": "28d872333644c40361fd722d8885ad2704f027299c0d8c63059e1e4cd3ef653d"
+    },
+    {
+      "source": "public/images/about/about-landscape.jpg",
+      "derivative": "public/images/about/about-landscape.webp",
+      "originalBytes": 415139,
+      "optimizedBytes": 181894,
+      "sha256": "f48cc6350e7060f2839a1f921340e06e4d5b678a98c9058c9f6a79884f62a2a8"
+    },
+    {
+      "source": "public/images/about/about-wide.jpg",
+      "derivative": "public/images/about/about-wide.webp",
+      "originalBytes": 217081,
+      "optimizedBytes": 100768,
+      "sha256": "e3e8b7d0ad7e228a4eba9102cb9775ab7bf32216b8a5c02132db8a5e668056a4"
+    }
+  ],
+  "socialPreviewSources": [
+    {
+      "id": "sendadvisor",
+      "source": "public/images/projects/sendadvisor-card.png",
+      "buildInput": "assets/social/sendadvisor.png",
+      "output": "/social/sendadvisor.png",
+      "derivation": "Existing asset converted to PNG for ImageResponse. At most 1200px per dimension; source aspect ratio preserved. Preview contains title, owner, review edition and existing release status. Screenshots are contained; game artwork uses the existing crop position.",
+      "buildInputSha256": "0859185b93fc48fe6d6ae86cc602a14a05bdbead072143d5458a753ba913a427"
+    },
+    {
+      "id": "horrorometer",
+      "source": "public/images/projects/horrorometer-case-study/catalogue.webp",
+      "buildInput": "assets/social/horrorometer.png",
+      "output": "/social/horrorometer.png",
+      "derivation": "Existing asset converted to PNG for ImageResponse. At most 1200px per dimension; source aspect ratio preserved. Preview contains title, owner, review edition and existing release status. Screenshots are contained; game artwork uses the existing crop position.",
+      "buildInputSha256": "5af36bcedba8a4cc1a9c0baf7e87f1f816ddf953316dc64fe368c1d3ceccc24a"
+    },
+    {
+      "id": "kanaboards",
+      "source": "public/images/projects/kanaboards-case-study/board.webp",
+      "buildInput": "assets/social/kanaboards.png",
+      "output": "/social/kanaboards.png",
+      "derivation": "Existing asset converted to PNG for ImageResponse. At most 1200px per dimension; source aspect ratio preserved. Preview contains title, owner, review edition and existing release status. Screenshots are contained; game artwork uses the existing crop position.",
+      "buildInputSha256": "38bd0c3cebc16ae688a1e88d38d5a5f36492c08b35d70d27e32bbe65239ab5a3"
+    },
+    {
+      "id": "stay-with-me-deep-sea",
+      "source": "public/images/projects/stay-with-me-deep-sea.png",
+      "buildInput": "assets/social/stay-with-me-deep-sea.png",
+      "output": "/social/stay-with-me-deep-sea.png",
+      "derivation": "Existing asset converted to PNG for ImageResponse. At most 1200px per dimension; source aspect ratio preserved. Preview contains title, owner, review edition and existing release status. Screenshots are contained; game artwork uses the existing crop position.",
+      "buildInputSha256": "5b4826cdb3c373a208a54025d22d3275976f9a09d5ba59dd8c19fdb506c62cae"
+    }
+  ],
+  "performanceMethod": {
+    "tool": "Lighthouse 13.5.0 via official npm package and installed Playwright Chromium",
+    "target": "Local production static build served through wrangler dev on localhost:8787",
+    "configuration": "Default mobile emulation and simulated throttling; performance and SEO categories; sequential cold-browser runs without concurrent browser tests.",
+    "baseline": {
+      "home": {
+        "performance": 89,
+        "seo": 100,
+        "lcpMs": 3499,
+        "cls": 0.0002809333189344949,
+        "totalTransferBytes": 1852245,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:43:55.567Z",
+        "runWarnings": []
+      },
+      "deepSea": {
+        "performance": 93,
+        "seo": 100,
+        "lcpMs": 3100,
+        "cls": 0.0115545016219979,
+        "totalTransferBytes": 2298093,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:44:25.031Z",
+        "runWarnings": []
+      }
+    },
+    "limitations": "Single lab samples, not production field data or guaranteed results. Scores vary with local scheduling and simulation. Baseline Lighthouse SEO already scored 100 despite missing canonical/social details, so the export and crawler checks cover gaps beyond the Lighthouse score.",
+    "final": {
+      "home": {
+        "performance": 97,
+        "seo": 100,
+        "lcpMs": 2588.024,
+        "cls": 0,
+        "totalTransferBytes": 517493,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:54:51.538Z",
+        "runWarnings": []
+      },
+      "sendadvisor": {
+        "performance": 91,
+        "seo": 100,
+        "lcpMs": 3428,
+        "cls": 0,
+        "totalTransferBytes": 517501,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:55:08.781Z",
+        "runWarnings": []
+      },
+      "horrorometer": {
+        "performance": 91,
+        "seo": 100,
+        "lcpMs": 3415,
+        "cls": 0,
+        "totalTransferBytes": 483152,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:55:25.455Z",
+        "runWarnings": []
+      },
+      "kanaboards": {
+        "performance": 91,
+        "seo": 100,
+        "lcpMs": 3426.5,
+        "cls": 0,
+        "totalTransferBytes": 481851,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:55:42.383Z",
+        "runWarnings": []
+      },
+      "deep-sea": {
+        "performance": 91,
+        "seo": 100,
+        "lcpMs": 3510,
+        "cls": 0,
+        "totalTransferBytes": 519341,
+        "lighthouseVersion": "13.5.0",
+        "fetchTime": "2026-10-19T14:55:59.004Z",
+        "runWarnings": []
+      }
+    },
+    "intermediateHome": {
+      "performance": 87,
+      "seo": 100,
+      "lcpMs": 3800,
+      "note": "Image-only pass before the final critical font/hero-loading changes; this exposed the remaining render dependency."
+    }
+  },
+  "validation": {
+    "exportChecks": "All 32 indexable pages passed the metadata, preview PNG and structured-data checks.",
+    "visualChecks": "Reviewed all four rendered social cards.",
+    "unitTests": "11 passed in 6 files.",
+    "browserTests": "104 passed, including metadata, social-image, HTTP/cache, image-loading, mobile layout and automated accessibility regressions on the final build.",
+    "build": "Static production build and lint passed; metadata check is part of build:ci."
+  },
+  "references": [
+    "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+    "https://web.dev/articles/optimize-lcp",
+    "node_modules/next/dist/docs/01-app/01-getting-started/14-metadata-and-og-images.md",
+    "node_modules/next/dist/docs/01-app/01-getting-started/13-fonts.md"
+  ]
+}

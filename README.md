@@ -66,6 +66,16 @@ Blog posts describe verifiable project work. Keep implementation details traceab
 
 The review of all 21 posts is recorded in `docs/blog-evidence-review.json`, including source paths, corrected claims, and earlier displayed dates. The corrected editions use 19 October 2026. Keep existing article IDs to preserve URLs, and update the evidence record when substantive claims change. Kanaboards and Stay With Me: Deep Sea remain unreleased.
 
+## SEO and performance
+
+`lib/metadata.ts` supplies each page’s canonical URL, complete Open Graph metadata and matching Twitter card copy. Case studies use dedicated 1200 × 630 PNG previews at `/social/<project-id>.png`, generated during the static build; unreleased projects keep their status in both the preview and its alternative text. Their PNG build inputs in `assets/social/` are derivatives of the existing project artwork/screenshots, not new UI mockups.
+
+`npm run check:seo` validates the exported sitemap’s 32 pages, titles, canonicals, social metadata, preview dimensions, structured-data JSON and 404 indexing state. It runs automatically in `build:ci`. Update its expected page count when publishing more content. Runtime crawler, image-budget and cache checks live in `e2e/seo.spec.ts`.
+
+Large hero assets and supporting photos use WebP derivatives; originals and the evidence screenshots remain available. Hero images are preloaded with high fetch priority; the existing variable font is self-hosted and preloaded through `next/font/local`. Below-fold screenshots remain lazy-loaded. Mutable images and social cards use a one-hour browser cache with stale-while-revalidate, while hashed Next assets retain immutable caching.
+
+The review and mobile Lighthouse measurements are recorded in `docs/seo-performance-review.json`. Lighthouse is a local lab sample, not production Core Web Vitals or a search-ranking guarantee. To repeat an audit with the preview running: `npx --yes lighthouse@13.5.0 http://localhost:8787/ --only-categories=performance,seo --chrome-flags=--headless` (set `CHROME_PATH` to an installed Chromium executable).
+
 ## Case study accessibility
 
 All four case studies share screenshot framing and captions. Keep release-status labels visible at mobile widths, give live-source links distinct names, and preserve focusable section targets for keyboard contents navigation. The focused screenshot outline sits outside the image frame to avoid clipping. Custom-styled annotation and implementation lists retain explicit list semantics.

@@ -1,16 +1,13 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import PageIntro from '@/components/common/PageIntro'
 import ProjectCard from '@/components/common/ProjectCard'
 import { projects } from '@/lib/data/projects'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Work',
   description: 'Case studies from Martin Whitaker — accessible public services and characterful products, designed and built end to end.',
-  openGraph: {
-    title: 'Work — Martin Whitaker',
-    type: 'website',
-  },
-}
+  path: '/work',
+})
 
 export default function WorkPage() {
   return (

@@ -1,9 +1,17 @@
 import type { Metadata } from 'next'
-import '@fontsource-variable/tiktok-sans'
+import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/navigation/Navbar'
 import SocialLinks from '@/components/common/SocialLinks'
 import { SITE_URL, jsonLd } from '@/lib/site'
+
+const tiktok = localFont({
+  src: '../node_modules/@fontsource-variable/tiktok-sans/files/tiktok-sans-latin-wght-normal.woff2',
+  variable: '--font-tiktok',
+  display: 'swap',
+  weight: '300 900',
+  preload: true,
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -57,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en" className={tiktok.variable} data-theme="light" suppressHydrationWarning>
       <head>
         {/**
          * Theme detection runs synchronously before hydration to prevent a

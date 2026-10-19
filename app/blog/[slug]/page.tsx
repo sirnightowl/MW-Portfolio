@@ -6,6 +6,7 @@ import PageIntro from '@/components/common/PageIntro'
 import ArticleCard from '@/components/common/ArticleCard'
 import { articles } from '@/lib/data/articles'
 import { jsonLd, SITE_URL } from '@/lib/site'
+import { pageMetadata } from '@/lib/metadata'
 
 type BlogPageProps = {
   params: Promise<{ slug: string }>
@@ -19,15 +20,14 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   const { slug } = await params
   const article = articles.find((item) => item.id === slug && item.published)
   if (!article) return {}
-  return {
+  return pageMetadata({
     title: article.title,
     description: article.excerpt,
-    openGraph: {
-      title: `${article.title} — Martin Whitaker`,
-      description: article.excerpt,
-      type: 'article',
-    },
-  }
+    path: `/blog/${article.id}`,
+    type: 'article',
+    publishedTime: article.date,
+    modifiedTime: article.date,
+  })
 }
 
 export default async function BlogPost({ params }: BlogPageProps) {

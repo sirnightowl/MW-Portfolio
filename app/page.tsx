@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/metadata'
 import Image from 'next/image'
 import { ArrowUpRight, Check } from 'lucide-react'
 import Button from '@/components/common/Button'
@@ -12,6 +13,12 @@ import { articles } from '@/lib/data/articles'
 import ArticleCard from '@/components/common/ArticleCard'
 import ProjectCard from '@/components/common/ProjectCard'
 import styles from './home.module.css'
+
+export const metadata = pageMetadata({
+  title: 'Martin Whitaker — Digital Interaction Designer',
+  description: 'Digital interaction designer and front-end developer building accessible public services and characterful products.',
+  path: '/',
+})
 
 const skills = ['Product design', 'Accessibility', 'UX', 'Design systems', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Figma']
 
@@ -62,7 +69,7 @@ export default function Home() {
             <Star className={styles.portraitStar} />
             <span className={styles.portraitNote}>A human behind the pixels.</span>
             <div className={styles.portraitImage}>
-              <Image alt="Martin Whitaker" className="object-cover object-top" fill preload sizes="(min-width: 1024px) 460px, (min-width: 640px) 420px, 86vw" src="/images/martin-cutout.png" />
+              <Image alt="Martin Whitaker" className="object-cover object-top" fill preload fetchPriority="high" sizes="(min-width: 1024px) 460px, (min-width: 640px) 420px, 86vw" src="/images/martin-cutout.webp" />
             </div>
             <div className={styles.availability}><span aria-hidden="true" />Available for select projects<ArrowUpRight aria-hidden="true" size={15} /></div>
           </div>
@@ -141,14 +148,14 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-butter">
-              <Image alt="Martin out on a walk" className="object-cover object-center" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-portrait.jpg" />
+              <Image alt="Martin out on a walk" className="object-cover object-center" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-portrait.webp" />
             </div>
             <div className="grid grid-rows-2 gap-4">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] bg-sage">
-                <Image alt="A personal travel snapshot" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-landscape.jpg" />
+                <Image alt="A personal travel snapshot" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-landscape.webp" />
               </div>
               <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] bg-sky">
-                <Image alt="A quiet personal moment" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-wide.jpg" />
+                <Image alt="A quiet personal moment" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-wide.webp" />
               </div>
             </div>
           </div>
@@ -178,7 +185,7 @@ export default function Home() {
         <Star className="absolute right-[8%] top-16 h-8 w-8 rotate-12 text-grape" />
         <div className="container-custom grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-butter shadow-[0_30px_80px_rgba(83,61,128,0.18)] sm:aspect-[16/10] lg:aspect-[4/5]">
-            <Image alt="Martin out on a walk" className="object-cover object-center" fill sizes="(min-width: 1024px) 560px, calc(100vw - 32px)" src="/images/about/about-portrait.jpg" />
+            <Image alt="Martin out on a walk" className="object-cover object-center" fill sizes="(min-width: 1024px) 560px, calc(100vw - 32px)" src="/images/about/about-portrait.webp" />
           </div>
           <div>
             <p className="eyebrow">About me</p>

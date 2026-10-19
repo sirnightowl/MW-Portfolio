@@ -1,17 +1,14 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import ContactForm from '@/components/contact/ContactForm'
 import SocialLinks from '@/components/common/SocialLinks'
 import PageIntro from '@/components/common/PageIntro'
 import EmailContact from '@/components/contact/EmailContact'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Contact',
   description: 'Get in touch with Martin Whitaker — currently taking on small freelance projects alongside my day job.',
-  openGraph: {
-    title: 'Contact — Martin Whitaker',
-    type: 'website',
-  },
-}
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (

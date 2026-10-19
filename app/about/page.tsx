@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import Image from 'next/image'
 import Button from '@/components/common/Button'
 import PageIntro from '@/components/common/PageIntro'
@@ -12,10 +12,11 @@ const traits = [
   { label: 'Drone flyer', color: 'bg-sage' },
 ]
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'About',
   description: 'About Martin Whitaker: digital experience designer, front-end developer, accessibility advocate, and practical product builder.',
-}
+  path: '/about',
+})
 
 export default function AboutPage() {
   return (
@@ -28,14 +29,14 @@ export default function AboutPage() {
         aside={
           <div className="grid grid-cols-2 items-center gap-3 sm:gap-4">
             <div className="relative aspect-[4/5] -rotate-2 overflow-hidden rounded-xl bg-butter">
-              <Image alt="Martin with his family on a walk" className="object-cover object-center" fill preload sizes="(min-width: 1024px) 240px, 45vw" src="/images/about/about-portrait.jpg" />
+              <Image alt="Martin with his family on a walk" className="object-cover object-center" fill preload fetchPriority="high" sizes="(min-width: 1024px) 240px, 45vw" src="/images/about/about-portrait.webp" />
             </div>
             <div className="grid grid-rows-2 gap-4">
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-sage">
-                <Image alt="A personal travel snapshot" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-landscape.jpg" />
+                <Image alt="A personal travel snapshot" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-landscape.webp" />
               </div>
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-sky">
-                <Image alt="A quiet personal moment" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-wide.jpg" />
+                <Image alt="A quiet personal moment" className="object-cover" fill sizes="(min-width: 1024px) 280px, 45vw" src="/images/about/about-wide.webp" />
               </div>
             </div>
           </div>

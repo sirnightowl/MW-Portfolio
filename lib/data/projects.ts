@@ -7,7 +7,7 @@ export const projects: Project[] = [
     "title": "SENDadvisor",
     "description": "A SEND directory bringing days out, specialist services, education, council information, and guidance into one searchable interface for families in England.",
     "longDescription": "A directory for families looking for SEND-related places, services, education, and guidance in England. Search, category filters, and council pages connect the directory to official information. This case study examines the implemented interface and candidate-review tooling.",
-    "image": "/images/projects/sendadvisor-card.png",
+    "image": "/images/projects/sendadvisor-card.webp",
     "technologies": [
       "Next.js",
       "TypeScript",
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     "title": "Stay With Me: Deep Sea",
     "description": "An unreleased narrative horror game combining a message thread, timed story rules, recovered camera views, and a persistent archive.",
     "longDescription": "An unreleased narrative horror game built with React Native and Expo. This case study follows its title screen, opening conversation with Mara, and recovered-camera archive in the local web build, alongside the story engine and platform adapters.",
-    "image": "/images/projects/stay-with-me-deep-sea.png",
+    "image": "/images/projects/stay-with-me-deep-sea.webp",
     "imageAlt": "Halcyon research station on the dark ocean floor, lit by a small submersible",
     "imagePosition": "center 78%",
     "gallery": [

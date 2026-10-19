@@ -1,16 +1,13 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import PageIntro from '@/components/common/PageIntro'
 import ArticleCard from '@/components/common/ArticleCard'
 import { articles } from '@/lib/data/articles'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Blog',
   description: 'Notes on design, accessibility, and shipping solo — from Martin Whitaker, digital interaction designer.',
-  openGraph: {
-    title: 'Blog — Martin Whitaker',
-    type: 'website',
-  },
-}
+  path: '/blog',
+})
 
 export default function BlogIndexPage() {
   const published = articles.filter((a) => a.published).sort((a, b) => b.date.localeCompare(a.date))

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { ArrowDown, ArrowUpRight, Download, MapPin } from 'lucide-react'
 import Button from '@/components/common/Button'
 import PageIntro from '@/components/common/PageIntro'
@@ -6,18 +6,11 @@ import EmailContact from '@/components/contact/EmailContact'
 import { cvDownload, cvExperience, cvSkills } from '@/lib/data/cv'
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'CV',
   description: 'Martin Whitaker’s CV: digital design, front-end development, accessibility, work experience, skills, and education. Read online or download the PDF.',
-  alternates: { canonical: '/cv' },
-  openGraph: {
-    title: 'CV — Martin Whitaker',
-    description: 'Digital designer based in Norfolk. Experience, skills, education, and a downloadable PDF CV.',
-    url: '/cv',
-    type: 'website',
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Martin Whitaker — Digital Interaction Designer' }],
-  },
-}
+  path: '/cv',
+})
 
 const sections = [
   { id: 'experience', label: 'Experience' },
