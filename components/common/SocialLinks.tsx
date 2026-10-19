@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Codepen, Dribbble, Github, Linkedin, Mail } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface SocialLink {
@@ -17,6 +17,16 @@ const socialLinks: SocialLink[] = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/martin-whitaker',
     icon: <Linkedin size={20} />,
+  },
+  {
+    name: 'CodePen',
+    url: 'https://codepen.io/sirnightowl',
+    icon: <Codepen size={20} aria-hidden="true" />,
+  },
+  {
+    name: 'Dribbble',
+    url: 'https://dribbble.com/sirnightowl',
+    icon: <Dribbble size={20} aria-hidden="true" />,
   },
   {
     name: 'Email',
