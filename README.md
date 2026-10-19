@@ -25,7 +25,9 @@ npm run preview
 
 Preview builds a static export into `out/` and serves it locally with Wrangler (normally http://localhost:8787). To run the browser suite against it, set `PLAYWRIGHT_BASE_URL=http://localhost:8787` and run `npm run test:e2e` in another terminal.
 
-After merging into `main`, publish from a clean checkout:
+Changes pushed or merged into `main` automatically build and deploy to `https://snowl.uk` through Cloudflare Workers Builds. The GitHub App is restricted to this repository. Other branches do not deploy.
+
+To publish manually from a clean checkout if needed:
 
 ```sh
 npm ci
@@ -33,7 +35,7 @@ npx wrangler login
 npm run deploy
 ```
 
-Wrangler uploads the static export, applies the domains in `wrangler.jsonc`, and manages their DNS and HTTPS certificates. It uses the signed-in Cloudflare account; credentials are never committed. Deployment is manual unless Cloudflare Git integration is configured.
+Wrangler uploads the static export, applies the domains in `wrangler.jsonc`, and manages their DNS and HTTPS certificates. Manual deployment uses the signed-in Cloudflare account; automatic builds use a deployment token managed in Cloudflare. Credentials are never committed.
 
 Cloudflare Workers Builds uses this production configuration:
 
