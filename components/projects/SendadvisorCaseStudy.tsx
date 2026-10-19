@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import type { Project } from '@/lib/types'
-import styles from './SendadvisorCaseStudy.module.css'
+import CaseStudyScreen, { type CaseStudyScreenContent } from './CaseStudyScreen'
+import styles from './VisualCaseStudy.module.css'
 
-const screens = [
+const screens: CaseStudyScreenContent[] = [
   {
     id: 'search', number: '01', title: 'Start with the kind of help.',
     intro: 'The homepage puts the search scope before the query. Days out, services, education, and an all-content search share a starting point, with a separate location input.',
-    image: 'home', height: 612,
+    image: '/images/projects/sendadvisor-case-study/home.webp', height: 612,
     alt: 'SENDadvisor homepage with Days out, Services, Education and Search all scopes above keyword and location fields, followed by a coverage notice.',
     url: 'https://sendadvisor.co.uk/', label: 'Homepage / Search entry',
     notes: [
@@ -19,7 +19,7 @@ const screens = [
   {
     id: 'results', number: '02', title: 'Keep refinement close to the results.',
     intro: 'The days-out view combines search with category and feature controls. Sorting and grid, list, and map controls sit beside the result count, above the listing cards.',
-    image: 'results', height: 577,
+    image: '/images/projects/sendadvisor-case-study/results.webp', height: 577,
     alt: 'SENDadvisor days-out search, category filters including Dedicated SEND sessions and Soft play, sort and view controls, a provenance note, and the first row of result images.',
     url: 'https://sendadvisor.co.uk/days-out', label: 'Days out / Directory controls',
     notes: [
@@ -31,7 +31,7 @@ const screens = [
   {
     id: 'councils', number: '03', title: 'Keep the official destination in view.',
     intro: 'Council pages use one template to bring official links, available contact details, and related directory results together. Norfolk is the public example shown here.',
-    image: 'council', height: 612,
+    image: '/images/projects/sendadvisor-case-study/council.webp', height: 612,
     alt: 'Norfolk council page with separate actions for the official Local Offer, council website, and council contacts, above the Council Details and SEND contact panels.',
     url: 'https://sendadvisor.co.uk/councils/norfolk', label: 'Council information / Norfolk',
     notes: [
@@ -72,31 +72,7 @@ export default function SendadvisorCaseStudy({ project }: { project: Project }) 
         </aside>
       </section>
 
-      {screens.map((screen) => (
-        <section id={screen.id} key={screen.id} aria-labelledby={`${screen.id}-title`} className={styles.screenSection}>
-          <div className={styles.sectionHeading}>
-            <span className={styles.number} aria-hidden="true">{screen.number}</span>
-            <div>
-              <h2 id={`${screen.id}-title`} className={styles.title}>{screen.title}</h2>
-              <p className={styles.body}>{screen.intro}</p>
-            </div>
-          </div>
-          <figure className={styles.figure}>
-            <div className={styles.frame}>
-              <div className={styles.frameLabel}><span>{screen.label}</span><span>Current public interface</span></div>
-              <a href={`/images/projects/sendadvisor-case-study/${screen.image}.webp`} aria-label={`View larger screenshot: ${screen.label}`}>
-                <Image src={`/images/projects/sendadvisor-case-study/${screen.image}.webp`} alt={screen.alt} width={1249} height={screen.height} sizes="(min-width: 1280px) 1160px, calc(100vw - 40px)" className={styles.screenshot} />
-              </a>
-            </div>
-            <figcaption><span>Select the image to view it larger.</span><a href={screen.url} target="_blank" rel="noopener noreferrer">View the live page <ArrowUpRight size={14} aria-hidden="true" /></a></figcaption>
-          </figure>
-          <ol className={styles.notes}>
-            {screen.notes.map(([title, text], index) => (
-              <li key={title}><span className={styles.noteNumber} aria-hidden="true">{index + 1}</span><h3>{title}</h3><p>{text}</p></li>
-            ))}
-          </ol>
-        </section>
-      ))}
+      {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
 
       <section id="review" aria-labelledby="review-title" className={styles.review}>
         <p className="eyebrow">04 / Behind the directory</p>

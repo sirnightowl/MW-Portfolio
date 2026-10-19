@@ -51,9 +51,9 @@ export const projects: Project[] = [
   {
     "id": "horrorometer",
     "title": "Horrorometer",
-    "description": "A horror discovery and review platform with Creepy, Gory, and Jumpy dimensions alongside an overall rating.",
-    "longDescription": "A horror-focused catalogue and review platform for movies, TV, and books. Its review model records an overall rating alongside optional Creepy, Gory, and Jumpy values, separating an overall judgement from different aspects of a horror title.",
-    "image": "/images/projects/horrorometer-card.png",
+    "description": "A horror catalogue and review platform with browsing controls, public title pages, and an overall review score.",
+    "longDescription": "A horror-focused catalogue and review platform for movies, TV, and books. This case study follows the public movie catalogue, a title page, and the signed-out review handoff, alongside the inspected review form and API contract.",
+    "image": "/images/projects/horrorometer-case-study/catalogue.webp",
     "technologies": [
       "Next.js",
       "TypeScript",
@@ -68,20 +68,20 @@ export const projects: Project[] = [
     "year": 2026,
     "status": "Live product",
     "isLive": true,
-    "leadMetric": "Overall reviews and optional Creepy, Gory, and Jumpy dimensions",
-    "role": "Product design and implementation across review inputs, API integrations, and device authorisation.",
-    "challenge": "An overall score does not describe whether a title relies on atmosphere, gore, or sudden shocks. Horrorometer models those dimensions separately. The application also has to handle catalogue dependencies and the state transitions involved in approving a device and issuing an API token.",
-    "challengeTitle": "Describe the kind of scare as well as the score.",
-    "approach": "The review-input schema requires an integer overall rating from 1 to 10; Creepy, Gory, and Jumpy accept optional, nullable integers on the same scale. The TMDB proxy uses a circuit-breaker utility with optional fallbacks. Device authorisation checks the result of conditional updates and a single-use approved-code claim before continuing. The Cloudflare build uses OpenNext and project-specific patch scripts.",
-    "approachTitle": "Make inputs and state transitions explicit.",
-    "outcome": "The project is live, with a review schema, catalogue integrations, and device-authorisation implementation. Service tests use a controllable database mock to exercise defined outcomes. Those tests are not concurrent production-database verification, and the circuit breaker does not guarantee an error-free interface during an upstream outage.",
-    "outcomeTitle": "A live product with inspectable implementation boundaries.",
+    "leadMetric": "Public discovery · Title context · Review inputs",
+    "role": "Product design and implementation across catalogue interfaces, review inputs, API integrations, and device authorisation.",
+    "challenge": "Browsing a catalogue, understanding a title, and contributing a review are different tasks. The interface needs clear discovery controls and title context before an account-specific action. Its rating controls also need to be described accurately: the public summary, review form, and API schema are separate parts of the implementation.",
+    "challengeTitle": "Make discovery and review intent clear.",
+    "approach": "The movie route reads filter and sorting parameters; the client updates query state and requests catalogue data. The shared title interface brings artwork, metadata, credits, a rating summary, and library actions together. For a signed-out visitor, Write Review opens sign-in with the title path in a redirect parameter. The inspected review form collects an overall score, title, text, and spoiler flag. The review API validates requests with a schema that also retains optional genre-specific fields.",
+    "approachTitle": "Trace the public flow into its implementation.",
+    "outcome": "The live site provides a public catalogue, title pages, and a sign-in handoff for review writing. The inspected source defines overall reviews, optional API rating dimensions, catalogue failure states, and device-authorisation logic. These are implementation observations, not measured improvements in discovery, completed sign-in tests, or production reliability guarantees.",
+    "outcomeTitle": "A live catalogue with inspectable review boundaries.",
     "highlights": [
-      "Required overall review score and optional genre-specific dimensions",
-      "Circuit-breaker utility used by the TMDB proxy",
-      "Conditional state changes in device authorisation",
-      "Mock-based tests for winning and losing device-code claims",
-      "Project-specific Next.js and OpenNext build pipeline"
+      "Movie browsing controls and URL-based filter state",
+      "Public title pages with metadata and rating summaries",
+      "Signed-out review action leading to authentication",
+      "Overall review score, text, and spoiler flag in the inspected form",
+      "Optional genre dimensions retained in the review API schema"
     ],
     "cardStyle": {
       "bg": "bg-ink",
@@ -91,7 +91,8 @@ export const projects: Project[] = [
       "border": "border-paper",
       "shadow": "shadow-[8px_10px_0_#fffaf2]"
     },
-    "reviewedAt": "2026-10-19"
+    "reviewedAt": "2026-10-19",
+    "imageAlt": "Horrorometer movie catalogue with browsing controls above a poster grid"
   },
   {
     "id": "kanaboards",

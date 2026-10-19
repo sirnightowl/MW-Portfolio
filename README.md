@@ -60,7 +60,7 @@ The public CV PDF omits the phone number and email address and links to `/contac
 
 ## Blog evidence
 
-The four project case studies have a separate source review in `docs/project-evidence-review.json`, including file hashes, corrected claims, and provenance for SENDadvisor screenshots. Project years identify the reviewed case-study edition, not unverified start or launch dates. Keep implementation, operational records, and observed user outcomes distinct when editing project copy.
+The four project case studies have a separate source review in `docs/project-evidence-review.json`, including file hashes, corrected claims, and provenance for SENDadvisor and Horrorometer screenshots. Project years identify the reviewed case-study edition, not unverified start or launch dates. Keep implementation, operational records, and observed user outcomes distinct when editing project copy. Visual case studies share their screenshot renderer and styles; public captures and inspected local source are distinct evidence, and neither proves a completed authenticated flow.
 
 Blog posts describe verifiable project work. Keep implementation details traceable to source files; code and automated tests do not establish personal anecdotes, user-research findings, adoption, measured impact, or recurring operational practice. Those claims need their own records before publication.
 

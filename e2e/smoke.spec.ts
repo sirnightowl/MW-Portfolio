@@ -39,6 +39,25 @@ test('SENDadvisor case study provides navigable, captioned interface evidence', 
   }
 })
 
+test('Horrorometer case study links real screenshots to its public flow and implementation', async ({ page, request }) => {
+  await page.goto('/projects/horrorometer')
+  const contents = page.getByRole('navigation', { name: 'Case study sections' })
+  await contents.getByRole('link', { name: 'Review handoff', exact: true }).click()
+  await expect(page).toHaveURL(/#review-handoff$/)
+  await expect(page.getByRole('heading', { name: 'Make the account handoff visible.' })).toBeVisible()
+  for (const name of ['catalogue', 'title', 'signin']) {
+    const image = page.locator(`main section img[src="/images/projects/horrorometer-case-study/${name}.webp"]`)
+    await image.scrollIntoViewIfNeeded()
+    await expect.poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+    const asset = await request.get(`/images/projects/horrorometer-case-study/${name}.webp`)
+    expect(asset.status()).toBe(200)
+    expect(asset.headers()['content-type']).toContain('image/webp')
+  }
+  await contents.getByRole('link', { name: 'Implementation', exact: true }).click()
+  await expect(page.getByRole('list', { name: 'Horrorometer implementation boundaries' })).toBeVisible()
+  await expect(page.getByRole('link', { name: /View larger screenshot:/ })).toHaveCount(3)
+})
+
 test('the former Diver link redirects to the renamed game with its new artwork', async ({ page }) => {
   await page.goto('/projects/the-diver')
   await expect(page).toHaveURL('/projects/stay-with-me-deep-sea')
@@ -153,7 +172,7 @@ test('tablet navigation opens, navigates, and releases its scroll lock on deskto
 for (const width of [320, 768]) {
   test(`page layouts fit a ${width}px viewport`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
-    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/sendadvisor', '/projects/kanaboards', '/blog/accessible-by-default', '/missing-page']) {
+    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/sendadvisor', '/projects/horrorometer', '/projects/kanaboards', '/blog/accessible-by-default', '/missing-page']) {
       await page.goto(route)
       await expect(page.locator('main h1')).toBeVisible()
       const fits = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)

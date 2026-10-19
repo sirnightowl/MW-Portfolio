@@ -3,7 +3,7 @@
   "policy": "Verifiable project work only. Implementation descriptions and observed public interfaces do not establish research findings, adoption, measured impact, operational routines, exhaustive testing, or sole authorship.",
   "scope": "All four project pages, shared project cards and metadata; related unsupported homepage counts.",
   "dates": "The displayed year is the reviewed case-study edition, not a claim about the project start or public launch. Structured data uses dateModified, not an unverified publication date.",
-  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions.",
+  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions. Horrorometer visual-case-study notes distinguish the signed-out live UI from the inspected local source; no authentication was completed and no review was submitted.",
   "projects": [
     {
       "id": "sendadvisor",
@@ -69,7 +69,8 @@
         "Incorrect claim that genre dimensions replace overall ratings",
         "Unqualified outage resilience and full race-condition coverage",
         "Unsupported formal audit dates, issue totals, and route counts",
-        "Fixed patch-script counts and unverified product adoption"
+        "Fixed patch-script counts and unverified product adoption",
+        "Do not describe optional API dimensions as controls in the inspected review form, or infer completed authentication return from a redirect query parameter."
       ],
       "evidence": [
         {
@@ -95,8 +96,53 @@
         {
           "path": "horrorometer/package.json",
           "sha256": "1549ed75d4fc8b2ac508e17f362c6242776cdf3b2739bfcb0c9d4f8269925e3d"
+        },
+        {
+          "path": "horrorometer/src/app/(public)/movies/page.tsx",
+          "sha256": "816551f091e4c29311d30d0b03339dff658c515eb245ec6e09e36d821eb714ab"
+        },
+        {
+          "path": "horrorometer/src/app/(public)/movies/MoviesClient.tsx",
+          "sha256": "65a5bef18efb41b06b8ea3dc5843f96af3dcafddc79bbef6510d45481e61d951"
+        },
+        {
+          "path": "horrorometer/src/components/content/ContentGrid.tsx",
+          "sha256": "1039f704eed712cbba053edeb8aeb6387cbfeec4d822bc7500f803031e48c7d0"
+        },
+        {
+          "path": "horrorometer/src/components/content/ViewControls.tsx",
+          "sha256": "561fbe0e53903899057a187addd21d478d99aa15dac57793a3e995a814a7b287"
+        },
+        {
+          "path": "horrorometer/src/app/(public)/title/title-page.tsx",
+          "sha256": "61b80b39cce7b7278fd68c424f9b1b7a194c8c9b3987fc626e1116934e827fad"
+        },
+        {
+          "path": "horrorometer/src/app/(public)/title/[id]/TitleClient.tsx",
+          "sha256": "a694b6949c6e58db297037ab5ffc37ae55a2bd9307ca85d026f2a85b52bba065"
+        },
+        {
+          "path": "horrorometer/src/components/title/UserTitleReviewAction.tsx",
+          "sha256": "21d87bfa801719800e9d982c8d1f2fef82a140adcfd5205eb0598cd86e300782"
+        },
+        {
+          "path": "horrorometer/src/components/reviews/ReviewForm.tsx",
+          "sha256": "eefe9f6df4baf6e562bc9bf6dbd5e7a3fda547c688b2d10a242ea590842bc5f3"
+        },
+        {
+          "path": "horrorometer/src/app/api/reviews/route.ts",
+          "sha256": "badb8eb6dd2233113cb0b922acac87f0ed430942d61ca3ca8d34047fa32aeb44"
+        },
+        {
+          "path": "horrorometer/src/app/(public)/auth/signin/page.tsx",
+          "sha256": "a451d8bdad9bb40fd600f11cb4f2746c585552656ea624060454f01da871e6a5"
         }
-      ]
+      ],
+      "visualCaseStudy": {
+        "reviewedAt": "2026-10-19",
+        "flow": "Signed-out public movie catalogue → Hidden title page → Write Review → sign-in page. No credentials entered or reviews submitted.",
+        "limits": "Public captures and local source inspection are distinct evidence. Exact deployed-source parity and successful post-authentication return were not verified. The inspected form has overall score, text and spoiler controls; optional API dimensions are not proof of visible form controls."
+      }
     },
     {
       "id": "kanaboards",
@@ -201,6 +247,30 @@
       "capture": "Desktop viewport, 1265 × 716 pixels. Cropped 100 pixels from the top to exclude the account/navigation header and 12 pixels from the right to exclude the scrollbar. Saved as WebP; interface content unchanged.",
       "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
       "sha256": "13f06901304c937f3f5c39e3694a4fb5f24ae523ff5bbc895b959b524151b838"
+    },
+    {
+      "path": "public/images/projects/horrorometer-case-study/catalogue.webp",
+      "sourceUrl": "https://www.horrorometer.com/movies",
+      "capturedAt": "2026-10-19",
+      "capture": "Desktop viewport, 1272 × 716 pixels. Cropped to (0, 80, 1256, 640) to exclude the global header, scrollbar and fixed bottom navigation. Saved as WebP; interface content unchanged.",
+      "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
+      "sha256": "a08adfd45d34958a7e4537dbb1d079bc2b8884474c8513efa3942b463a9ce467"
+    },
+    {
+      "path": "public/images/projects/horrorometer-case-study/title.webp",
+      "sourceUrl": "https://www.horrorometer.com/movies/e5f9286f-6cf8-430d-98c5-d02dcb88bd58-hidden",
+      "capturedAt": "2026-10-19",
+      "capture": "Desktop viewport, 1272 × 716 pixels, scrolled to show the poster, title actions and zero-review summary. Cropped to (0, 80, 1256, 610) to exclude the global header, scrollbar and fixed bottom navigation. Saved as WebP; interface content unchanged.",
+      "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
+      "sha256": "5fa888e140f67f7c10a27eadff971ab9b8aaaec4fec966b15d0bbe2b7f280bb2"
+    },
+    {
+      "path": "public/images/projects/horrorometer-case-study/signin.webp",
+      "sourceUrl": "https://www.horrorometer.com/auth/signin?redirect=%2Fmovies%2Fe5f9286f-6cf8-430d-98c5-d02dcb88bd58-hidden",
+      "capturedAt": "2026-10-19",
+      "capture": "Desktop viewport, 1272 × 716 pixels. Cropped to (0, 80, 1256, 640) to exclude the global header, scrollbar and fixed bottom navigation. Saved as WebP; interface content unchanged.",
+      "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
+      "sha256": "2abc97bcf7db128be0e7814159451710cffcbb9b9ffd0c57ed0b1a33f6a0f844"
     }
   ]
 }
