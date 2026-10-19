@@ -11,7 +11,9 @@ export interface CaseStudyScreenContent {
   width?: number
   height: number
   alt: string
-  url: string
+  url?: string
+  statusLabel?: string
+  captureNote?: string
   label: string
   notes: [string, string][]
 }
@@ -28,12 +30,12 @@ export default function CaseStudyScreen({ screen }: { screen: CaseStudyScreenCon
       </div>
       <figure className={styles.figure}>
         <div className={styles.frame}>
-          <div className={styles.frameLabel}><span>{screen.label}</span><span>Current public interface</span></div>
+          <div className={styles.frameLabel}><span>{screen.label}</span><span>{screen.statusLabel ?? 'Current public interface'}</span></div>
           <a href={screen.image} aria-label={`View larger screenshot: ${screen.label}`}>
             <Image src={screen.image} alt={screen.alt} width={screen.width ?? 1249} height={screen.height} sizes="(min-width: 1280px) 1160px, calc(100vw - 40px)" className={styles.screenshot} />
           </a>
         </div>
-        <figcaption><span>Select the image to view it larger.</span><a href={screen.url} target="_blank" rel="noopener noreferrer">View the live page <ArrowUpRight size={14} aria-hidden="true" /></a></figcaption>
+        <figcaption><span>{screen.captureNote ?? 'Select the image to view it larger.'}</span>{screen.url && <a href={screen.url} target="_blank" rel="noopener noreferrer">View the live page <ArrowUpRight size={14} aria-hidden="true" /></a>}</figcaption>
       </figure>
       <ol className={styles.notes}>
         {screen.notes.map(([title, text], index) => (

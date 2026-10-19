@@ -3,7 +3,7 @@
   "policy": "Verifiable project work only. Implementation descriptions and observed public interfaces do not establish research findings, adoption, measured impact, operational routines, exhaustive testing, or sole authorship.",
   "scope": "All four project pages, shared project cards and metadata; related unsupported homepage counts.",
   "dates": "The displayed year is the reviewed case-study edition, not a claim about the project start or public launch. Structured data uses dateModified, not an unverified publication date.",
-  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions. Horrorometer visual-case-study notes distinguish the signed-out live UI from the inspected local source; no authentication was completed and no review was submitted.",
+  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions. Horrorometer visual-case-study notes distinguish the signed-out live UI from the inspected local source; no authentication was completed and no review was submitted. Kanaboards captures document an unreleased local development interface with bundled sample data, not a public product or authenticated cloud workflow.",
   "projects": [
     {
       "id": "sendadvisor",
@@ -150,7 +150,10 @@
       "removedOrCorrected": [
         "Unverified fixed MCP-tool and migration counts",
         "Absolute claims about agent capabilities, permission coverage, and stale-run recovery",
-        "Unsupported development history and measured workflow improvements"
+        "Unsupported development history and measured workflow improvements",
+        "Distinguished the Start in editor clipboard action from local daemon execution",
+        "Labelled sample comments and progress as fixture data, not feedback or outcomes",
+        "Distinguished hierarchy Unassigned (unparented cards) from missing card ownership"
       ],
       "evidence": [
         {
@@ -172,8 +175,49 @@
         {
           "path": "kanaboards/package.json",
           "sha256": "6fa8047a5645733552e630ccc062e40c4086d17833a4d32e24dc12980f9c1077"
+        },
+        {
+          "path": "kanaboards/src/App.tsx",
+          "sha256": "c8f83bdf6512196753fddb6a632e3f8d43d806b21e893c3f2ea56f93c716f0c2"
+        },
+        {
+          "path": "kanaboards/src/lib/api.ts",
+          "sha256": "d152126387a6533bcb10dcfebb57983f0911c1b3db7a3d457e0fcea33865a43c"
+        },
+        {
+          "path": "kanaboards/src/lib/localWorkspaceApi.ts",
+          "sha256": "75f12edd3f1040e85523735fa02e39f2fba861f01797483301f2f67a4acd1a5d"
+        },
+        {
+          "path": "kanaboards/src/data/mock-board.ts",
+          "sha256": "5ffd2dbb23330b4d1ab24bc9dacf3277a146055ec10cdd647f5e32afdef059dc"
+        },
+        {
+          "path": "kanaboards/src/components/BoardApp.tsx",
+          "sha256": "629f46def02b50ae7ec679b831a0cbccbcccd0a6aa9f051c34f7c9f0b8cd62c8"
+        },
+        {
+          "path": "kanaboards/src/components/BoardCard.tsx",
+          "sha256": "7e3b63b55d006ae5f79f76d72d97f043d5028c22dec5e46ab9b51f211aa6ea1b"
+        },
+        {
+          "path": "kanaboards/src/components/BoardColumn.tsx",
+          "sha256": "f19480e3e52acfdf54fe0be0fda9c6520a615cbadb1e79d94b7fef9e7387e3fa"
+        },
+        {
+          "path": "kanaboards/src/components/CardDetailPanel.tsx",
+          "sha256": "e0e05f774d7586b82bb8d09a2b62315437ee9fdd241e79437f5e7f10e61796db"
+        },
+        {
+          "path": "kanaboards/src/components/HierarchyView.tsx",
+          "sha256": "a54262d24f7730c9d230c3caceddd3727117d48d1f480a9c197306e2dd1aa9c6"
+        },
+        {
+          "path": "kanaboards/src/lib/board.ts",
+          "sha256": "cc99090ff014f59fe896d110f77fbb5efc9c5ff1b9b3794073b3a1cc8de2c359"
         }
-      ]
+      ],
+      "visualCaseStudy": "Real browser captures of the existing localhost-only development fallback and bundled sample workspace. Opened a sample card, switched to Hierarchy and expanded Unassigned; no card edits, comments, agent runs or remote workspace mutations. Sample names, comments, dates, counts and the green board indicator do not demonstrate research, adoption, delivery metrics, remote sync or completed agent execution. Start in editor copies a prompt; the separate daemon invokes runners. Product remains unreleased per owner confirmation."
     },
     {
       "id": "stay-with-me-deep-sea",
@@ -271,6 +315,30 @@
       "capture": "Desktop viewport, 1272 × 716 pixels. Cropped to (0, 80, 1256, 640) to exclude the global header, scrollbar and fixed bottom navigation. Saved as WebP; interface content unchanged.",
       "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
       "sha256": "2abc97bcf7db128be0e7814159451710cffcbb9b9ffd0c57ed0b1a33f6a0f844"
+    },
+    {
+      "path": "public/images/projects/kanaboards-case-study/board.webp",
+      "sourceUrl": "http://localhost:5174/b/a1b2c3d4e/edgeboard-launch-train",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1280 × 720 desktop viewport of the actual local development interface. Saved as WebP; no cropping, generated interface content or retouching. Board at initial position; additional columns extend horizontally.",
+      "note": "Unreleased build using built-in local-storage-backed sample data from mock-board.ts. Fictional names, discussion and progress are not research findings or real activity. No agent launched; no cloud sync or remote persistence verified.",
+      "sha256": "ef132c5955f1ee8c1a6e354d65e1fadf914cf405f6e3d1851950481cff9618f6"
+    },
+    {
+      "path": "public/images/projects/kanaboards-case-study/card.webp",
+      "sourceUrl": "http://localhost:5174/b/a1b2c3d4e/edgeboard-launch-train",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1280 × 720 desktop viewport of the actual local development interface. Saved as WebP; no cropping, generated interface content or retouching. Sample card opened over the board.",
+      "note": "Unreleased build using built-in local-storage-backed sample data from mock-board.ts. Fictional names, discussion and progress are not research findings or real activity. No agent launched; no cloud sync or remote persistence verified.",
+      "sha256": "dd9beb9be90385496de1670692898c443ece1836cca6061d92670c12730bfdf1"
+    },
+    {
+      "path": "public/images/projects/kanaboards-case-study/hierarchy.webp",
+      "sourceUrl": "http://localhost:5174/b/a1b2c3d4e/edgeboard-launch-train/hierarchy",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1280 × 720 desktop viewport of the actual local development interface. Saved as WebP; no cropping, generated interface content or retouching. Unassigned group expanded.",
+      "note": "Unreleased build using built-in local-storage-backed sample data from mock-board.ts. Fictional names, discussion and progress are not research findings or real activity. No agent launched; no cloud sync or remote persistence verified.",
+      "sha256": "c3f4addd9955262383027c34ef67af2160705a1b8bd2513743703e7d63b3111f"
     }
   ]
 }

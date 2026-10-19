@@ -58,6 +58,28 @@ test('Horrorometer case study links real screenshots to its public flow and impl
   await expect(page.getByRole('link', { name: /View larger screenshot:/ })).toHaveCount(3)
 })
 
+test('Kanaboards case study labels real local screenshots as unreleased sample data', async ({ page, request }) => {
+  await page.goto('/projects/kanaboards')
+  await expect(page.getByText('Unreleased development build', { exact: true })).toBeVisible()
+  await expect(page.getByRole('link', { name: /Visit live product|View the live page/ })).toHaveCount(0)
+  const contents = page.getByRole('navigation', { name: 'Case study sections' })
+  await contents.getByRole('link', { name: 'Card detail', exact: true }).click()
+  await expect(page).toHaveURL(/#card-context$/)
+  await expect(page.getByRole('heading', { name: 'Bring the task and its context together.' })).toBeVisible()
+  for (const name of ['board', 'card', 'hierarchy']) {
+    const image = page.locator(`main section img[src="/images/projects/kanaboards-case-study/${name}.webp"]`)
+    await image.scrollIntoViewIfNeeded()
+    await expect.poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+    const asset = await request.get(`/images/projects/kanaboards-case-study/${name}.webp`)
+    expect(asset.status()).toBe(200)
+    expect(asset.headers()['content-type']).toContain('image/webp')
+  }
+  await expect(page.getByText('Bundled sample data, not customer activity. Select the image to view it larger.', { exact: true })).toHaveCount(3)
+  await expect(page.getByRole('link', { name: /View larger screenshot:/ })).toHaveCount(3)
+  await contents.getByRole('link', { name: 'Implementation', exact: true }).click()
+  await expect(page.getByRole('list', { name: 'Kanaboards implementation boundaries' })).toBeVisible()
+})
+
 test('the former Diver link redirects to the renamed game with its new artwork', async ({ page }) => {
   await page.goto('/projects/the-diver')
   await expect(page).toHaveURL('/projects/stay-with-me-deep-sea')
