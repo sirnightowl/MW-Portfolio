@@ -143,7 +143,7 @@ export const projects: Project[] = [
     "id": "stay-with-me-deep-sea",
     "title": "Stay With Me: Deep Sea",
     "description": "An unreleased narrative horror game combining a message thread, timed story rules, recovered camera views, and a persistent archive.",
-    "longDescription": "An unreleased narrative horror game built with React Native and Expo. A message thread connects the player to Mara at the Halcyon research station. Story conditions, choices, timed progression, and recovered material are represented in the game engine and mobile interface.",
+    "longDescription": "An unreleased narrative horror game built with React Native and Expo. This case study follows its title screen, opening conversation with Mara, and recovered-camera archive in the local web build, alongside the story engine and platform adapters.",
     "image": "/images/projects/stay-with-me-deep-sea.png",
     "imageAlt": "Halcyon research station on the dark ocean floor, lit by a small submersible",
     "imagePosition": "center 78%",

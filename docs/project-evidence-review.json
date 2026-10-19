@@ -3,7 +3,7 @@
   "policy": "Verifiable project work only. Implementation descriptions and observed public interfaces do not establish research findings, adoption, measured impact, operational routines, exhaustive testing, or sole authorship.",
   "scope": "All four project pages, shared project cards and metadata; related unsupported homepage counts.",
   "dates": "The displayed year is the reviewed case-study edition, not a claim about the project start or public launch. Structured data uses dateModified, not an unverified publication date.",
-  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions. Horrorometer visual-case-study notes distinguish the signed-out live UI from the inspected local source; no authentication was completed and no review was submitted. Kanaboards captures document an unreleased local development interface with bundled sample data, not a public product or authenticated cloud workflow.",
+  "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions. Horrorometer visual-case-study notes distinguish the signed-out live UI from the inspected local source; no authentication was completed and no review was submitted. Kanaboards captures document an unreleased local development interface with bundled sample data, not a public product or authenticated cloud workflow. Stay With Me: Deep Sea captures use the existing local web export and cover only the title, first replies and first camera recovery. Build labels are preserved; no native-device behaviour, full playthrough or player response was verified.",
   "projects": [
     {
       "id": "sendadvisor",
@@ -225,7 +225,10 @@
       "removedOrCorrected": [
         "Unverified completion, ending-quality and exhaustive testing claims",
         "Always-visible radar and native-delivery guarantees inferred from component existence",
-        "Unsupported first-person goals, playtesting outcomes, and release-hardening claims"
+        "Unsupported first-person goals, playtesting outcomes, and release-hardening claims",
+        "Preserved and explained the Ocean Floor subtitle in the actual game build rather than relabelling screenshots",
+        "Distinguished authored story replies and recovered camera assets from real dialogue, footage or participant evidence",
+        "Bound browser observations to the opening sequence and first recovered camera frame, without native-delivery or complete-playthrough claims"
       ],
       "evidence": [
         {
@@ -263,6 +266,57 @@
         {
           "path": "Echoes/apps/mobile/src/content/act3.ts",
           "sha256": "1f7ea9ed8412ccf2e1cf928d2cb07a94187e441608f6408532a5abaee7164b8b"
+        },
+        {
+          "path": "Echoes/apps/mobile/app/index.tsx",
+          "sha256": "0951f3588eece0be4dc5c7dbcca185d438396450c90f78e61f41cdc78ffd1d9b"
+        },
+        {
+          "path": "Echoes/apps/mobile/app/thread.tsx",
+          "sha256": "8cac06c27a72c42a473186f06d29bc20c07a6e1c459872050d36494ee7bc1b68"
+        },
+        {
+          "path": "Echoes/apps/mobile/app/tools/camera.tsx",
+          "sha256": "fbef42801d410d275181a6c76ab1ce126e79dfdb6f8999519b0193be7ad0a476"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/components/Frame.tsx",
+          "sha256": "d0ccd83259e6d98f25e43d02000dc3c137e95e572de9de373f568d4c03ff2722"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/components/ObjectiveStatus.tsx",
+          "sha256": "9d0dd8329399227133caf33ba219c5569712a6971803b392c95488062131695f"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/components/CameraStill.tsx",
+          "sha256": "4b16208fe1a3b7d2bbcf7ec4a390220651394cf47165431b52a299b3cff88870"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/content/cameraStills.ts",
+          "sha256": "0c079a70601694f859645359f3bcc5d27934533afff495df7f1c1ac273c63b0b"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/state/useGame.tsx",
+          "sha256": "51b6415aab0dfe5a31fa0e72feb2a05bee3a03408312ca6c5736fc4de81c9064"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/state/storageKeys.ts",
+          "sha256": "57e8eab9210f6522972030104a37da8a4da865c20b0a1acd9fd31bd127cc4c99"
+        },
+        {
+          "path": "Echoes/apps/mobile/src/content/story.ts",
+          "sha256": "8cd072428fa694c513a67c199587f4657a45b8c2ddbc571e67fc59bd1ca1eaf4"
+        }
+      ],
+      "visualCaseStudy": "Captured the existing 18 October 2026 local web export on 19 October. Used New Game, waited for the opening replies, selected c2 (Take a breath), waited for m-cam-galley to be revealed, then opened Tools > Camera Feed. No saved-state injection, skipped progression, generated UI or screenshot retouching. This short browser session is not a complete playthrough, native notification test or player research. Captures retain the build subtitle Ocean Floor; portfolio title remains Stay With Me: Deep Sea per owner confirmation. The story and camera imagery are fiction, not real messages or underwater footage.",
+      "capturedBuild": [
+        {
+          "path": "Echoes/outputs/review-2026-10-18/web/index.html",
+          "sha256": "1f92de589971043b09e1f3c78813554415947723c9728cf9f6ded65832d84d92"
+        },
+        {
+          "path": "Echoes/outputs/review-2026-10-18/web/_expo/static/js/web/index-72fcc5c46dcff4a9053c2d5daa21ae19.js",
+          "sha256": "84f8c6f75034a716ee02f552f26f0ff8af5ff641d10dcbb471a91dfcbfe5fcbc"
         }
       ]
     }
@@ -339,6 +393,30 @@
       "capture": "Full 1280 × 720 desktop viewport of the actual local development interface. Saved as WebP; no cropping, generated interface content or retouching. Unassigned group expanded.",
       "note": "Unreleased build using built-in local-storage-backed sample data from mock-board.ts. Fictional names, discussion and progress are not research findings or real activity. No agent launched; no cloud sync or remote persistence verified.",
       "sha256": "c3f4addd9955262383027c34ef67af2160705a1b8bd2513743703e7d63b3111f"
+    },
+    {
+      "path": "public/images/projects/deep-sea-case-study/title.webp",
+      "sourceUrl": "http://127.0.0.1:8099/",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1280 × 720 desktop viewport of the existing local web export. Saved as WebP with no cropping or retouching. Fresh local session before New Game; Continue disabled.",
+      "note": "Unreleased game. Authored fiction and project artwork; not research evidence or real underwater footage. Actual Ocean Floor subtitle retained; portfolio title is Stay With Me: Deep Sea. Browser capture does not verify native notifications or full story completion.",
+      "sha256": "ca2872248e5e31e620037cc039ad30f3aefc090acda8fd17fde3c1082a16dc67"
+    },
+    {
+      "path": "public/images/projects/deep-sea-case-study/thread.webp",
+      "sourceUrl": "http://127.0.0.1:8099/thread",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1280 × 720 desktop viewport of the existing local web export. Saved as WebP with no cropping or retouching. Opening reply set before choosing c2.",
+      "note": "Unreleased game. Authored fiction and project artwork; not research evidence or real underwater footage. Actual Ocean Floor subtitle retained; portfolio title is Stay With Me: Deep Sea. Browser capture does not verify native notifications or full story completion.",
+      "sha256": "79f74604568ab21d882ec3ab3dff23e6093c64ef27b3cb92a0ebf67feefd06bf"
+    },
+    {
+      "path": "public/images/projects/deep-sea-case-study/camera.webp",
+      "sourceUrl": "http://127.0.0.1:8099/tools/camera",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1280 × 720 desktop viewport of the existing local web export. Saved as WebP with no cropping or retouching. First galley frame reached through normal progression after c2; opened using Tools > Camera Feed.",
+      "note": "Unreleased game. Authored fiction and project artwork; not research evidence or real underwater footage. Actual Ocean Floor subtitle retained; portfolio title is Stay With Me: Deep Sea. Browser capture does not verify native notifications or full story completion.",
+      "sha256": "7441d705c681edaa21f4385211eedf7b160b6766ada517f9886090c205f8e3ab"
     }
   ]
 }

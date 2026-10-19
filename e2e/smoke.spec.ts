@@ -80,6 +80,29 @@ test('Kanaboards case study labels real local screenshots as unreleased sample d
   await expect(page.getByRole('list', { name: 'Kanaboards implementation boundaries' })).toBeVisible()
 })
 
+test('Deep Sea case study uses real web screenshots and keeps the game unreleased', async ({ page, request }) => {
+  await page.goto('/projects/stay-with-me-deep-sea')
+  await expect(page.getByText('Unreleased game / Browser capture', { exact: true })).toBeVisible()
+  await expect(page.getByRole('link', { name: /Visit live product|View the live page/ })).toHaveCount(0)
+  await expect(page.getByText(/The captured build still uses the subtitle Ocean Floor/)).toBeVisible()
+  const contents = page.getByRole('navigation', { name: 'Case study sections' })
+  await contents.getByRole('link', { name: 'Conversation', exact: true }).click()
+  await expect(page).toHaveURL(/#conversation$/)
+  await expect(page.getByRole('heading', { name: 'Make the conversation the main interface.' })).toBeVisible()
+  for (const name of ['title', 'thread', 'camera']) {
+    const image = page.locator(`main section img[src="/images/projects/deep-sea-case-study/${name}.webp"]`)
+    await image.scrollIntoViewIfNeeded()
+    await expect.poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+    const asset = await request.get(`/images/projects/deep-sea-case-study/${name}.webp`)
+    expect(asset.status()).toBe(200)
+    expect(asset.headers()['content-type']).toContain('image/webp')
+  }
+  await expect(page.getByText('Real local web capture of the unreleased game. Select the image to view it larger.', { exact: true })).toHaveCount(3)
+  await expect(page.getByRole('link', { name: /View larger screenshot:/ })).toHaveCount(3)
+  await contents.getByRole('link', { name: 'Implementation', exact: true }).click()
+  await expect(page.getByRole('list', { name: 'Deep Sea implementation boundaries' })).toBeVisible()
+})
+
 test('the former Diver link redirects to the renamed game with its new artwork', async ({ page }) => {
   await page.goto('/projects/the-diver')
   await expect(page).toHaveURL('/projects/stay-with-me-deep-sea')
@@ -194,7 +217,7 @@ test('tablet navigation opens, navigates, and releases its scroll lock on deskto
 for (const width of [320, 768]) {
   test(`page layouts fit a ${width}px viewport`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
-    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/sendadvisor', '/projects/horrorometer', '/projects/kanaboards', '/blog/accessible-by-default', '/missing-page']) {
+    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/sendadvisor', '/projects/horrorometer', '/projects/kanaboards', '/projects/stay-with-me-deep-sea', '/blog/accessible-by-default', '/missing-page']) {
       await page.goto(route)
       await expect(page.locator('main h1')).toBeVisible()
       const fits = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)

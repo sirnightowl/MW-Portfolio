@@ -9,6 +9,7 @@ import ProjectCard from '@/components/common/ProjectCard'
 import SendadvisorCaseStudy from '@/components/projects/SendadvisorCaseStudy'
 import HorrorometerCaseStudy from '@/components/projects/HorrorometerCaseStudy'
 import KanaboardsCaseStudy from '@/components/projects/KanaboardsCaseStudy'
+import DeepSeaCaseStudy from '@/components/projects/DeepSeaCaseStudy'
 import { projects } from '@/lib/data/projects'
 import { jsonLd, SITE_URL } from '@/lib/site'
 
@@ -99,6 +100,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <HorrorometerCaseStudy project={project} />
         ) : project.id === 'kanaboards' ? (
           <KanaboardsCaseStudy project={project} />
+        ) : project.id === 'stay-with-me-deep-sea' ? (
+          <DeepSeaCaseStudy project={project} />
         ) : (
           <>
             {project.gallery && (
