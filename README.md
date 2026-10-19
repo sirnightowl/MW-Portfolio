@@ -6,7 +6,7 @@ The root `index.html` only redirects visitors from the former GitHub Pages site.
 
 ## Local development
 
-Use Node.js 22 or later.
+Use the Node.js version pinned in `.node-version` (22.23.1).
 
 ```sh
 npm ci
@@ -35,7 +35,16 @@ npm run deploy
 
 Wrangler uploads the static export, applies the domains in `wrangler.jsonc`, and manages their DNS and HTTPS certificates. It uses the signed-in Cloudflare account; credentials are never committed. Deployment is manual unless Cloudflare Git integration is configured.
 
-For automatic deployments, connect this GitHub repository to the `snowl-portfolio` Worker in Cloudflare Workers Builds. Choose `main` as the production branch, `npm run build:static` as the build command, and `npx wrangler deploy` as the deploy command.
+Cloudflare Workers Builds uses this production configuration:
+
+- Repository: `sirnightowl/MW-Portfolio`
+- Production branch: `main`
+- Root directory: `/`
+- Build command: `npm run build:ci`
+- Deploy command: `npx wrangler deploy`
+- Preview builds: disabled
+
+`build:ci` runs lint, unit tests, and the static export in sequence. A failed check stops deployment and leaves the current site live. The build image reads `.node-version` to use the same Node.js version as local validation. No build credentials belong in this repository.
 
 `NEXT_PUBLIC_SITE_URL` optionally overrides the production origin used in metadata, structured data, robots, and sitemap; it defaults to `https://snowl.uk`. Security headers and the former Diver URL redirect are served from `public/_headers` and `public/_redirects` in the static deployment. Keep security policies aligned with `next.config.ts` for local Next.js serving.
 
