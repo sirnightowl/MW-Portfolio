@@ -60,7 +60,7 @@ The public CV PDF omits the phone number and email address and links to `/contac
 
 ## Blog evidence
 
-The four project case studies have a separate source review in `docs/project-evidence-review.json`, including file hashes, corrected claims, and provenance for all four visual case studies. Project years identify the reviewed case-study edition, not unverified start or launch dates. Keep implementation, operational records, and observed user outcomes distinct when editing project copy. Visual case studies share their screenshot renderer and styles; public captures and inspected local source are distinct evidence, and neither proves a completed authenticated flow. Kanaboards captures use the existing localhost development fallback and bundled sample data, explicitly labelled as unreleased; sample discussion and progress are not real feedback or delivery metrics. Stay With Me: Deep Sea captures show the existing local web export, retain its Ocean Floor build subtitle, and document only the opening sequence and first recovered camera frame; authored fiction and artwork are not research or real footage, and browser screenshots do not verify native notifications.
+The five project case studies have a separate source review in `docs/project-evidence-review.json`, including file hashes, corrected claims, and provenance for all five visual case studies. Project years identify the reviewed case-study edition, not unverified start or launch dates. Keep implementation, operational records, and observed user outcomes distinct when editing project copy. Visual case studies share their screenshot renderer and styles; public captures and inspected local source are distinct evidence, and neither proves a completed authenticated flow. Kanaboards captures use the existing localhost development fallback and bundled sample data, explicitly labelled as unreleased; sample discussion and progress are not real feedback or delivery metrics. Stay With Me: Deep Sea captures show the existing local web export, retain its Ocean Floor build subtitle, and document only the opening sequence and first recovered camera frame; authored fiction and artwork are not research or real footage, and browser screenshots do not verify native notifications.
 
 Blog posts describe verifiable project work. Keep implementation details traceable to source files; code and automated tests do not establish personal anecdotes, user-research findings, adoption, measured impact, or recurring operational practice. Those claims need their own records before publication.
 
@@ -70,7 +70,7 @@ The review of all 21 posts is recorded in `docs/blog-evidence-review.json`, incl
 
 `lib/metadata.ts` supplies each page’s canonical URL, complete Open Graph metadata and matching Twitter card copy. Case studies use dedicated 1200 × 630 PNG previews at `/social/<project-id>.png`, generated during the static build; unreleased projects keep their status in both the preview and its alternative text. Their PNG build inputs in `assets/social/` are derivatives of the existing project artwork/screenshots, not new UI mockups.
 
-`npm run check:seo` validates the exported sitemap’s 32 pages, titles, canonicals, social metadata, preview dimensions, structured-data JSON and 404 indexing state. It runs automatically in `build:ci`. Update its expected page count when publishing more content. Runtime crawler, image-budget and cache checks live in `e2e/seo.spec.ts`.
+`npm run check:seo` validates the exported sitemap’s 33 pages, titles, canonicals, social metadata, preview dimensions, structured-data JSON and 404 indexing state. It runs automatically in `build:ci`. Update its expected page count when publishing more content. Runtime crawler, image-budget and cache checks live in `e2e/seo.spec.ts`.
 
 Large hero assets and supporting photos use WebP derivatives; originals and the evidence screenshots remain available. Hero images are preloaded with high fetch priority; the existing variable font is self-hosted and preloaded through `next/font/local`. Below-fold screenshots remain lazy-loaded. Mutable images and social cards use a one-hour browser cache with stale-while-revalidate, while hashed Next assets retain immutable caching.
 
@@ -78,10 +78,12 @@ The review and mobile Lighthouse measurements are recorded in `docs/seo-performa
 
 ## Case study accessibility
 
-All four case studies share screenshot framing and captions. Keep release-status labels visible at mobile widths, give live-source links distinct names, and preserve focusable section targets for keyboard contents navigation. The focused screenshot outline sits outside the image frame to avoid clipping. Custom-styled annotation and implementation lists retain explicit list semantics.
+All five case studies share screenshot framing and captions. Keep release-status labels visible at mobile widths, give live-source links distinct names, and preserve focusable section targets for keyboard contents navigation. The focused screenshot outline sits outside the image frame to avoid clipping. Custom-styled annotation and implementation lists retain explicit list semantics.
 
 `e2e/case-studies.spec.ts` checks 320px and 768px layouts in both themes, text-spacing overrides, automated accessibility and section-link keyboard focus. The review is recorded in `docs/project-evidence-review.json`; automated checks do not replace screen-reader or real-device testing.
 
 ## Roll back
 
 Use `npx wrangler rollback` to restore the previous Cloudflare deployment. Revert the corresponding commit on `main` before publishing again so the next deployment keeps the rollback.
+
+Lush SVG is a live SVG studio. Its case study uses three unretouched public-interface captures and source evidence for catalogue filtering, editor links and exports. The source project was inspected read-only; no user research, adoption or exhaustive export verification is claimed.

@@ -9,6 +9,7 @@ import ProjectCard from '@/components/common/ProjectCard'
 import SendadvisorCaseStudy from '@/components/projects/SendadvisorCaseStudy'
 import HorrorometerCaseStudy from '@/components/projects/HorrorometerCaseStudy'
 import KanaboardsCaseStudy from '@/components/projects/KanaboardsCaseStudy'
+import LushSvgCaseStudy from '@/components/projects/LushSvgCaseStudy'
 import DeepSeaCaseStudy from '@/components/projects/DeepSeaCaseStudy'
 import { projects } from '@/lib/data/projects'
 import { jsonLd, SITE_URL } from '@/lib/site'
@@ -91,6 +92,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <SendadvisorCaseStudy project={project} />
         ) : project.id === 'horrorometer' ? (
           <HorrorometerCaseStudy project={project} />
+        ) : project.id === 'lush-svg' ? (
+          <LushSvgCaseStudy project={project} />
         ) : project.id === 'kanaboards' ? (
           <KanaboardsCaseStudy project={project} />
         ) : project.id === 'stay-with-me-deep-sea' ? (

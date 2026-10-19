@@ -95,6 +95,50 @@ export const projects: Project[] = [
     "imageAlt": "Horrorometer movie catalogue with browsing controls above a poster grid"
   },
   {
+    "id": "lush-svg",
+    "title": "Lush SVG",
+    "description": "A live SVG studio for browsing collections, customising artwork, and exporting backgrounds and website elements.",
+    "longDescription": "A browser-based SVG studio bringing backgrounds, website elements, illustrations and decorative accents into an editable catalogue. This case study follows the public studio, a mesh-gradient collection and its editor, alongside the inspected filtering, URL state and export implementation.",
+    "image": "/images/projects/lush-svg-case-study/editor.webp",
+    "imageAlt": "Lush SVG editor with a mesh-gradient preview beside colour and detail controls",
+    "technologies": [
+      "JavaScript",
+      "SVG",
+      "CSS",
+      "Cloudflare Workers"
+    ],
+    "category": "Creative Tools",
+    "liveUrl": "https://svg.snowl.uk/",
+    "featured": true,
+    "year": 2026,
+    "reviewedAt": "2026-10-19",
+    "status": "Live product",
+    "isLive": true,
+    "leadMetric": "Collection browsing · Editable artwork · SVG and CSS output",
+    "role": "Interface design and front-end development across catalogue browsing, SVG customisation and export tooling.",
+    "challenge": "A catalogue of visual assets needs more than a grid: people need a starting point, a visible selection scope, and a way to adapt a design to their own palette and layout. Browsing, editing and choosing an output format are distinct tasks that the studio needs to connect.",
+    "challengeTitle": "Turn a visual catalogue into an editable starting point.",
+    "approach": "The studio groups assets by intended use, then exposes search and collection filters. The editor places a preview beside grouped controls. Shared modules serialise filters and versioned editor settings into URLs, while SVG generators and export helpers prepare artwork and usage-specific CSS. Static assets are served through Cloudflare Workers.",
+    "approachTitle": "Carry a design from collection to customisation.",
+    "outcome": "The public studio provides collection browsing, editable previews and export controls. The inspected source contains URL-based filter and editor state, SVG and CSS output helpers, and a separate maker for imported motifs. These are observed and implemented capabilities, without claiming measured workflow improvements, public adoption or successful integration of every exported design.",
+    "outcomeTitle": "A live creative tool with inspectable building blocks.",
+    "highlights": [
+      "Collections organised by intended use",
+      "Search and URL-based filter state",
+      "Preview with grouped colour and detail controls",
+      "Stable design links with versioned settings",
+      "SVG download and CSS export helpers"
+    ],
+    "cardStyle": {
+      "bg": "bg-butter",
+      "text": "text-ink",
+      "textMuted": "text-ink/60",
+      "textDescription": "text-ink/75",
+      "border": "border-ink",
+      "shadow": "shadow-[8px_10px_0_#1f1f1d]"
+    }
+  },
+  {
     "id": "kanaboards",
     "title": "Kanaboards",
     "description": "An unreleased planning workspace connecting shared board assignments to coding agents running in a local checkout.",

@@ -1,7 +1,7 @@
 {
   "reviewedAt": "2026-10-19",
   "policy": "Verifiable project work only. Implementation descriptions and observed public interfaces do not establish research findings, adoption, measured impact, operational routines, exhaustive testing, or sole authorship.",
-  "scope": "All four project pages, shared project cards and metadata; related unsupported homepage counts.",
+  "scope": "All five project pages, shared project cards and metadata; related homepage counts.",
   "dates": "The displayed year is the reviewed case-study edition, not a claim about the project start or public launch. Structured data uses dateModified, not an unverified publication date.",
   "limitations": "Sibling repositories were inspected read-only; their full test suites were not run. Release status follows the owner’s confirmation. Screenshots document current public interfaces, not historical designs or research sessions. Horrorometer visual-case-study notes distinguish the signed-out live UI from the inspected local source; no authentication was completed and no review was submitted. Kanaboards captures document an unreleased local development interface with bundled sample data, not a public product or authenticated cloud workflow. Stay With Me: Deep Sea captures use the existing local web export and cover only the title, first replies and first camera recovery. Build labels are preserved; no native-device behaviour, full playthrough or player response was verified.",
   "projects": [
@@ -319,6 +319,58 @@
           "sha256": "84f8c6f75034a716ee02f552f26f0ff8af5ff641d10dcbb471a91dfcbfe5fcbc"
         }
       ]
+    },
+    {
+      "id": "lush-svg",
+      "reviewedAt": "2026-10-19",
+      "evidence": [
+        {
+          "path": "lushsvg/lush-svg/dist/app.js",
+          "sha256": "c5b95863de3c1d19f6253e05ee3a58e15f497a3c1bf56bce589ddff8207b6223"
+        },
+        {
+          "path": "lushsvg/lush-svg/dist/catalogue-filter.js",
+          "sha256": "01ee753e54ff8d5ce10e2d7d5f821f7d13f5ca2fdf24c5511f8e34a4c16c16de"
+        },
+        {
+          "path": "lushsvg/lush-svg/dist/editor-route.js",
+          "sha256": "88aef3626b93552bca7cec77f43fb8ca8a71d32e9dd2bafdd421c8ea5153f014"
+        },
+        {
+          "path": "lushsvg/lush-svg/dist/exports.js",
+          "sha256": "0049b961f7e6f1d7ad6f55d9ed00227f5108380d779290f9fffc3185a46710ed"
+        },
+        {
+          "path": "lushsvg/lush-svg/dist/maker.js",
+          "sha256": "85a6a510492c3fc3a6972716936060d8f8a2a33060f7e7586e3865059a5a514f"
+        },
+        {
+          "path": "lushsvg/lush-svg/dist/patterns.js",
+          "sha256": "acb8a2180f9c39be8012faa8e01bd0013e91564ded1b577a92b0e163066cd52d"
+        },
+        {
+          "path": "lushsvg/lush-svg/tests/editor-route.mjs",
+          "sha256": "b162b99974196a12117988ef31b8805cbfecc7f893bf620e09ff865f3eaabf54"
+        },
+        {
+          "path": "lushsvg/lush-svg/tests/filters.mjs",
+          "sha256": "0a3142365e46b1a4d847a2e61afdc86bf4468289978bb944a775d4acf1b90f78"
+        },
+        {
+          "path": "lushsvg/lush-svg/wrangler.jsonc",
+          "sha256": "2320bd6aa182716e97ab771b838ebe8beae143e3fbb2d0bd3dba0887e68572bb"
+        },
+        {
+          "path": "lushsvg/lush-svg/DEPLOYMENT.md",
+          "sha256": "63b2f446e938c7fdfd8705450b1cca459afdd2e2b8b8e192be32fa31d958e72e"
+        }
+      ],
+      "observations": [
+        "Live public studio, Mesh gradients collection and Tidal colour pool editor observed without authentication.",
+        "Source describes catalogue filters, versioned editor settings, SVG download and CSS exports.",
+        "No adoption, usability findings, time savings, exhaustive export testing or sole authorship claimed."
+      ],
+      "limitations": "Source inspected read-only. No complete source-project test suite, maker import or external integration tested."
     }
   ],
   "screenshots": [
@@ -417,6 +469,27 @@
       "capture": "Full 1280 × 720 desktop viewport of the existing local web export. Saved as WebP with no cropping or retouching. First galley frame reached through normal progression after c2; opened using Tools > Camera Feed.",
       "note": "Unreleased game. Authored fiction and project artwork; not research evidence or real underwater footage. Actual Ocean Floor subtitle retained; portfolio title is Stay With Me: Deep Sea. Browser capture does not verify native notifications or full story completion.",
       "sha256": "7441d705c681edaa21f4385211eedf7b160b6766ada517f9886090c205f8e3ab"
+    },
+    {
+      "path": "public/images/projects/lush-svg-case-study/studio.webp",
+      "sourceUrl": "https://svg.snowl.uk/",
+      "capturedAt": "2026-10-19",
+      "capture": "Full desktop viewport of the real public site, converted to WebP. No cropping, generated interface content or retouching. Editor opened through the collection card using default settings.",
+      "sha256": "4acc7383a164bb4dc22052313927c620f73be23150bd6d3481ae0edcce94a045"
+    },
+    {
+      "path": "public/images/projects/lush-svg-case-study/collection.webp",
+      "sourceUrl": "https://svg.snowl.uk/?family=Backgrounds&category=Mesh+gradients#library",
+      "capturedAt": "2026-10-19",
+      "capture": "Full desktop viewport of the real public site, converted to WebP. No cropping, generated interface content or retouching. Editor opened through the collection card using default settings.",
+      "sha256": "5d163ce9a6b96727d1b310058691ace6eee956778a56d5ce27e0e577018ce7a0"
+    },
+    {
+      "path": "public/images/projects/lush-svg-case-study/editor.webp",
+      "sourceUrl": "https://svg.snowl.uk/?family=Backgrounds&category=Mesh+gradients&design=2309-tidal-colour-pool#library",
+      "capturedAt": "2026-10-19",
+      "capture": "Full desktop viewport of the real public site, converted to WebP. No cropping, generated interface content or retouching. Editor opened through the collection card using default settings.",
+      "sha256": "7e03f855cff13c12b06187fa919dbb20656093a2a86e454a07646da4652659e0"
     }
   ],
   "consistencyAccessibilityReview": {
@@ -439,6 +512,21 @@
       "browserTests": "101 passed, including 5 new case-study regression tests",
       "visualReview": "Reviewed first screenshot frames and captions for all four projects at 320px in both themes, plus the desktop screenshot keyboard-focus indicator.",
       "result": "No violations reported by the automated checks in the tested configurations."
+    }
+  },
+  "lushSvgAddition": {
+    "reviewedAt": "2026-10-19",
+    "scope": "Fifth visual case study, homepage and work cards, live-product counts, sitemap and social preview. SENDadvisor remains first.",
+    "socialInput": {
+      "path": "assets/social/lush-svg.png",
+      "source": "Real editor capture, resized proportionally to 1200px wide and converted to PNG for ImageResponse.",
+      "sha256": "355de939ddd34bede733805481b1af1ea5fd5a1a5add6fb1ed33753f305ff493"
+    },
+    "verification": {
+      "buildCi": "Passed: lint, 11 unit tests, static export and SEO checks across 33 pages.",
+      "browserTests": "106 passed against the local production export, including all five case studies at 320px and 768px in both themes, keyboard section navigation, text-spacing reflow, desktop accessibility and social-preview budgets.",
+      "visualReview": "Reviewed the desktop hero, 320px screenshot frames in light and dark themes, and the generated 1200 × 630 social preview.",
+      "limitations": "Automated checks use Chromium and are not WCAG certification or a physical-device study."
     }
   }
 }

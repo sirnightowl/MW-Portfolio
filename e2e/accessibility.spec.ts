@@ -66,9 +66,9 @@ test('invalid form submission focuses the first required field', async ({ page }
 test('reduced motion keeps counters at their final values', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
-  await expect(page.getByText('4', { exact: true })).toHaveText('4')
+  await expect(page.getByText(String(projects.length), { exact: true })).toHaveText(String(projects.length))
   await expect(page.getByText('12+', { exact: true })).toHaveText('12+')
-  await expect(page.getByText('2 Live products', { exact: true })).toBeVisible()
+  await expect(page.getByText(`${projects.filter((project) => project.isLive).length} Live products`, { exact: true })).toBeVisible()
   await expect(page.getByText('2 Unreleased projects', { exact: true })).toBeVisible()
 })
 

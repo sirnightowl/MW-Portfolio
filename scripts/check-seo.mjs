@@ -7,7 +7,7 @@ const site = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://snowl.uk')
 const output = path.resolve('out')
 const sitemap = new JSDOM(await readFile(path.join(output, 'sitemap.xml'), 'utf8'), { contentType: 'text/xml' }).window.document
 const urls = [...sitemap.querySelectorAll('loc')].map((node) => node.textContent)
-assert.equal(urls.length, 32, 'Sitemap must contain all seven main pages, four case studies and 21 published posts')
+assert.equal(urls.length, 33, 'Sitemap must contain all seven main pages, five case studies and 21 published posts')
 assert.equal(new Set(urls).size, urls.length, 'Sitemap URLs must be unique')
 const titles = new Set()
 for (const url of urls) {

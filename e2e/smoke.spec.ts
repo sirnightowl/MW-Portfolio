@@ -217,7 +217,7 @@ test('tablet navigation opens, navigates, and releases its scroll lock on deskto
 for (const width of [320, 768]) {
   test(`page layouts fit a ${width}px viewport`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
-    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/sendadvisor', '/projects/horrorometer', '/projects/kanaboards', '/projects/stay-with-me-deep-sea', '/blog/accessible-by-default', '/missing-page']) {
+    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/sendadvisor', '/projects/horrorometer', '/projects/lush-svg', '/projects/kanaboards', '/projects/stay-with-me-deep-sea', '/blog/accessible-by-default', '/missing-page']) {
       await page.goto(route)
       await expect(page.locator('main h1')).toBeVisible()
       const fits = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)
