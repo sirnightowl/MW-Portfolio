@@ -1,38 +1,33 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'horror-ux-dread-interface',
-  title: 'Designing dread: the UX of a horror game',
-  excerpt: 'Horrorometer and Stay With Me: Deep Sea both design fear, from opposite directions \u2014 what dread teaches a product designer about attention and time.',
-  date: '2025-08-30',
-  displayDate: '30 August 2025',
-  readTime: '5 min read',
-  category: 'Game Design',
+  id: "horror-ux-dread-interface",
+  title: "Designing dread: interface choices in an unreleased horror game",
+  excerpt: "Story timing, recovered camera views, and a separate archive in Stay With Me: Deep Sea are design mechanisms—not evidence of player reactions.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Game Design",
   published: true,
-  body: `I build horror experiences from two directions: Horrorometer is a calm, trustworthy platform for horror *fans* \u2014 and Stay With Me: Deep Sea is an unreleased real-time narrative game in development that tries to *produce* dread in the player. Designing both at once has been unexpectedly useful, because designing fear is just designing attention and time with the safety off.
+  body: `Stay With Me: Deep Sea is an unreleased narrative horror game. Its current implementation uses messages, timed progression, station tools, and recovered material to present the story. Those are concrete design mechanisms; the emotional result still needs evaluation with players.
 
-## Stay With Me: Deep Sea: dread is designed waiting
+## Timing is represented in the engine
 
-The core mechanic of Stay With Me: Deep Sea is absence. Mara is 412 metres down; messages arrive over real minutes and hours; the player\u2019s job is to wait, watch, and decide. Every design decision serves the dread:
+The story engine processes timestamped actions and can return scheduled-notification effects. Message and beat data also influence when the next item is available.
 
-- **The radar never leaves.** Even inside the message thread, a persistent radar sweeps in the corner \u2014 the ocean is always there, whether or not anything is happening. Anxiety isn\u2019t an event; it\u2019s an environment.
-- **The waiting is visible.** Live clock, depth gauge, oxygen bar \u2014 a surface HUD that turns "nothing is happening" into "nothing is happening *yet*". The most tense screen is the one where Mara isn\u2019t typing.
-- **Degradation as storytelling.** Comms get noisier, the crew roster thins, the tools in the menu \u2014 camera loop, motion sensor \u2014 become less reliable as the station dies. The UI lying to you slightly is scarier than a jump scare, because it\u2019s foreshadowing.
-- **No cheap suspense.** Deaths are earned and foreshadowed; quick-time sequences are synced to haptics so the body participates. A false scare is a broken trust, and trust is the entire resource a narrative game has.
+That gives waiting an explicit place in the implementation. It is not merely an animation added after the dialogue. The design intention is to make the gaps between messages part of the experience, but the code alone cannot establish that a particular gap produces suspense rather than frustration.
 
-The UX insight: **the player\u2019s imagination is the rendering engine.** The interface\u2019s job is to aim attention at the empty spaces and keep hands off. Every element that *does* something visually is a moment the imagination doesn\u2019t get to do it instead.
+## Give recovered material a place to live
 
-## Horrorometer: dread is the content, the UI stays out of it
+The mobile app has separate thread, camera, and archive routes. The archive provider keeps recovered logs and camera items, persists them locally, and avoids adding another copy of an item with the same ID.
 
-Horrorometer is the opposite register \u2014 fans of the genre, browsing, rating, comparing. The design brief is calm: the three-axis ratings (Creepy, Gory, Jumpy) are doing the emotional work, and the interface\u2019s job is to be a neutral, trustworthy instrument. Fast search, clear profiles, no theming gimmicks \u2014 a horror product that *performs* horror via dark UI patterns is a costume, and users see through costumes.
+This lets recovered material exist beyond the instant it is encountered in the conversation. The camera and archive are therefore part of the information structure, not just background decoration.
 
-The lesson cuts both ways: **match the interface\u2019s register to the fear\u2019s role.** In Stay With Me: Deep Sea, fear is the product and the interface is complicit in it. In Horrorometer, fear is the subject matter and the interface is a clean window. Getting this backwards \u2014 spooky UI on a utility, or neutral UI on a game \u2014 produces the uncanny valley of horror design.
+The project also contains a radar component alongside these routes. Each tool offers a separate view into the fictional station; their effect on the pacing needs to be evaluated in a complete playthrough.
 
-## What horror taught my product design
+## Different jobs call for different interfaces
 
-- **Absence is a feature.** Most products fill every pixel with reassurance \u2014 spinners, badges, tips. Stay With Me: Deep Sea taught me how much an interface can say by showing time passing and nothing else. Boring products need the opposite lesson: calm comes from *subtracting* reassurance, not adding it.
-- **Degrade gracefully, and narrate the degradation.** "Something\u2019s wrong" states in Stay With Me: Deep Sea became my model for graceful degradation in Horrorometer\u2019s circuit breaker: when TMDB fails, the UI admits it calmly and tells the user what to do next. Users forgive outage; they don\u2019t forgive improvisation.
-- **Time is content.** Read times, "last updated" dates, message pacing \u2014 when something arrives is as authored as what it says. Product designers treat timing as plumbing; horror designers know it\u2019s the script.
+Horrorometer, the other horror-related project in this portfolio, records ratings and catalogue information. Its review model separates overall, Creepy, Gory, and Jumpy values. That is a different job from presenting a fictional emergency through a message thread.
 
-Fear, it turns out, is a rigorous design teacher: it demands that every element either aims attention or gets out of the way. That\u2019s just good UX with higher stakes.`,
+The useful comparison is about purpose: one interface organises information about horror, while the other is part of a horror story. Whether the game actually creates dread, maintains trust, or makes its choices feel earned is a playtesting question. No participant reactions are being claimed here.`,
 }

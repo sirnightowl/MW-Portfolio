@@ -52,6 +52,12 @@ Cloudflare Workers Builds uses this production configuration:
 
 All pages and social preview images are generated at build time. The small Worker in `worker/index.ts` redirects the `www` hostname and delegates all other requests to static assets. Contact uses the visitor's email client, so it does not need a server or email API.
 
+## Blog evidence
+
+Blog posts describe verifiable project work. Keep implementation details traceable to source files; code and automated tests do not establish personal anecdotes, user-research findings, adoption, measured impact, or recurring operational practice. Those claims need their own records before publication.
+
+The review of all 21 posts is recorded in `docs/blog-evidence-review.json`, including source paths, corrected claims, and earlier displayed dates. The corrected editions use 19 October 2026. Keep existing article IDs to preserve URLs, and update the evidence record when substantive claims change. Kanaboards and Stay With Me: Deep Sea remain unreleased.
+
 ## Roll back
 
 Use `npx wrangler rollback` to restore the previous Cloudflare deployment. Revert the corresponding commit on `main` before publishing again so the next deployment keeps the rollback.

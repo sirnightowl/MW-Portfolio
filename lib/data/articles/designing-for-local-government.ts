@@ -1,48 +1,35 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'designing-for-local-government',
-  title: 'What local government taught me about design',
-  excerpt: 'Public services can\u2019t assume a willing user. Eight years of designing for people who have to be there changed how I build everything.',
-  date: '2026-02-07',
-  displayDate: '07 February 2026',
-  readTime: '6 min read',
-  category: 'UX',
+  id: "designing-for-local-government",
+  title: "Public-service design: making the next action explicit",
+  excerpt: "Council-information pages and a portfolio contact form provide concrete examples of links, missing data, and honest handoffs.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "UX",
   published: true,
-  body: `Eight-plus years designing and building for Norfolk County Council. Everything about how I approach design changed in that time \u2014 and the change came from one structural fact:
+  body: `A service interface needs to explain what its controls do and what happens next. Two implementations make that principle tangible: the council-information pages in SENDadvisor and the contact form in this portfolio.
 
-**Public services don\u2019t get to assume a willing user.**
+These are examples from project code, not a report of resident interviews or outcomes inside a council team.
 
-A commercial product has an implicit contract: you chose to be here, so you\u2019ll extend some patience. A council service is the opposite. People arrive because they have to \u2014 parking permits, benefits, waste collections, school admissions \u2014 often stressed, sometimes in crisis, usually on a phone, and always with somewhere better to be. Nobody browses a council website for fun.
+## Distinguish the directory from the official source
 
-## The consequences, concretely
+SENDadvisor's council page provides separate links for the Local Offer and the council website when those values are available. It also renders available SEND contact details and related days-out, service, and school results.
 
-### The task is never the interface
+The distinction between those destinations matters. A directory can organise a route to official information without presenting itself as the council or implying that a directory entry settles an individual case.
 
-The user\u2019s real task \u2014 "get my child a school place", "find out what\u2019s wrong with my bin" \u2014 exists outside the website. Every screen, every click, every form field is a tax on that task. This reframing is brutal and useful: if a page isn\u2019t helping complete the task, it\u2019s in the way, and "in the way" has a real cost because some users give up, and giving up on a public service has consequences.
+## Treat missing data as a real state
 
-### Assume the worst context
+The template checks for the relevant URL, phone number, or email before rendering its control. The admin page can filter for missing Local Offer or EHCP information.
 
-Test on a mid-range phone with poor signal, one-handed, interrupted. Assume English may not be a first language. Assume the user may have arrived angry, dyslexic, visually impaired, or all four. The public sector can\u2019t design for the median \u2014 the regulations exist precisely because the edges matter. Designing for the edges made everything I build more robust.
+That creates a concrete maintenance task: find and review an absent field. It does not prove that every populated field is correct, nor that someone will answer a listed phone number. A precise description of the feature needs to leave those limits intact.
 
-### Plain language is an engineering constraint
+## Name the handoff honestly
 
-"Content design" isn\u2019t a nice-to-have. Reading age targets, sentence length limits, active voice, and jargon either translated or deleted. It\u2019s measurable, testable, and it changes component design: a form label written at reading-age 9 is shorter, which changes the layout, which changes the component. The words are the design.
+The portfolio contact form validates the input and constructs a mailto URL. Its confirmation says the visitor's mail client should be opening, and offers an email-address copy fallback. It does not say that a message has been delivered.
 
-### Accessibility is a legal floor, not a stretch goal
+That is a small but important alignment between implementation and wording. Opening another application and submitting a message to a server are different actions.
 
-The Public Sector Bodies Accessibility Regulations aren\u2019t guidance \u2014 they\u2019re an obligation, with monitoring and reporting. That forced a discipline I\u2019ve carried into everything since: tokens that pass contrast by construction, skip links in the layout from day one, real buttons for everything interactive, motion that respects reduced-motion. Every private-sector product I\u2019ve built since is better because public-sector standards made it non-negotiable.
-
-### You will never control the content
-
-Councils publish thousands of pages through distributed teams, content designers, and service owners who all outrank the website team in their domain. You cannot gatekeep. What you *can* do: build a design system and templates that make the right thing the easy thing, and structure guidance so a rushed content editor still produces a usable page.
-
-## What I take into every product since
-
-1. **Design the failure states first.** The happy path is easy. In public services, the error, timeout, and "you are not eligible" paths are where the real design work lives \u2014 and where trust is won or lost.
-2. **Measure in task completion, not engagement.** Nobody should "spend more time" on a council service. Success is fewer visits, completed forms, and abandonment going down.
-3. **Make the boring parts excellent.** Loading states, confirmation pages, and status pages get more views than any landing page you\u2019ll ever design.
-4. **Trust is the deliverable.** People extend trust to a public service once. After a failure, everything is harder. Design like the second chance is the one that matters \u2014 because it is.
-
-The characterful products I build at night \u2014 Horrorometer, Kanaboards, SENDadvisor \u2014 get accused of being over-engineered in ways that are all local-government habits: resilience layers, accessible-by-default components, calm failure states. I take that as the compliment it is. The council taught me that the user who has to be there deserves the same craft as the one who chooses to be.`,
+The common design principle is to make those boundaries visible: this link goes to an official source; this field is unavailable; this form opens your email client. Clear wording cannot guarantee task completion, but it can avoid claiming a result the system has not produced.`,
 }

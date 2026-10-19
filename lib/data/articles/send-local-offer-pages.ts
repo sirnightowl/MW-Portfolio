@@ -1,48 +1,35 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'send-local-offer-pages',
-  title: '153 local authorities, one calm page each',
-  excerpt: 'The Local Offer pages were supposed to be a small feature. They became one of the most-used parts of SENDadvisor \u2014 here\u2019s why.',
-  date: '2025-11-15',
-  displayDate: '15 November 2025',
-  readTime: '5 min read',
-  category: 'Product',
+  id: "send-local-offer-pages",
+  title: "Local Offer pages: one structure for council information",
+  excerpt: "How SENDadvisor’s council template brings official links, available contact details, and related directory results together.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Product",
   published: true,
-  body: `When I planned SENDadvisor, the Local Offer pages were a footnote: one page per local authority, a bit of contact info, a link out. I estimated them at a day each, tops.
+  body: `SENDadvisor's council-information pages use one template to present available information for an authority. The current route is under councils; the older local-authority route redirects to it.
 
-They\u2019re now one of the most-used parts of the site. Families spend more time on them than on some of the shiny features I thought would carry the product. The footnote became the headline, and the reason why says something about what "useful" actually means.
+The shared structure brings official destinations and relevant directory results into one place.
 
-## What a Local Offer is, and why it\u2019s a mess
+## Bring related destinations together
 
-Every English local authority is legally required to publish a Local Offer \u2014 information about SEND services, support, and provision in their area. It\u2019s a genuinely good idea with a genuinely broken implementation: 153 authorities means 153 different websites, 153 different structures, 153 different navigation schemes, and \u2014 in practice \u2014 153 places for a tired parent to get lost.
+The template provides an official Local Offer link when one is stored, a council-website link, and available SEND contact information. It also queries related days out, services, and schools for the selected authority.
 
-The information exists. Finding it is the problem.
+The page therefore joins information that lives in different parts of the product while retaining routes to external official sources. The directory organises the next step rather than replacing those sources.
 
-## What the pages do
+## Let the content vary without inventing completeness
 
-Each authority\u2019s page on SENDadvisor consolidates, in one place and one consistent layout:
+The template checks for individual values before rendering them. A phone control needs a phone number; a Local Offer action needs a URL. The admin interface can filter authorities whose Local Offer or EHCP contact information is missing.
 
-- the Local Offer URL and where it lives on the council\u2019s site \u2014 because half the battle is just locating it,
-- SEND team contact details, including who actually answers the phone,
-- EHCP pathway notes in plain English \u2014 what the process is, what happens when, and what the jargon means,
-- links to the directory listings for that area \u2014 days out, services, and schools, filtered to the authority.
+That is different from saying every council page contains every field. It also avoids implying that the presence of an email address proves a response time or identifies who will answer it.
 
-Same structure, every single authority. A parent who has learned the layout for Norfolk can use it for any other county \u2014 and for a family moving areas mid-EHCP, that consistency is not a convenience, it\u2019s a lifeline.
+## Consistency is an intention worth evaluating
 
-## Why it worked when the fancy features didn\u2019t
+Using the same page structure can reduce layout variation inside SENDadvisor. That is a consequence of the shared template. Whether it reduces the time needed to find information, or supports a family moving between authorities, needs task-based evaluation.
 
-**It removes real hours of work.** Before this, a family\u2019s research session looked like: Google the council, find the SEND section, decode the navigation, find the Local Offer PDF, find the contact page, start again for the neighbouring county because the specialist service they need is technically over the boundary. The page does that work once, for everyone.
+The external-link component can record link interactions, but the presence of tracking code is not an analytics result. It cannot support a claim about the most common search phrase or the most-used feature on its own.
 
-**It\u2019s trustworthy without being flashy.** Source attribution on every field, last-updated dates, plain-English summaries next to the official terminology. Trust features beat delight features in a stressful context every time \u2014 nobody navigating an EHCP rejection wants a delightful UI, they want a correct phone number.
-
-**It matched how people actually search.** The data showed families weren\u2019t searching "SEND services Norfolk" \u2014 they were searching "EHCP help Norfolk", "what is an EHCP", and \u2014 most often \u2014 the name of their specific council plus "SEND". The page titles and structure meet those searches exactly.
-
-**The boring consistency was the innovation.** One calm layout, 153 times, beats 153 well-intentioned-but-different council experiences. That\u2019s the whole product insight: consistency across a fragmented landscape is a feature in itself.
-
-## The lesson I keep relearning
-
-Features that save a user hours of drudgery beat features that impress other designers. I estimated the Local Offer pages as small because they were technologically small \u2014 one template, a data model, some contact fields. But value isn\u2019t proportional to technical difficulty. It\u2019s proportional to the work removed from the user\u2019s life.
-
-Look at your own backlog and find the footnote features \u2014 the ones that are cheap for you to build because they\u2019re boring, and expensive for users to live without. That\u2019s usually where the product is hiding.`,
+The project work here is the reusable structure, the conditional presentation of available fields, and the maintenance interface behind them. Keeping those claims concrete leaves room to report actual usage findings when there is evidence to report.`,
 }

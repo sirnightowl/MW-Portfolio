@@ -1,50 +1,35 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'security-audit-checklist',
-  title: 'What two security audits taught me to fix first',
-  excerpt: '31 audit cards, two formal reviews, and the checklist I now run before shipping anything with an auth flow.',
-  date: '2025-10-11',
-  displayDate: '11 October 2025',
-  readTime: '7 min read',
-  category: 'Engineering',
+  id: "security-audit-checklist",
+  title: "Security review: inspect the boundary, not the success story",
+  excerpt: "A look at validation, CSRF handling, state transitions, and deployment checks through the code that implements them.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Engineering",
   published: true,
-  body: `Horrorometer has been through two formal security/architecture audits (May and June 2026 of its lifecycle). Between them, 31 audit cards were opened and closed. Some findings were exotic. Most weren\u2019t \u2014 they were the same predictable gaps that show up in almost every self-built product, and closing them permanently changed how I start new projects.
+  body: `The repositories contain security-related controls that can be inspected directly. The useful starting point is the boundary each control protects and the paths that invoke it.
 
-This is the checklist I wish I\u2019d had before the first audit \u2014 ordered by how often each item bit me, not by how interesting it is.
+These examples describe particular implementation boundaries. They do not amount to a complete security assessment.
 
-## The predictable findings
+## Inspect what enters the application
 
-### 1. CSRF on every mutation route \u2014 all of them
-Eighteen admin mutation routes lacked CSRF protection. Not because I hadn\u2019t heard of CSRF \u2014 because I\u2019d protected the routes I could picture being attacked and missed the long tail. The fix wasn\u2019t just adding tokens to 18 routes; it was a rule: **if it mutates state, it carries CSRF protection, with zero exceptions for "internal" routes.** Internal routes are exactly what a confused-deputy attack loves.
+Horrorometer's review schema constrains rating values and text fields. Its CSRF module contains token-generation and validation logic. Those are concrete controls to trace from a request handler into the code that uses them.
 
-### 2. Enumeration, everywhere you send email
-Password reset, signup confirmation, login errors \u2014 every response that differs based on whether an account exists leaks a user database to anyone with a script and patience. Generic error messages on all of them ("if that account exists, we\u2019ve sent an email"), plus a cooldown on password-reset emails (60 seconds) so reset-spam can\u2019t be used as a probe or a harassment tool.
+Finding a validation schema or a CSRF utility is only the beginning of that trace. It does not establish that every route invokes the right check, that every authentication mechanism has the same requirements, or that the complete request path has been tested.
 
-### 3. Role escalation needs server-side validation, not enum hope
-Early role changes accepted any role value the client sent. The audit\u2019s fix: Zod enums on the escalation path, checked server-side, with the allowed transitions defined \u2014 not "user sends string, backend trusts it". The general rule: **any field that grants power is validated against an allow-list at the boundary**, never parsed hopefully.
+## Inspect contested state changes
 
-### 4. Rate limiting that can\u2019t become a self-inflicted outage
-The original rate limiter failed closed: if its backing store was unreachable, all traffic stopped. The audit called it correctly \u2014 that\u2019s an availability vulnerability you built yourself. Now it fails open: a DB outage means best-effort limiting and the site stays up. Fail-open is a deliberate, per-subsystem decision \u2014 correct for a review platform, wrong for an admin console. The audit finding wasn\u2019t "fail open"; it was "decide, and know which one you chose and why".
+The device-authorisation service uses conditional writes and checks the returned rows before continuing along particular approval and token-issuance paths. Its tests include cases where those writes return no result.
 
-### 5. Logs and breadcrumbs that don\u2019t leak PII
-Sentry breadcrumbs were capturing user identifiers on error paths. Now: PII scrubbing on every breadcrumb before it leaves the process. Observability you can\u2019t trust with user data is a liability, not a feature.
+That makes a losing transition explicit in application logic. The tests use a database mock, so they should not be described as proof of every concurrency property in production.
 
-### 6. The auth flow you didn\u2019t build still needs auditing
-The RFC 8628 device flow (its own story) got its own audit pass: state transitions compare-and-swapped, polling responses defined for every state, revocation races tested. Anywhere state changes based on external input, the audit question is "what happens if two of these land at once?" \u2014 and the answer has to be tested, not assumed.
+## Inspect the delivered response
 
-## The meta-lesson
+The portfolio defines response headers for its Next.js serving path and corresponding files for static Cloudflare hosting. Its structured-data helper escapes less-than characters before embedding JSON in a script element.
 
-Every one of these has the same shape: **a decision that was implicit became explicit, got written down, and became a rule.** The value of an audit isn\u2019t the 31 cards \u2014 it\u2019s the dozen rules that now run automatically at the start of every project instead of costing a card each.
+Those controls have a specific scope. A content-security policy does not prove the absence of every injection path, and a passing dependency check is a result at a point in time rather than a permanent guarantee.
 
-My pre-ship checklist, in the order I run it:
-
-1. Every mutation route: CSRF, auth check, input validation \u2014 enumerated exhaustively, not "the important ones"
-2. Every email/error path: enumeration-proof, with cooldowns
-3. Every privilege field: server-side allow-list
-4. Every rate limiter and circuit breaker: fail-open or fail-closed, decided on purpose
-5. Every log pipeline: PII scrubbed at source
-6. Every state machine: transitions atomic, races tested
-
-Two audits in, the second one found less than half the issues of the first \u2014 not because the auditor got lazy, but because the rules were already running before the audit started. That\u2019s the trajectory you want.`,
+The practical review habit illustrated here is to follow a claim to its boundary: the handler, the validated value, the contested write, or the served response. A named utility and an impressive issue count cannot substitute for that inspection.`,
 }

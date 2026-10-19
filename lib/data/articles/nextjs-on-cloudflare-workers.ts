@@ -1,56 +1,35 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'nextjs-on-cloudflare-workers',
-  title: 'Running Next.js 16 on Cloudflare Workers: what actually breaks',
-  excerpt: 'OpenNext gets you 90% of the way. The last 10% \u2014 patch scripts, Node APIs, and edge quirks \u2014 is where the real work lives.',
-  date: '2026-03-28',
-  displayDate: '28 March 2026',
-  readTime: '7 min read',
-  category: 'Engineering',
+  id: "nextjs-on-cloudflare-workers",
+  title: "Next.js on Cloudflare: two deployment paths in these projects",
+  excerpt: "The portfolio uses a static export; Horrorometer has an OpenNext build pipeline. Their checked-in configurations explain the difference.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Engineering",
   published: true,
-  body: `Both Horrorometer and SENDadvisor run Next.js 16 on Cloudflare Workers via @opennextjs/cloudflare. Every time I tell someone that, they ask the same question: "Does that actually work?"
+  body: `The portfolio and Horrorometer both use Next.js, but their deployment scripts do different jobs. This is a note about those project configurations, not a general statement that every Next.js application needs the same Cloudflare setup.
 
-The honest answer: yes, but you earn it. Here\u2019s what actually breaks, and what I did about each thing.
+## Export the pages when no request-time rendering is needed
 
-## Why bother
+The portfolio's static build sets an export flag before running Next.js. Its configuration uses that flag to enable static output and disable the default image-optimisation service for that build.
 
-The pitch is simple. Cloudflare Workers gives you a single deployment target that\u2019s fast everywhere, with D1 (SQLite at the edge), R2 (S3-compatible storage), KV, Durable Objects, and Analytics Engine all in one account. No container orchestration, no regional routing decisions, and a free tier generous enough to run a real product on.
+Project and blog routes provide their known slugs at build time. The resulting output is uploaded as static assets. A small Worker redirects www requests to snowl.uk and delegates the remaining requests to the assets binding.
 
-For a solo builder, one platform for compute, storage, cache, and analytics is a massive reduction in operational surface. That\u2019s why I accepted the friction.
+This still has hosting and deployment dependencies. Static output does not mean the site cannot have an outage. It means the deployed portfolio does not need a Next.js rendering server for each page request.
 
-## What breaks
+## Keep the server build explicit where it is needed
 
-### 1. The Node runtime isn\u2019t the Node runtime
+Horrorometer's Cloudflare build script takes a different path. It includes a Next.js build, an OpenNext adapter build, cleanup, and project-specific patch steps. The checked-in scripts include handler, trace, and cron adjustments.
 
-Workers run on a V8 isolate, not a Node process. Strict ES modules, no \`require\`, no \`fs\`, no \`path\` in the places you expect them, and a bunch of APIs that exist but behave subtly differently. Next.js assumes Node. \u201cAssumes\u201d is doing a lot of work in that sentence.
+Those steps are evidence of this application's integration work. They are not a promise that another application will need the same patches, or that a future framework version will behave identically.
 
-The fix: OpenNext, which transpiles the server into a Worker-compatible format. It handles the big stuff \u2014 routing, rendering, the request lifecycle. It does not handle every package in your dependency tree.
+## Test what the host actually serves
 
-### 2. Patch scripts: the unglamorous glue
+The portfolio carries its static security headers and old project redirect in files consumed by Cloudflare. Those need to be checked through the hosting runtime, not inferred from a successful Next.js compilation.
 
-Three separate post-build patch scripts keep Horrorometer running. Each one rewrites some assumption the framework makes about its runtime \u2014 file access patterns, module resolution, an API that exists in Node but not in workerd. I\u2019m not going to pretend they\u2019re elegant. They are, however, small, testable, and the difference between a build that deploys and a build that boots.
+The release verification covered page responses, the old Diver redirect, www canonicalisation, and the social image's content type. That is a bounded deployment check. It says the checked paths worked at verification time, not that the deployment is immune to future failures.
 
-The lesson: budget for patch scripts. When you\u2019re on a new runtime with a framework that targets an older one, the gap lives in post-build fixes and nobody warns you about this in advance.
-
-### 3. Local dev lies to you
-
-Wrangler dev mode is good, but it\u2019s a simulation, not the real thing. Differences I\u2019ve hit: timing behaviours under load, minor differences in how headers are handled, and \u2014 most annoyingly \u2014 packages that work in local dev and fail in production because the dev shim provides an API workerd doesn\u2019t.
-
-The fix: smoke tests after every deploy, in production, before promotion. Not "I deployed it", but "I deployed it and confirmed the critical paths return 200".
-
-### 4. Bundle size and cold starts
-
-A Next.js server bundle in a Worker has size limits and cold-start characteristics that are different from a Node process on a long-running server. Route splitting helps. Keeping heavy dependencies out of the server runtime helps more \u2014 push what you can to the client, keep the server lean.
-
-## What works better than you\u2019d expect
-
-- **Static generation + edge caching** is the sweet spot. Content-rendered pages from D1, cached at the edge, revalidated by events \u2014 fast and cheap.
-- **D1 is genuinely fine** for read-heavy workloads. Both products lean on it heavily and neither has felt the ceiling.
-- **Durable Objects** (Kanaboards) give you coordination primitives that would otherwise require Redis plus a lot of hand-rolled wiring.
-- **One deploy artifact** for app, API, and (in Kanaboards\u2019 case) MCP endpoint simplifies pipelines more than you\u2019d expect.
-
-## Would I do it again?
-
-Yes \u2014 with my eyes open. The pattern I\u2019d recommend: start on Workers only if you\u2019re happy reading source code when things break, and put the deploy pipeline (build \u2192 patch \u2192 deploy \u2192 smoke test) in place before you write features. The framework will catch up eventually; until then, the patch scripts are load-bearing.`,
+The distinction worth keeping is simple: inspect what the application needs at request time, then verify the output produced by its actual deployment pipeline.`,
 }

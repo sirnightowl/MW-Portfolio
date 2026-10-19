@@ -1,49 +1,37 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'design-tokens-contrast-audit',
-  title: 'Design tokens that enforce contrast so you never audit again',
-  excerpt: 'A colour system where 4.5:1 is a property of the token, not a review step. How to build one, and how it fails.',
-  date: '2025-12-20',
-  displayDate: '20 December 2025',
-  readTime: '5 min read',
-  category: 'Design',
+  id: "design-tokens-contrast-audit",
+  title: "Design tokens make contrast easier to check—not safe to ignore",
+  excerpt: "The portfolio’s colour tokens, opacity modifiers, and rendered-page tests show why a palette is a starting point rather than a guarantee.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Design",
   published: true,
-  body: `The most common accessibility failure I see in otherwise careful work isn\u2019t missing alt text or a stray div with an onClick \u2014 it\u2019s contrast. Muted text at 60% opacity on a tinted background, a placeholder that\u2019s technically visible and practically invisible, a focus ring that vanishes on half the page.
+  body: `The portfolio defines named colours such as ink, paper, butter, and sage. Components use those names alongside opacity modifiers and dark-theme variants. That makes colour decisions easier to find, but it does not encode a passing contrast ratio into every possible use.
 
-The failure mode is structural: contrast is checked manually, at the end, by someone with a colour picker and a bad attitude. The fix is to make contrast a property of the system, not a review step.
+## A token is only one side of a pairing
 
-## The token model
+The same foreground can appear on a plain surface, a tinted card, or a gradient. Opacity changes the resulting foreground again because it blends with the background underneath it.
 
-Every colour in the system is a token, and every token carries its contrast obligations as part of its definition:
+Project cards make this concrete: the description and metadata use muted text treatments, while their surfaces can change with the theme. Reviewing a token definition alone cannot establish the final rendered relationship.
 
-- \`ink\` on \`paper\` \u2014 4.5:1 minimum for body text. The core pair, measured once, trusted everywhere.
-- \`ink/60\` for muted labels \u2014 still 4.5:1 against \`paper\` and \`cream\`, because "it\u2019s only metadata" is not an exemption, it\u2019s a rationalisation.
-- \`butter\`, \`sage\`, \`sky\` for tinted surfaces \u2014 large-text and decorative usage only, by definition, because they don\u2019t carry 4.5:1 for body text.
-- Focus indicators \u2014 3:1 against every adjacent colour, enforced with a single global focus-visible rule rather than per-component styling.
+The current stylesheet also contains component-specific colour values. Describing every colour in the site as enforced through one strict token mechanism would be inaccurate.
 
-The rule that makes it work: **if a pairing fails, the token doesn\u2019t ship.** You don\u2019t darken the failing instance in the component \u2014 you darken the token, everywhere, once. The audit happens at the definition site instead of the usage site, and usage sites number in the hundreds.
+## Test the contexts that matter
 
-## Opacity modifiers are the trap
+The accessibility suite checks rendered public routes in both light and dark themes. It also has a targeted check for hero text against a bright gradient stop.
 
-Tailwind\u2019s \`text-ink/60\` syntax makes muted text trivially easy \u2014 which is exactly why it needs discipline. The failure pattern:
+The smoke suite contains a separate dark-card check. It reads computed colours, resolves the effective background, calculates relative luminance, and requires the sampled excerpt's contrast ratio to exceed 4.5.
 
-1. Designer picks a muted grey at 55% for elegance.
-2. It renders on the page background \u2014 fine.
-3. Six months later the same class lands on a tinted card background \u2014 and now it\u2019s 3.8:1 on a good screen and worse on a cheap one.
+That is a concrete assertion about a selected component. It should not be stretched into a claim that every state, overlay, image background, or future use has been checked.
 
-The fix is to enumerate the legal combinations and audit each opacity level against each background it can appear on. On this site, that\u2019s a short list \u2014 paper, cream, butter, sage, sky, and the dark night family \u2014 so the full matrix is a one-afternoon job that never needs redoing unless a surface is added.
+## Keep tokens and usage under review
 
-## Dark mode, same discipline
+Named colours reduce the number of independent decisions. Shared components reduce the number of places a fix needs to land. Rendered tests then check some of the combinations the system actually produces.
 
-Dark mode doubles the matrix, because every foreground token now has to be audited against the dark surfaces too. Two rules I\u2019ve found load-bearing:
+Those layers complement one another. A new surface, a different opacity, or a theme change can create a new pairing even when the token names stay the same.
 
-- **Never just invert.** The dark palette is its own set of values, chosen so contrast holds \u2014 text that\u2019s pure white on pure black causes its own readability problems at weight. Aim slightly off the extremes.
-- **Watch the coloured accents.** Coral and butter that pass beautifully on cream can fail against dark ink. The accents need dark-mode variants or dark-mode-checked usage rules, not optimism.
-
-## What it buys you
-
-The payoff isn\u2019t just compliance. It\u2019s that **the accessible choice becomes the path of least resistance**. A developer reaching for the muted label token gets a passing pairing because that\u2019s all the system offers. Nobody has to remember the ratio; nobody has to run the checker; nobody has to care. The system absorbs the rule so the team doesn\u2019t have to carry it.
-
-That\u2019s the general principle, and it\u2019s why this is a design post and not just an a11y one: **constraints you encode in the system are constraints you never think about again.** Contrast, spacing rhythm, focus states, reduced motion \u2014 encode them once, and your attention is free for the problems that actually need it.`,
+The practical lesson from this code is therefore more modest than “audit once.” Centralise what can be shared, then keep checking the contexts in which it is rendered.`,
 }

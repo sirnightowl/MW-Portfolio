@@ -1,0 +1,626 @@
+{
+  "reviewedAt": "2026-10-19",
+  "scope": "All published blog posts",
+  "policy": "Verifiable project work only, as requested by the owner. Source code supports implementation descriptions, not unrecorded personal experiences, user research, adoption, measured impact, or recurring operational practice.",
+  "dates": "Corrected editions use the review date. Earlier displayed dates are recorded below rather than retained as unverified historical publication claims.",
+  "limitations": "Other project repositories were inspected read-only. Their test files are evidence of test cases, not a claim that their full suites were executed during this review. Product release status follows the owner’s confirmation: Kanaboards and Stay With Me: Deep Sea are unreleased.",
+  "posts": [
+    {
+      "id": "accessible-by-default",
+      "previousTitle": "Accessible by default: how I bake it in from the first sketch",
+      "title": "Accessible by default: the checks behind this portfolio",
+      "previousDisplayedDate": "2026-03-12",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/app/layout.tsx",
+        "portfolio/components/navigation/MobileMenu.tsx",
+        "portfolio/components/contact/ContactForm.tsx",
+        "portfolio/e2e/accessibility.spec.ts"
+      ],
+      "removedOrCorrected": [
+        "Unverified from-first-sketch workflow and screen-reader testing claims",
+        "Claims that tokens eliminate future audits",
+        "Unqualified zero-violations accessibility guarantee"
+      ],
+      "wordCount": 317,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "shipping-solo",
+      "previousTitle": "Shipping solo: what I learned building independent products",
+      "title": "Shipping solo: boundaries across four projects",
+      "previousDisplayedDate": "2026-02-04",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/wrangler.jsonc",
+        "horrorometer/package.json",
+        "sendadvisor/scripts/prepare-go-live-diff.mjs",
+        "kanaboards/opencode-kanaboards-agent/src/daemon.ts",
+        "Echoes/packages/engine/src/engine.ts"
+      ],
+      "removedOrCorrected": [
+        "Invented estimates and development chronology",
+        "Unverified outage, restore-drill and real-user claims",
+        "Unsupported effort percentages and personal working routines"
+      ],
+      "wordCount": 326,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "designing-for-stressful-systems",
+      "previousTitle": "Designing for stressful systems: lessons from SENDadvisor",
+      "title": "Designing for stressful systems: concrete choices in SENDadvisor",
+      "previousDisplayedDate": "2026-01-18",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "sendadvisor/app/(site)/page.tsx",
+        "sendadvisor/app/(site)/councils/[slug]/page.tsx",
+        "sendadvisor/scripts/enrichment-audit-server.mjs",
+        "sendadvisor/scripts/prepare-go-live-diff.mjs"
+      ],
+      "removedOrCorrected": [
+        "Unverified accounts of families’ emotional states and behaviour",
+        "Claims about most-used pages and measured time savings",
+        "Unproven universal verification, provenance and accessibility guarantees"
+      ],
+      "wordCount": 320,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "agents-on-the-board",
+      "previousTitle": "Agents on the board: planning with coding agents as teammates",
+      "title": "Agents on the board: the implementation in Kanaboards",
+      "previousDisplayedDate": "2025-12-09",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "kanaboards/src/worker-mcp.ts",
+        "kanaboards/src/worker-mcp-agent-tools.ts",
+        "kanaboards/opencode-kanaboards-agent/src/daemon.ts",
+        "kanaboards/opencode-kanaboards-agent/src/runners/registry.ts"
+      ],
+      "removedOrCorrected": [
+        "Unverified origin anecdote and daily workflow claims",
+        "Stale tool and migration counts",
+        "Claims of released availability or proven productivity gains"
+      ],
+      "wordCount": 306,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "nextjs-on-cloudflare-workers",
+      "previousTitle": "Running Next.js 16 on Cloudflare Workers: what actually breaks",
+      "title": "Next.js on Cloudflare: two deployment paths in these projects",
+      "previousDisplayedDate": "2026-03-28",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/next.config.ts",
+        "portfolio/scripts/build-static.mjs",
+        "portfolio/worker/index.ts",
+        "portfolio/public/_headers",
+        "horrorometer/package.json",
+        "horrorometer/patch-handler.mjs"
+      ],
+      "removedOrCorrected": [
+        "Unsupported runtime-wide statements about absent Node APIs",
+        "Invented local-versus-production incidents",
+        "Unverified performance, cost and capacity claims",
+        "Incorrect fixed patch-script count"
+      ],
+      "wordCount": 321,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "circuit-breakers-for-calm-uis",
+      "previousTitle": "Circuit breakers, graceful degradation, and UIs that stay calm",
+      "title": "Circuit breakers: what Horrorometer’s implementation actually does",
+      "previousDisplayedDate": "2026-03-21",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "horrorometer/src/lib/utils/circuit-breaker.ts",
+        "horrorometer/src/app/api/tmdb-proxy/[[...slug]]/route.ts",
+        "horrorometer/src/lib/api/openlibrary/ol-client.ts"
+      ],
+      "removedOrCorrected": [
+        "Unverified TMDB outage anecdote",
+        "Guaranteed recovery time and never-errors claims",
+        "Incorrect single-probe and globally shared-state implications"
+      ],
+      "wordCount": 309,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "oauth-device-flow-race-conditions",
+      "previousTitle": "The OAuth device flow is a state machine, not a form",
+      "title": "The device-authorisation flow is a state machine, not just a form",
+      "previousDisplayedDate": "2026-03-07",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "horrorometer/src/lib/services/oauth-device-service.ts",
+        "horrorometer/src/lib/services/__tests__/oauth-device-service.test.ts"
+      ],
+      "removedOrCorrected": [
+        "Invented weekend estimate and personal bug chronology",
+        "Unsupported protocol-compliance and concurrency guarantees",
+        "Unverified fixed test count and claim that every transition is atomic"
+      ],
+      "wordCount": 300,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "vine-not-a-tree-branching",
+      "previousTitle": "A vine, not a tree: how Stay With Me: Deep Sea stays shippable",
+      "title": "A vine, not a tree: story rules in Stay With Me: Deep Sea",
+      "previousDisplayedDate": "2026-02-21",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "Echoes/packages/engine/src/engine.ts",
+        "Echoes/packages/engine/src/types.ts",
+        "Echoes/packages/engine/src/validate.ts",
+        "Echoes/packages/engine/tests/validate.test.ts",
+        "Echoes/apps/mobile/src/notifications/localNotifications.web.ts"
+      ],
+      "removedOrCorrected": [
+        "Unverified research history and third-party attribution",
+        "Unsupported word and test counts",
+        "Claims of exhaustive story reachability or device reliability"
+      ],
+      "wordCount": 294,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "designing-for-local-government",
+      "previousTitle": "What local government taught me about design",
+      "title": "Public-service design: making the next action explicit",
+      "previousDisplayedDate": "2026-02-07",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "sendadvisor/app/(site)/councils/[slug]/page.tsx",
+        "sendadvisor/app/admin/local-authorities/page.tsx",
+        "portfolio/components/contact/ContactForm.tsx"
+      ],
+      "removedOrCorrected": [
+        "Unverified workplace anecdotes, service outcomes and quoted reactions",
+        "Unsupported team, audience and tenure assertions",
+        "Legal/compliance claims not established by the project code"
+      ],
+      "wordCount": 312,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "data-pipelines-for-directories",
+      "previousTitle": "A directory is a pipeline with a UI on the front",
+      "title": "A directory is a pipeline with a UI on the front",
+      "previousDisplayedDate": "2026-01-31",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "sendadvisor/docs/adr/0007-enrichment-audit-server-pipeline.md",
+        "sendadvisor/scripts/enrichment-audit-server.mjs",
+        "sendadvisor/scripts/prepare-go-live-diff.mjs",
+        "sendadvisor/scripts/backup-d1-to-r2.mjs",
+        "sendadvisor/scripts/restore-d1-from-r2.mjs"
+      ],
+      "removedOrCorrected": [
+        "Unverified live listing totals and school counts",
+        "Outdated pipeline architecture and absolute publication guarantees",
+        "Unsupported matching accuracy, restore-drill and operational-history claims"
+      ],
+      "wordCount": 302,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "designing-with-ai-agents",
+      "previousTitle": "My AI coding stack, honestly",
+      "title": "Working with coding agents: the contracts visible in the code",
+      "previousDisplayedDate": "2026-01-24",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/AGENTS.md",
+        "portfolio/package.json",
+        "kanaboards/opencode-kanaboards-agent/src/runners/registry.ts",
+        "kanaboards/opencode-kanaboards-agent/src/daemon.ts"
+      ],
+      "removedOrCorrected": [
+        "Invented daily tool preferences and stable/beta labels",
+        "Unsupported 30–40% cycle-time reduction",
+        "False assurance that every sentence had a human rewrite",
+        "Unverified personal delegation rules and planning habits"
+      ],
+      "wordCount": 300,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "portfolio-design-decisions",
+      "previousTitle": "Every decision in this site, and why",
+      "title": "The decisions behind this portfolio, checked against the build",
+      "previousDisplayedDate": "2026-01-10",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/lib/data/articles/index.ts",
+        "portfolio/app/blog/[slug]/page.tsx",
+        "portfolio/next.config.ts",
+        "portfolio/components/contact/ContactForm.tsx",
+        "portfolio/worker/index.ts"
+      ],
+      "removedOrCorrected": [
+        "Incorrect custom Markdown parser and four-post claims",
+        "Unverified implementation-hour estimates",
+        "Claims of outage immunity and permanent contrast guarantees",
+        "Invented links to workplace habits"
+      ],
+      "wordCount": 327,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "design-tokens-contrast-audit",
+      "previousTitle": "Design tokens that enforce contrast so you never audit again",
+      "title": "Design tokens make contrast easier to check—not safe to ignore",
+      "previousDisplayedDate": "2025-12-20",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/tailwind.config.js",
+        "portfolio/app/globals.css",
+        "portfolio/components/common/ProjectCard.tsx",
+        "portfolio/e2e/accessibility.spec.ts",
+        "portfolio/e2e/smoke.spec.ts"
+      ],
+      "removedOrCorrected": [
+        "False promise that contrast never needs auditing again",
+        "Unsupported universal token-pair guarantees",
+        "Invented audit duration and observed failure frequency",
+        "Incorrect claims about display hardware changing computed ratios"
+      ],
+      "wordCount": 323,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "prototyping-with-real-users",
+      "previousTitle": "Prototype with real users or don’t call it testing",
+      "title": "A prototype is not a usability finding",
+      "previousDisplayedDate": "2025-12-02",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/components/contact/ContactForm.tsx",
+        "portfolio/components/contact/ContactForm.test.tsx",
+        "portfolio/components/navigation/MobileMenu.test.tsx",
+        "portfolio/e2e/accessibility.spec.ts",
+        "portfolio/e2e/smoke.spec.ts"
+      ],
+      "removedOrCorrected": [
+        "Unverified council research sessions and recruitment claims",
+        "Invented paper-prototype and device-testing anecdotes",
+        "Unsupported five-user rule and time-saving comparisons",
+        "Claims that product flows were watched before implementation"
+      ],
+      "wordCount": 323,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "send-local-offer-pages",
+      "previousTitle": "153 local authorities, one calm page each",
+      "title": "Local Offer pages: one structure for council information",
+      "previousDisplayedDate": "2025-11-15",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "sendadvisor/app/(site)/councils/[slug]/page.tsx",
+        "sendadvisor/components/councils/CouncilsDirectory.tsx",
+        "sendadvisor/app/admin/local-authorities/page.tsx",
+        "sendadvisor/app/(site)/local-authority/[slug]/page.tsx"
+      ],
+      "removedOrCorrected": [
+        "Unverified most-used-page and search-analytics claims",
+        "Invented estimates and family research journeys",
+        "Unsupported completeness, legal and time-saving claims"
+      ],
+      "wordCount": 304,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "horrorometer-three-axis-ratings",
+      "previousTitle": "One number can’t describe a scare",
+      "title": "One number can’t describe a scare",
+      "previousDisplayedDate": "2025-10-28",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "horrorometer/src/lib/validation/schemas.ts",
+        "horrorometer/src/lib/database/schema.ts"
+      ],
+      "removedOrCorrected": [
+        "Invented design week and user-completion research",
+        "Incorrect universal 1–5 scale and no-overall-score claims",
+        "Unverified loyalty, recommendation and personal-viewing outcomes"
+      ],
+      "wordCount": 300,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "security-audit-checklist",
+      "previousTitle": "What two security audits taught me to fix first",
+      "title": "Security review: inspect the boundary, not the success story",
+      "previousDisplayedDate": "2025-10-11",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "horrorometer/src/lib/validation/schemas.ts",
+        "horrorometer/src/lib/security/csrf.ts",
+        "horrorometer/src/lib/services/oauth-device-service.ts",
+        "horrorometer/src/lib/services/__tests__/oauth-device-service.test.ts",
+        "portfolio/next.config.ts",
+        "portfolio/public/_headers",
+        "portfolio/lib/site.ts"
+      ],
+      "removedOrCorrected": [
+        "Unsupported formal-audit counts, issue totals and comparative results",
+        "Unverified historical vulnerabilities and fixes",
+        "Universal security guarantees and blanket fail-open recommendations"
+      ],
+      "wordCount": 296,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "design-systems-cross-team",
+      "previousTitle": "Design systems that survive other teams",
+      "title": "Design systems in code: share the decisions above the button",
+      "previousDisplayedDate": "2025-09-27",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/components/common/PageIntro.tsx",
+        "portfolio/components/common/ProjectCard.tsx",
+        "portfolio/components/common/Button.tsx",
+        "portfolio/app/globals.css",
+        "portfolio/tailwind.config.js"
+      ],
+      "removedOrCorrected": [
+        "Unverified council-team and content-editor anecdotes",
+        "Invented frequency rankings and contribution-process claims",
+        "Unsupported adoption, delivery-speed and cross-team outcomes"
+      ],
+      "wordCount": 302,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "one-person-ops",
+      "previousTitle": "Operations for one: running three products without a team",
+      "title": "A small release pipeline with explicit checks",
+      "previousDisplayedDate": "2025-09-13",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/package.json",
+        "portfolio/.node-version",
+        "portfolio/README.md",
+        "portfolio/wrangler.jsonc",
+        "portfolio/worker/index.ts"
+      ],
+      "removedOrCorrected": [
+        "Invented weekly routine and fifteen-minute operating budget",
+        "Unsupported recurring backup and restore-drill claims",
+        "Unverified uptime, incident response and operational workload results"
+      ],
+      "wordCount": 284,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "horror-ux-dread-interface",
+      "previousTitle": "Designing dread: the UX of a horror game",
+      "title": "Designing dread: interface choices in an unreleased horror game",
+      "previousDisplayedDate": "2025-08-30",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "Echoes/packages/engine/src/engine.ts",
+        "Echoes/apps/mobile/src/components/Radar.tsx",
+        "Echoes/apps/mobile/src/archive/ArchiveProvider.tsx",
+        "Echoes/apps/mobile/app/thread.tsx",
+        "Echoes/apps/mobile/app/tools/camera.tsx",
+        "portfolio/lib/data/projects.ts"
+      ],
+      "removedOrCorrected": [
+        "Unverified player-emotion, trust and suspense results",
+        "Unsupported claims about persistent HUD behaviour and guaranteed narrative fairness",
+        "Invented chronology connecting game work to production resilience"
+      ],
+      "wordCount": 312,
+      "readTime": "2 min read"
+    },
+    {
+      "id": "reduced-motion-not-an-afterthought",
+      "previousTitle": "prefers-reduced-motion is not an accessibility tax",
+      "title": "Reduced motion: check the JavaScript as well as the CSS",
+      "previousDisplayedDate": "2025-08-16",
+      "editionDate": "2026-10-19",
+      "evidence": [
+        "portfolio/app/globals.css",
+        "portfolio/components/common/Reveal.tsx",
+        "portfolio/components/common/AnimatedCounter.tsx",
+        "portfolio/e2e/accessibility.spec.ts",
+        "portfolio/e2e/smoke.spec.ts"
+      ],
+      "removedOrCorrected": [
+        "Invented years-long implementation history",
+        "Unsupported medical, audience and universal design-benefit assertions",
+        "Claims that one global rule covers every behaviour or that fades are universally safe"
+      ],
+      "wordCount": 304,
+      "readTime": "2 min read"
+    }
+  ],
+  "sourceSnapshots": {
+    "Echoes/apps/mobile/app/thread.tsx": {
+      "sha256": "8cac06c27a72c42a473186f06d29bc20c07a6e1c459872050d36494ee7bc1b68"
+    },
+    "Echoes/apps/mobile/app/tools/camera.tsx": {
+      "sha256": "fbef42801d410d275181a6c76ab1ce126e79dfdb6f8999519b0193be7ad0a476"
+    },
+    "Echoes/apps/mobile/src/archive/ArchiveProvider.tsx": {
+      "sha256": "908f127a135f7f3a8a931034356e3ba2803b903804345f9ea3d6c4a3d63ffe30"
+    },
+    "Echoes/apps/mobile/src/components/Radar.tsx": {
+      "sha256": "f7f196b35f4c6c18eeca970b400f16eef6d1bc2287537ff16b1b4b923c936350"
+    },
+    "Echoes/apps/mobile/src/notifications/localNotifications.web.ts": {
+      "sha256": "225cf1e7b3bca44af11a9def53d7f46474e7e3cbec683a5255966ca85af24f97"
+    },
+    "Echoes/packages/engine/src/engine.ts": {
+      "sha256": "24a7015d584acdb15c47d7e59b60a78d1b40d6a3af57958c0879d0f53c1af1aa"
+    },
+    "Echoes/packages/engine/src/types.ts": {
+      "sha256": "677c4b05ee5c7fe8c5ae7c7866f5ad68ec4a7702344678ee68459a02c835f079"
+    },
+    "Echoes/packages/engine/src/validate.ts": {
+      "sha256": "152cb6fce7933ec14e8725a62410c23d9da67fba66eb41eb6e1cbf8bc0551cd9"
+    },
+    "Echoes/packages/engine/tests/validate.test.ts": {
+      "sha256": "a615f609fb10dcef05e67015a1a77388d19f4a56d6b57414c16e27bd800734d2"
+    },
+    "horrorometer/package.json": {
+      "sha256": "1549ed75d4fc8b2ac508e17f362c6242776cdf3b2739bfcb0c9d4f8269925e3d"
+    },
+    "horrorometer/patch-handler.mjs": {
+      "sha256": "03fa562fff5a7b6db68e655e4e83338a2458a50a8b69c647e112313c86cacfcd"
+    },
+    "horrorometer/src/app/api/tmdb-proxy/[[...slug]]/route.ts": {
+      "sha256": "2455d96e9863f57461936e5eb6edb3f2c09e0f900dae7e22b4ab89c5f57fad4b"
+    },
+    "horrorometer/src/lib/api/openlibrary/ol-client.ts": {
+      "sha256": "fcd13a8c70a30eddfab513e710eafe78e777de660a156bccbe72d6693df6ed86"
+    },
+    "horrorometer/src/lib/database/schema.ts": {
+      "sha256": "948c422d5492f89620402d6e90ff2857ef43c0b4544a81bc3b677531781448bb"
+    },
+    "horrorometer/src/lib/security/csrf.ts": {
+      "sha256": "db99b3053695da621d4caa3953a2f3ffac5546a9f9442d0fa779bfb68647de15"
+    },
+    "horrorometer/src/lib/services/__tests__/oauth-device-service.test.ts": {
+      "sha256": "d08235c44747da923535b27628dc62211db1b06f90dff4bbde79f9379093aba0"
+    },
+    "horrorometer/src/lib/services/oauth-device-service.ts": {
+      "sha256": "5b1c6df87dc15691731f1b7b50b88b06906c2ff39331f0223ae405cab3018f7d"
+    },
+    "horrorometer/src/lib/utils/circuit-breaker.ts": {
+      "sha256": "69149b7742fca76594e016689c0a09c1d8550fd73680edc7bb2b47e55c75f395"
+    },
+    "horrorometer/src/lib/validation/schemas.ts": {
+      "sha256": "f42545a731ad0a00fe0f3d1a195c477a26d28b537eaafff9ab4ff5da219c614a"
+    },
+    "kanaboards/opencode-kanaboards-agent/src/daemon.ts": {
+      "sha256": "2e41bb009bb2cadda8ac1a6240bf4be5b2ace2fcc9ce70c0811dad70eed5c17c"
+    },
+    "kanaboards/opencode-kanaboards-agent/src/runners/registry.ts": {
+      "sha256": "d05bb18cea9ba270ada613c51660e60de47c3dfcf992ec3d6621a74fd030dcbc"
+    },
+    "kanaboards/src/worker-mcp-agent-tools.ts": {
+      "sha256": "89b2963ecc7c70bcbce790b41521cbc2558c5ec803e9e45186bea98d5bda7f6e"
+    },
+    "kanaboards/src/worker-mcp.ts": {
+      "sha256": "12574c9d47eac8690e10721e6dd0f0a1d1dfb757bd6282be756032502438052d"
+    },
+    "portfolio/.node-version": {
+      "sha256": "7d2df647f25529bd87500319c41564e032e2be642e565350fa6136d7a1ec4d10"
+    },
+    "portfolio/AGENTS.md": {
+      "sha256": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb"
+    },
+    "portfolio/README.md": {
+      "sha256": "d64edf49c668865c9a7fe05540e34d778b4e80814de35def4c78556eeecd899b"
+    },
+    "portfolio/app/blog/[slug]/page.tsx": {
+      "sha256": "ad87d9727a5db940d15ed0a6891811436e861d5ac2d7382a8b6b478c1d36b2b5"
+    },
+    "portfolio/app/globals.css": {
+      "sha256": "0c1c7950fb339da541b1f73f3eeb7eb250f96156290eddf68f1392f70b391687"
+    },
+    "portfolio/app/layout.tsx": {
+      "sha256": "ee874c654837bdcf9aa49168e8f7ffc17c33d18bcd864a9930f2e94969397a11"
+    },
+    "portfolio/components/common/AnimatedCounter.tsx": {
+      "sha256": "343b788a1ef5810147944a5e05cb4cef62569d852ff4a6ae632a83886f7d2e3d"
+    },
+    "portfolio/components/common/Button.tsx": {
+      "sha256": "e693712c8178b1ec0753bc07a6d61529f6bfaa6a53c6d719a98f15400fe56e4f"
+    },
+    "portfolio/components/common/PageIntro.tsx": {
+      "sha256": "0461810639760843311f7d37b9eaf4c29675d2e4eb2a89eb333e5241aa6bb98c"
+    },
+    "portfolio/components/common/ProjectCard.tsx": {
+      "sha256": "5c727c6ae0ada028a6f1192b15bab6ac4614b9ce05ecaf491b4b808d2f8a7167"
+    },
+    "portfolio/components/common/Reveal.tsx": {
+      "sha256": "2c385e53e70e757d3a7564ff8d2ed70b84002bc9c29b9c084fa0ea3c530b2fe2"
+    },
+    "portfolio/components/contact/ContactForm.test.tsx": {
+      "sha256": "3c930f818e052e6c7662329ba67aef244282e4eaf33fec6137e6dcfba90b3dde"
+    },
+    "portfolio/components/contact/ContactForm.tsx": {
+      "sha256": "57e974931d0cdaab5814e92e830d0f7664273911ed281d261400e12c83e69f32"
+    },
+    "portfolio/components/navigation/MobileMenu.test.tsx": {
+      "sha256": "e607beb3d7e4ea8ba49c5d31ff831afed17e6a1d1d0d05b4e699ee8d4807f4a4"
+    },
+    "portfolio/components/navigation/MobileMenu.tsx": {
+      "sha256": "a09ad4c40720d2ba428391f9cf0e770aec2622a2a2daa8115259d6c23810de33"
+    },
+    "portfolio/e2e/accessibility.spec.ts": {
+      "sha256": "208e39855b78d6aa836c134c3660cfc6ed7a088e3e5b0a9e11b4a088cdb03be2"
+    },
+    "portfolio/e2e/smoke.spec.ts": {
+      "sha256": "916b87538ca4f12d5f26d021bd6145c05c5ed14d4e25d6aacc950f2659fe650f"
+    },
+    "portfolio/lib/data/articles/index.ts": {
+      "sha256": "914de180d37988e0fd3b8066ea9d2bf96a29be97a6e8f768822c28057d7c3cf6"
+    },
+    "portfolio/lib/data/projects.ts": {
+      "sha256": "ccab183ac6be54cef604fb9d3347812b82815212109bbf0fc73472ae730af288"
+    },
+    "portfolio/lib/site.ts": {
+      "sha256": "efc1dccfcf00e18931383d642467dcff9ed4f2ed0a22f1ccd9822e9acddd4a44"
+    },
+    "portfolio/next.config.ts": {
+      "sha256": "07f505be66529222299258af76b9ac412487b9a1e834761de9849201a3a75381"
+    },
+    "portfolio/package.json": {
+      "sha256": "5a62e42023c4215854e46d2189dd7fa84d6a488c960110f27a0577ee43af71dc"
+    },
+    "portfolio/public/_headers": {
+      "sha256": "ccaa08318dd9b3ab395a7b622d5f0eb106e19c5a55c00897aaa785b9ac7689ab"
+    },
+    "portfolio/scripts/build-static.mjs": {
+      "sha256": "d6edb5e8d1c7f02a1858ed4222ed4f11f20b7b971c33a0ea69269ba518bbccac"
+    },
+    "portfolio/tailwind.config.js": {
+      "sha256": "93039dc893290df32b65b6de4ca28ff2f81f111af73eea7bf0b7501f422a08d5"
+    },
+    "portfolio/worker/index.ts": {
+      "sha256": "2df6d16a1e2f4a0b743e6ee05d0b347139ed039e9d8eb9dbea545c848938bfd6"
+    },
+    "portfolio/wrangler.jsonc": {
+      "sha256": "6156cacc1f51f6cf559a0aea64f4ac3181be15751c2d0a396bb530f482662af1"
+    },
+    "sendadvisor/app/(site)/councils/[slug]/page.tsx": {
+      "sha256": "e51060a7bf583deed3d84e43a15a3b12494c888e2bc356503d3269138cb791ba"
+    },
+    "sendadvisor/app/(site)/local-authority/[slug]/page.tsx": {
+      "sha256": "601f328d64a1af0c271ee08ec7ec7f123f4e64f636b99c9bf062666dbb425063"
+    },
+    "sendadvisor/app/(site)/page.tsx": {
+      "sha256": "fb7f7262c1279fd5b30b58899bb54e279dc8913ffb0e58361f83258f5cf2fc0f"
+    },
+    "sendadvisor/app/admin/local-authorities/page.tsx": {
+      "sha256": "04c044442a23ea473910f5850b5e8c3297cce180a640409f2ed458fa3c78a2e9"
+    },
+    "sendadvisor/components/councils/CouncilsDirectory.tsx": {
+      "sha256": "5f214a7d14731aadfc348973ffa0516b9ef040917bfc41a9d95058ae49ccce1c"
+    },
+    "sendadvisor/docs/adr/0007-enrichment-audit-server-pipeline.md": {
+      "sha256": "2ff1958ca2981f4c1a2c65e85b0c4fa98082257aa8dd3ee8ee14e90730fb40d6"
+    },
+    "sendadvisor/scripts/backup-d1-to-r2.mjs": {
+      "sha256": "cad6a59481e4138f3ca6463059e7d87a8cff6908d715a8fe08b888b7f484806f"
+    },
+    "sendadvisor/scripts/enrichment-audit-server.mjs": {
+      "sha256": "85600c2f9623c9bee9b6445d9b761af1e7bf6ab5a397bac899dafdf0d0f321fa"
+    },
+    "sendadvisor/scripts/prepare-go-live-diff.mjs": {
+      "sha256": "82317b3eb03068cabef6bc5c6c77f731b8ad3803efd4b61347872e00134533ba"
+    },
+    "sendadvisor/scripts/restore-d1-from-r2.mjs": {
+      "sha256": "fd80eab967ef0db526e3ce72f3c8004d615306612344d90963d472b0d4ff2e75"
+    }
+  }
+}

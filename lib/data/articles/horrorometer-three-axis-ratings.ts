@@ -1,40 +1,35 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'horrorometer-three-axis-ratings',
-  title: 'One number can\u2019t describe a scare',
-  excerpt: 'Why Horrorometer rates films on Creepy, Gory, and Jumpy instead of five stars \u2014 and what a week of rating-system design taught me about taste.',
-  date: '2025-10-28',
-  displayDate: '28 October 2025',
-  readTime: '5 min read',
-  category: 'Product',
+  id: "horrorometer-three-axis-ratings",
+  title: "One number can’t describe a scare",
+  excerpt: "Horrorometer’s review model records Creepy, Gory, and Jumpy alongside an overall score. The review schema defines how those different values fit together.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Product",
   published: true,
-  body: `Every review site collapses quality into one number. That\u2019s mostly fine \u2014 a restaurant is good or it isn\u2019t. But horror breaks the model, and Horrorometer exists because of how it breaks.
+  body: `Creepy, Gory, and Jumpy give Horrorometer a way to describe different aspects of a horror title. The useful distinction is between an overall judgement and the kind of experience someone is rating.
 
-The problem in one comparison: a slow-burn atmospheric ghost story and a wall-to-wall splatter film can both score 3.5 stars. They have almost nothing in common \u2014 different pleasures, different audiences, different reasons you\u2019d recommend them. The star rating says "equally good" when what the user needs to know is "completely different experiences". A horror fan who hates gore but loves dread gets actively misled by the flattened score.
+The current review schema preserves that distinction. It includes an overall rating as well as separate fields for those three dimensions.
 
-## Three axes, one personality
+## Keep the description close to the data
 
-Horrorometer rates every title on three axes:
+The review-input schema requires an integer overall rating between one and ten. Creepy, Gory, and Jumpy ratings are also defined as one-to-ten integers, but are optional and nullable on this input path.
 
-- **Creepy** \u2014 dread, atmosphere, the thing you feel before anything happens.
-- **Gory** \u2014 the explicit stuff, what\u2019s shown rather than implied.
-- **Jumpy** \u2014 the physical shock, the cat-in-the-fridge school of filmmaking.
+That matters for describing the product accurately. The three dimensions do not mean the application has eliminated the overall score, and this review contract should not be casually described as a five-star scale across every surface.
 
-The axes are independent, deliberately. High Creepy / low Jumpy is \u2014 arguably \u2014 the genre\u2019s high art. High Jumpy / low Creepy is a theme park ride, and a perfectly good one. The profile *is* the recommendation: a user who learns "my sweet spot is Creepy 8, Gory 2, Jumpy 5" has a search query no star system can express.
+An absent dimension is also different from a low score. Optional values need to remain distinguishable from a recorded rating when the data is interpreted or displayed.
 
-## What the design week actually involved
+## Explain the rationale without inventing a result
 
-The rating system took a week of design, and most of it was spent saying no:
+As a design idea, separating atmosphere, explicit gore, and sudden shocks allows two similarly rated titles to have different profiles. It expresses more than a single overall number.
 
-- **No composite score.** The tempting middle ground \u2014 average the three into one headline number \u2014 reintroduces the exact flattening the axes exist to avoid. The profile is the answer; there is no summary.
-- **Three axes, not ten.** \u2014 I tested lists like "slow burn, found footage, folk horror, slasher\u2026" \u2014 each axis added makes rating more accurate and less likely to actually happen. Three is the number where users reliably finish the job. Coverage beats precision.
-- **No half-stars.** A 1\u20135 range per axis keeps the mental load down. Users aren\u2019t calibrating instruments; they\u2019re expressing impressions.
-- **Community over critic.** Ratings are averages of user profiles, with moderation \u2014 the taste graph is the product, not my opinion.
+That is a rationale for the data model. It is not evidence that a particular number of dimensions produces better completion rates, that recommendations improve with each review, or that visitors become more loyal. Those claims would require research or product measurements.
 
-## The taxonomy is the moat
+## The boundary is useful
 
-Anyone can clone a review site. Cloning a *taste model* requires users to have already populated it \u2014 every rating makes the next recommendation better, and none of it is portable. The lesson I keep from this applies well beyond horror: **the structure of your ratings encodes your understanding of your domain.** A star system says "I understand quality". A three-axis profile says "I understand *this* genre\u2019s quality" \u2014 and the second one earns loyalty the first can\u2019t.
+The schema makes the implementation inspectable: which values are accepted, which fields are required, and which information can be omitted. Those are concrete decisions that the code can substantiate.
 
-It also changed how I watch horror, which I did not expect from a data model. Once you split dread from shock, you notice how many \u201cscary\u201d films are only loud.`,
+The broader question—whether these dimensions help people find horror they enjoy—remains an evaluation question. A domain-specific model creates the opportunity to ask it more precisely; the model alone cannot supply the answer.`,
 }

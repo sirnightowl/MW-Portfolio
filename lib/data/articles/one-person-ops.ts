@@ -1,61 +1,35 @@
 import type { Article } from './types'
 
 export const article: Article = {
-  id: 'one-person-ops',
-  title: 'Operations for one: running three products without a team',
-  excerpt: 'Backups with restore drills, cron hygiene, and the Saturday-morning checklist for two live products and one still in development.',
-  date: '2025-09-13',
-  displayDate: '13 September 2025',
-  readTime: '6 min read',
-  category: 'Product',
+  id: "one-person-ops",
+  title: "A small release pipeline with explicit checks",
+  excerpt: "The portfolio’s automatic Cloudflare deployment provides a concrete operations example: one main-branch trigger, a checked build, and live verification.",
+  date: "2026-10-19",
+  displayDate: "19 October 2026",
+  readTime: "2 min read",
+  category: "Product",
   published: true,
-  body: `Three products, one person, no on-call rotation. Horrorometer and SENDadvisor are live, while Kanaboards is still in development and not yet publicly released. Across all three, the constraint that shapes everything is simple: **anything that requires my attention at 2am will eventually happen at 2am, so the goal is to design attention out of the system.**
+  body: `The portfolio now has an automatic release path from main to snowl.uk. Its setup and first verified run show how configuration, execution, and public response checks fit together.
 
-Here\u2019s the operating model, distilled.
+## Make the release command inspectable
 
-## Backups you\u2019ve actually restored
+The CI build command runs lint, unit tests, and the static export in sequence. Its command chaining stops on a failed step. Cloudflare then runs the deploy command after a successful build.
 
-Every product does daily D1 backups to R2. That\u2019s table stakes \u2014 the part that matters is the monthly restore drill, where I actually restore a backup to a scratch environment and check the data. A backup that\u2019s never been restored is a hope, not a backup; the drill is the only proof that the chain works end to end.
+The build environment reads the repository's pinned Node.js version. Preview builds are disabled in the configured connection, so other branches do not follow this production release path.
 
-It\u2019s also caught real problems: a backup job silently failing after a schema change, and a retention misconfiguration. Both were invisible in the dashboard and obvious in the drill.
+These settings define when a release should happen. Their presence in documentation is not sufficient evidence that the integration works, which is why the setup included an actual push.
 
-## Observability sized for one
+## Verify a real trigger
 
-I can\u2019t watch dashboards \u2014 I have a day job. So the observability stack is built around **alerts that only fire when a human must act**:
+A documentation change on main, [commit 9196b42](https://github.com/sirnightowl/MW-Portfolio/commit/9196b42353a583fd8c3178834f2e336a2b18b96f), triggered the Cloudflare build. The build check completed successfully, and Cloudflare reported the new version serving all production traffic. That run took fifty-five seconds.
 
-- Sentry with PII scrubbing on Horrorometer \u2014 errors that aggregate, dedupe, and only page on new issue classes.
-- Analytics Engine on SENDadvisor \u2014 pipeline health over vanity traffic: gather success rates, enrichment lag, stale-record counts.
-- Liveness and readiness endpoints on each product \u2014 poked by a monitor that pings me when they stop answering, not when they\u2019re "slow".
-- Health of the health checks: a weekly cron confirms the monitors themselves are alive.
+That duration belongs to one recorded release. It is not a build-time promise or a measurement of ongoing operating effort.
 
-The rule: if an alert doesn\u2019t require me to do something, it\u2019s an email, not a page. Alert fatigue is how solo operators go blind.
+## Check the public result
 
-## Cron jobs are production surface
+The release verification checked the homepage, case-study content, images, headers, and redirects. In particular, www redirected to the root domain and the former Diver URL redirected to the renamed game case study.
 
-Horrorometer runs two cron routes \u2014 hourly prune, nightly inactivity sweep \u2014 and they taught me the discipline: cron endpoints get auth (a CRON_SECRET), they log their runs, they alert on failure, and they have a "what happens if it double-fires" answer. A cron that silently dies is worse than no cron, because you\u2019ve designed as if the work is being done.
+The README also documents a rollback command. A documented rollback procedure is not evidence that a restore drill has been performed, and this note does not claim one.
 
-## The Saturday checklist
-
-Fifteen minutes, weekly, and it\u2019s the entire operational overhead:
-
-- [ ] Glance at error rates across all three products \u2014 anything new?
-- [ ] Confirm backup jobs ran and the last restore drill date is within a month
-- [ ] Review pipeline freshness on SENDadvisor \u2014 is any category going stale?
-- [ ] Check certificate and domain renewals are more than 30 days out
-- [ ] Triage the support inbox \u2014 user reports beat every other signal
-
-The checklist exists because solo ops fail through forgetting, not through difficulty. Written down, it takes fifteen minutes; not written down, it takes a bad week to notice the gap.
-
-## Boring choices, on purpose
-
-- **Monorepo-per-product, one deploy artifact each** \u2014 the fewer moving pieces at 2am, the better.
-- **PR-based pipelines with smoke tests on every promotion** \u2014 dev \u2192 production, nothing manual. "I think it works" is not a deploy state; the smoke test decides.
-- **Same platform for all three** \u2014 Cloudflare for compute, storage, cache, and email routing. One set of behaviours to know deeply beats three sets known shallowly.
-- **Fail-open rate limiting, fail-closed admin** \u2014 the deliberate, documented, per-subsystem choice, so future-me doesn\u2019t re-derive it under pressure.
-
-## The honest summary
-
-The goal of solo operations is to make the products\u2019 uptime boring and your weekends free. Every hour spent on restore drills, smoke tests, and checklists pays back in hours of sleep \u2014 and the compounding benefit is confidence: when something breaks, there\u2019s a runbook, a backup, and a monitored path back. Nothing is improvised at 2am.
-
-Three products, one person, fifteen minutes a week. The system does the rest.`,
+The useful operations principle is to distinguish configuration, execution, and verification. A pipeline file describes intent; a completed check records a run; a live response check examines what was delivered. All three matter, and none supplies an uptime history by itself.`,
 }
