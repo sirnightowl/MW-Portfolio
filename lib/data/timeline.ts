@@ -17,7 +17,7 @@ export const timeline: TimelineEntry[] = [
     displayDate: '2024 — present',
     title: 'Kanaboards',
     subtitle: 'Agent-ready planning workspace',
-    description: 'Created a developer planning product where people and coding agents share boards, sprints, calendars, automation, and delivery state.',
+    description: 'Developing an unreleased planning workspace where people and coding agents share boards, sprints, calendars, automation, and delivery state.',
     type: 'project',
     tags: ['SolidJS', 'TypeScript', 'MCP', 'Cloudflare D1'],
   },

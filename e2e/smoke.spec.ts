@@ -174,7 +174,7 @@ test.describe('no JavaScript', () => {
 
   test('homepage reveal content is visible without JavaScript', async ({ page }) => {
     await page.goto('/')
-    await expect(page.getByRole('heading', { name: 'Real things, shipped and in use.' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Real projects, designed and built.' })).toBeVisible()
     await expect(page.locator('#disciplines').getByRole('heading', { name: 'Design & UX' })).toBeVisible()
   })
 })

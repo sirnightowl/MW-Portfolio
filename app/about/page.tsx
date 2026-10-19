@@ -52,7 +52,7 @@ export default function AboutPage() {
             <h2 className="display-title mt-3 text-3xl md:text-4xl">Digital experience design, front end build, and a bit of everything in between.</h2>
             <div className="mt-8 space-y-6 text-lg leading-8 text-ink/70 dark:text-white/70">
               <p>At Norfolk County Council I lead front end design and development across a suite of public-facing websites. That means everything from information architecture and wireframing through to prototyping, user testing, and production-ready code. Accessibility isn&apos;t a checklist item — it&apos;s baked into how I work.</p>
-              <p>On the side I build products that scratch my own itches. Horrorometer exists because I wanted a proper horror-only review platform. Kanaboards came from wanting AI coding agents to participate in project tracking. SENDadvisor aims to make SEND services more transparent for parents navigating the system.</p>
+              <p>On the side I build products that scratch my own itches. Horrorometer exists because I wanted a proper horror-only review platform. SENDadvisor aims to make SEND services more transparent for parents navigating the system. I&apos;m also developing two unreleased projects: Kanaboards, a planning workspace for people and AI agents, and Stay With Me: Deep Sea, a narrative horror game.</p>
               <p>I studied Interactive Media &amp; the Web at the University of Wolverhampton (BA 1st), which gave me a foundation in both the creative and technical sides of the web. Since then I&apos;ve worked agency-side and in-house, building for accountants, estate agents, SaaS products, and local government.</p>
             </div>
           </div>

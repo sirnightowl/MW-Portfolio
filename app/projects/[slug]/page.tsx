@@ -53,10 +53,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     name: project.title,
     description: project.description,
     creator: { '@type': 'Person', name: 'Martin Whitaker', url: 'https://github.com/sirnightowl' },
-    datePublished: `${project.year}`,
+    ...(project.isLive ? { datePublished: `${project.year}` } : { dateCreated: `${project.year}` }),
     keywords: project.technologies.join(', '),
     mainEntityOfPage: `${SITE_URL}/projects/${project.id}`,
-    ...(project.liveUrl && { url: project.liveUrl }),
+    ...(project.isLive && project.liveUrl && { url: project.liveUrl }),
   }
 
   return (
@@ -72,7 +72,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           note={project.leadMetric ?? `${project.year} / ${project.status}`}
           aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={project.imageAlt ?? `${project.title} product interface`} className="object-cover" style={{ objectPosition: project.imagePosition ?? 'center' }} fill preload sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
         >
-          {project.liveUrl && (
+          {project.isLive && project.liveUrl && (
             <Button href={project.liveUrl} target="_blank" rel="noopener noreferrer" size="lg" className="hero-button">Visit live product <ArrowUpRight aria-hidden="true" className="ml-4 h-4 w-4" /></Button>
           )}
         </PageIntro>

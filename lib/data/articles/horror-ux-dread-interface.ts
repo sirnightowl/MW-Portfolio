@@ -9,7 +9,7 @@ export const article: Article = {
   readTime: '5 min read',
   category: 'Game Design',
   published: true,
-  body: `I build horror experiences from two directions: Horrorometer is a calm, trustworthy platform for horror *fans* \u2014 and Stay With Me: Deep Sea is a real-time narrative game that tries to *produce* dread in the player. Designing both at once has been unexpectedly useful, because designing fear is just designing attention and time with the safety off.
+  body: `I build horror experiences from two directions: Horrorometer is a calm, trustworthy platform for horror *fans* \u2014 and Stay With Me: Deep Sea is an unreleased real-time narrative game in development that tries to *produce* dread in the player. Designing both at once has been unexpectedly useful, because designing fear is just designing attention and time with the safety off.
 
 ## Stay With Me: Deep Sea: dread is designed waiting
 

@@ -21,7 +21,7 @@ const traits = [
 ]
 
 const stats = [
-  { to: 4, suffix: '', prefix: '', label: 'Products designed and shipped' },
+  { to: 4, suffix: '', prefix: '', label: 'Products designed and built' },
   { to: 12, suffix: '+', prefix: '', label: 'Years building for the web' },
   { to: 11000, suffix: '+', prefix: '', label: 'Live listings in production' },
   { to: 153, suffix: '', prefix: '', label: 'Local authorities covered' },
@@ -82,7 +82,7 @@ export default function Home() {
         <Reveal>
         <div className="mb-14 max-w-2xl">
           <p className="eyebrow">By the numbers</p>
-          <h2 className="display-title mt-3 text-4xl md:text-5xl">Real things, shipped and in use.</h2>
+          <h2 className="display-title mt-3 text-4xl md:text-5xl">Real projects, designed and built.</h2>
           <p className="mt-5 text-lg leading-7 text-ink/65 dark:text-white/65">A few measurable outcomes from products I&apos;ve designed and built end to end.</p>
         </div>
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
@@ -160,9 +160,9 @@ export default function Home() {
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow">Projects</p>
-              <h2 className="display-title mt-3 text-4xl md:text-5xl">Designed, built, and shipped — end to end.</h2>
+              <h2 className="display-title mt-3 text-4xl md:text-5xl">Designed and built — end to end.</h2>
             </div>
-            <p className="max-w-md text-lg leading-7 text-ink/70 dark:text-white/70">Self-directed products, from first sketch through architecture, accessibility, and production build.</p>
+            <p className="max-w-md text-lg leading-7 text-ink/70 dark:text-white/70">Two live products and two unreleased projects, from first sketch through architecture, accessibility, and build.</p>
           </div>
           <div className="project-grid">
             {projects.map((project) => <ProjectCard key={project.id} project={project} heading="h3" />)}
@@ -182,7 +182,7 @@ export default function Home() {
           <div>
             <p className="eyebrow">About me</p>
             <h2 className="display-title mt-4 text-4xl md:text-5xl">Practical builder, product brain, occasional cat supervisor.</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/70 dark:text-white/70">I like interfaces that explain themselves and systems that survive real users. By day I design and build accessible public services for Norfolk County Council; by night I ship horror fan platforms, Kanban tools, and SEND resources.</p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/70 dark:text-white/70">I like interfaces that explain themselves and systems that survive real users. By day I design and build accessible public services for Norfolk County Council; by night I build horror experiences, planning tools, and SEND resources.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               {traits.map((trait) => (
                 <span className={`${trait.color} rounded-full border border-ink/10 px-4 py-2 text-sm font-black text-ink`} key={trait.label}>{trait.label}</span>

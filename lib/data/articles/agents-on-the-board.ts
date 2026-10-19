@@ -49,9 +49,9 @@ If the board is only good for agents, it\u2019s not a planning tool \u2014 it\u2
 
 None of that is novel in isolation. The point is that it coexists with the agent surface. A human can drag a card, an agent can update the same card, and neither has to know the other is there.
 
-## What actually shipped
+## What is in the current build
 
-Kanaboards is in early access. The concrete shape of it today:
+Kanaboards is in development and has not yet been publicly released. The current build includes:
 
 - 54 MCP tools, organised in tiers so a client can discover what\u2019s available,
 - 62 database migrations on Cloudflare D1,
@@ -74,5 +74,5 @@ The work that mattered wasn\u2019t the AI. It was building the operational disci
 
 ---
 
-Kanaboards is live at [kanaboards.com](https://kanaboards.com). It\u2019s in early access \u2014 if you want to try it with your own agents, [get in touch](/contact).`,
+Kanaboards is not yet released. To hear more about the project as development progresses, [get in touch](/contact).`,
 }

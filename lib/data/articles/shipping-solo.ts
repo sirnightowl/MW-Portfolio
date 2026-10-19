@@ -2,14 +2,14 @@ import type { Article } from './types'
 
 export const article: Article = {
   id: 'shipping-solo',
-  title: 'Shipping solo: what I learned building three live products',
+  title: 'Shipping solo: what I learned building independent products',
   excerpt: 'Horrorometer, Kanaboards, and SENDadvisor all started as itches I wanted to scratch. Some patterns held across all three \u2014 and a few surprised me.',
   date: '2026-02-04',
   displayDate: '04 February 2026',
   readTime: '8 min read',
   category: 'Product',
   published: true,
-  body: `I\u2019ve shipped three live products as a solo builder: Horrorometer (a horror-first rating platform), Kanaboards (a planning workspace for humans and AI agents), and SENDadvisor (a national SEND directory for families). All three are in production with real users. All three started as problems I couldn\u2019t stop thinking about.
+  body: `I build three products as a solo builder: Horrorometer (a horror-first rating platform), Kanaboards (a planning workspace for humans and AI agents), and SENDadvisor (a national SEND directory for families). Horrorometer and SENDadvisor are live; Kanaboards is still in development and has not yet been publicly released. All three started as problems I couldn\u2019t stop thinking about.
 
 Here\u2019s what held true across all three \u2014 and where I was wrong about what solo shipping would be like.
 
@@ -34,7 +34,7 @@ I thought I\u2019d spend most of my time on the interesting parts \u2014 the hor
 - **Rate limiting and resilience.** Horrorometer\u2019s circuit breaker (5 failures / 60s \u2192 30s open) saved the UI more than once when TMDB had an outage. The graceful-degradation layer means the user never sees a hard error.
 - **CI/CD with smoke tests.** Kanaboards runs smoke tests on every promotion. That\u2019s the difference between "I think it works" and "I know it works" when you deploy at midnight.
 
-None of that is exciting. All of it is the reason these products are still live.
+None of that is exciting. All of it supports the live products and prepares Kanaboards for a future release.
 
 ## The pattern that held: content is harder than code
 

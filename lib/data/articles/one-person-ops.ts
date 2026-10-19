@@ -3,13 +3,13 @@ import type { Article } from './types'
 export const article: Article = {
   id: 'one-person-ops',
   title: 'Operations for one: running three products without a team',
-  excerpt: 'Backups with restore drills, cron hygiene, and the Saturday-morning checklist that keeps three live products from keeping me up.',
+  excerpt: 'Backups with restore drills, cron hygiene, and the Saturday-morning checklist for two live products and one still in development.',
   date: '2025-09-13',
   displayDate: '13 September 2025',
   readTime: '6 min read',
   category: 'Product',
   published: true,
-  body: `Three products, one person, no on-call rotation. Horrorometer, Kanaboards, and SENDadvisor are all live with real users, and the constraint that shapes everything is simple: **anything that requires my attention at 2am will eventually happen at 2am, so the goal is to design attention out of the system.**
+  body: `Three products, one person, no on-call rotation. Horrorometer and SENDadvisor are live, while Kanaboards is still in development and not yet publicly released. Across all three, the constraint that shapes everything is simple: **anything that requires my attention at 2am will eventually happen at 2am, so the goal is to design attention out of the system.**
 
 Here\u2019s the operating model, distilled.
 

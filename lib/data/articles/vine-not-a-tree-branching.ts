@@ -9,7 +9,7 @@ export const article: Article = {
   readTime: '7 min read',
   category: 'Game Design',
   published: true,
-  body: `Stay With Me: Deep Sea is a real-time text-narrative game: you\u2019re the only contact for Mara, a marine biologist trapped 412 metres down, and messages arrive over real minutes and hours across a three-day playthrough. Building it meant solving the two problems that kill every real-time fiction project: the story branches into a tree nobody can sustain, and the notification engine \u2014 the core mechanic \u2014 dies the moment the app is killed.
+  body: `Stay With Me: Deep Sea is an unreleased real-time text-narrative game in development: you\u2019re the only contact for Mara, a marine biologist trapped 412 metres down, and messages arrive over real minutes and hours across a three-day playthrough. Building it meant solving the two problems that kill every real-time fiction project: the story branches into a tree nobody can sustain, and the notification engine \u2014 the core mechanic \u2014 dies the moment the app is killed.
 
 Before writing a line of story, I went to the source: Mars Jokela (3 Minute Games, Lifeline), Dave Justus, and Emily Short\u2019s critical analysis. Nine design rules came out of that research, and every engine decision traces back to one.
 
