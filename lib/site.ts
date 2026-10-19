@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = 'https://martwhitty.dev'
+const DEFAULT_SITE_URL = 'https://snowl.uk'
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL).replace(/\/$/, '')
 

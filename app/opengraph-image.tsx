@@ -1,5 +1,7 @@
 import { ImageResponse } from 'next/og'
 
+export const dynamic = 'force-static'
+
 export const alt = 'Martin Whitaker — Digital Interaction Designer'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
@@ -67,8 +69,8 @@ export default function OpenGraphImage() {
             fontWeight: 700,
           }}
         >
-          <span style={{ color: '#ff7d78' }}>martwhitty</span>
-          <span style={{ color: '#c6a7ff' }}>.dev</span>
+          <span style={{ color: '#ff7d78' }}>snowl</span>
+          <span style={{ color: '#c6a7ff' }}>.uk</span>
         </div>
       </div>
     ),

@@ -3,6 +3,8 @@ import { projects } from '@/lib/data/projects'
 import { articles } from '@/lib/data/articles'
 import { SITE_URL } from '@/lib/site'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 

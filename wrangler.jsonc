@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "snowl-portfolio",
+  "account_id": "23d718643554119f309cff7d9735e619",
+  "compatibility_date": "2026-10-19",
+  "workers_dev": true,
+  "main": "worker/index.ts",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "snowl.uk", "custom_domain": true },
+    { "pattern": "www.snowl.uk", "custom_domain": true }
+  ]
+}

@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
 const isDev = process.env.NODE_ENV === 'development'
+const isStaticExport = process.env.NEXT_STATIC_EXPORT === '1'
 
 const cspDirectives = [
   "default-src 'self'",
@@ -18,10 +19,11 @@ const cspDirectives = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  async redirects() {
+  ...(isStaticExport ? { output: 'export', images: { unoptimized: true } } : {}),
+  redirects: isStaticExport ? undefined : async () => {
     return [{ source: '/projects/the-diver', destination: '/projects/stay-with-me-deep-sea', permanent: true }]
   },
-  async headers() {
+  headers: isStaticExport ? undefined : async () => {
     return [
       {
         source: '/(.*)',
