@@ -44,6 +44,23 @@ test('contact form shows validation errors', async ({ page }) => {
   await expect(page.locator('#message-error')).toBeVisible()
 })
 
+test('CV is reachable from About and offers the original PDF download', async ({ page, request }) => {
+  await page.goto('/about')
+  await page.getByRole('link', { name: 'Read my CV' }).click()
+  await expect(page).toHaveURL('/cv')
+  await expect(page.locator('main h1')).toContainText('Martin Whitaker')
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'CV', exact: true })).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByRole('heading', { name: 'Digital Interaction Designer', exact: true })).toBeVisible()
+  const download = page.getByRole('link', { name: 'Download CV PDF · 1 page' }).first()
+  const [file] = await Promise.all([page.waitForEvent('download'), download.click()])
+  expect(file.suggestedFilename()).toBe('Martin-Whitaker-CV-2026.pdf')
+  expect(await file.failure()).toBeNull()
+  const response = await request.get('/downloads/Martin-Whitaker-CV-2026.pdf')
+  expect(response.status()).toBe(200)
+  expect(response.headers()['content-type']).toContain('application/pdf')
+  expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-')
+})
+
 test('404 page is shown for unknown routes', async ({ page }) => {
   await page.goto('/this-page-does-not-exist')
   await expect(page.getByRole('heading', { name: /lost in the/i })).toBeVisible()
@@ -91,7 +108,7 @@ test('tablet navigation opens, navigates, and releases its scroll lock on deskto
 for (const width of [320, 768]) {
   test(`page layouts fit a ${width}px viewport`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
-    for (const route of ['/', '/work', '/about', '/blog', '/uses', '/contact', '/projects/kanaboards', '/blog/accessible-by-default', '/missing-page']) {
+    for (const route of ['/', '/work', '/about', '/cv', '/blog', '/uses', '/contact', '/projects/kanaboards', '/blog/accessible-by-default', '/missing-page']) {
       await page.goto(route)
       await expect(page.locator('main h1')).toBeVisible()
       const fits = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)

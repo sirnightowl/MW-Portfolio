@@ -12,6 +12,7 @@ const navItems = [
   { name: 'Home', href: '/' },
   { name: 'Work', href: '/work' },
   { name: 'About', href: '/about' },
+  { name: 'CV', href: '/cv' },
   { name: 'Blog', href: '/blog' },
   { name: 'Uses', href: '/uses' },
   { name: 'Contact', href: '/contact' },
@@ -51,6 +52,7 @@ export default function Navbar() {
 
   const isActive = (href: string) => {
     if (href === '/about') return pathname === '/about'
+    if (href === '/cv') return pathname === '/cv'
     if (href === '/uses') return pathname === '/uses'
     if (href === '/contact') return pathname === '/contact'
     if (href === '/work') return pathname === '/work' || pathname.startsWith('/projects/') || (pathname === '/' && activeSection === 'work')

@@ -4,7 +4,7 @@ import { articles } from '../lib/data/articles'
 import { projects } from '../lib/data/projects'
 
 const routes = [
-  '/', '/work', '/about', '/uses', '/contact', '/blog', '/missing-page',
+  '/', '/work', '/about', '/cv', '/uses', '/contact', '/blog', '/missing-page',
   ...projects.map((project) => `/projects/${project.id}`),
   ...articles.filter((article) => article.published).map((article) => `/blog/${article.id}`),
 ]

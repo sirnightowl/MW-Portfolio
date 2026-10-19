@@ -4,6 +4,7 @@ import Button from '@/components/common/Button'
 import PageIntro from '@/components/common/PageIntro'
 import Timeline from '@/components/about/Timeline'
 import YouTubeFacade from '@/components/about/YouTubeFacade'
+import { cvDownload } from '@/lib/data/cv'
 
 const traits = [
   { label: 'Cat & human dad', color: 'bg-coral' },
@@ -42,6 +43,10 @@ export default function AboutPage() {
       >
         <div className="flex flex-wrap gap-2">
           {traits.map((trait) => <span className={`${trait.color} rounded-md px-3 py-2 text-[11px] font-bold text-night`} key={trait.label}>{trait.label}</span>)}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Button href="/cv" className="hero-button">Read my CV</Button>
+          <Button href={cvDownload} download="Martin-Whitaker-CV-2026.pdf" className="border-white/30 bg-transparent text-white hover:bg-white/10">Download CV (PDF)</Button>
         </div>
       </PageIntro>
 
