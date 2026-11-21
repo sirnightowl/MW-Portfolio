@@ -12,12 +12,12 @@ export const metadata = pageMetadata({
 export default function WorkPage() {
   return (
     <main id="main" tabIndex={-1}>
-      <PageIntro eyebrow="Selected work" title={<>From first sketch<br />to <span>working product.</span></>} description="Three live products and two unreleased projects in development — from first sketch through architecture, accessibility, and build." note={`${projects.length.toString().padStart(2, '0')} projects / Designed and built end to end`} />
+      <PageIntro eyebrow="The portfolio" variant="compact" title={<>Selected <span>work.</span></>} description="Public information, horror discovery, creative tools, and a couple of things still taking shape." note="Three live products / Two unreleased projects" />
 
       <section aria-label="Project case studies" className="container-custom page-section">
         <div className="project-grid">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} featured={index === 0} preload={index === 0} />
           ))}
         </div>
       </section>

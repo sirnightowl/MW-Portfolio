@@ -74,7 +74,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                 li: ({ children, className }) => <li className={className}>{className?.includes('task-list-item') ? <label>{children}</label> : children}</li>,
               }}>{article.body}</Markdown>
             ) : (
-              <p className="text-lg leading-8 text-ink/65 dark:text-white/65">This article hasn&rsquo;t been published yet. Check back soon.</p>
+              <p className="text-lg leading-8 text-ink/75 dark:text-white/65">This article hasn&rsquo;t been published yet. Check back soon.</p>
             )}
           </div>
         </section>

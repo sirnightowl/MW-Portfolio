@@ -7,7 +7,7 @@ export default function ArticleCard({ article, heading: Heading = 'h2', featured
     <Link href={`/blog/${article.id}`} className={`article-card group ${featured ? 'article-card-featured' : ''}`}>
       <div className="flex items-center justify-between gap-4">
         <span className="category-label">{article.category}</span>
-        <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 text-ink/55 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 dark:text-white/65" />
+        <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 text-ink/55 dark:text-white/65" />
       </div>
       <Heading className="article-card-title">{article.title}</Heading>
       <p className="article-card-excerpt">{article.excerpt}</p>

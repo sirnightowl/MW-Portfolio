@@ -2,6 +2,21 @@ import { test, expect } from '@playwright/test'
 import { projects } from '../lib/data/projects'
 import { SITE_URL } from '../lib/site'
 
+test('static navigation prefetch payloads are served for regular and dynamic routes', async ({ request }) => {
+  for (const path of [
+    '/work/__next.work.__PAGE__.txt',
+    '/about/__next.about.__PAGE__.txt',
+    '/contact/__next.contact.__PAGE__.txt',
+    '/projects/sendadvisor/__next.projects.%24d%24slug.__PAGE__.txt',
+    '/blog/accessible-by-default/__next.blog.%24d%24slug.__PAGE__.txt',
+  ]) {
+    const response = await request.get(path)
+    expect(response.status(), path).toBe(200)
+    expect(response.headers()['content-type']).toContain('text/plain')
+    expect((await response.body()).byteLength).toBeGreaterThan(0)
+  }
+})
+
 test('case study metadata and social previews are served to crawlers', async ({ request }) => {
   for (const project of projects) {
     const route = `/projects/${project.id}`

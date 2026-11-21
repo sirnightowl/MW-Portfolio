@@ -1,0 +1,14 @@
+.stage { position: relative; isolation: isolate; aspect-ratio: 8/5; overflow: hidden; border-radius: 12px; background: var(--muted-surface); }
+.sendadvisor { background: #d5e6dc; color: #2b5143; }
+.horrorometer { background: #281e25; color: #edc7cd; }
+.lush { background: #e3ddf0; color: #574275; }
+.kanaboards { background: #dce5ed; }
+.deepsea { background: #183640; }
+.showcase { aspect-ratio: 8/6; }
+.showcase::before { content: ''; position: absolute; z-index: -1; width: 75%; aspect-ratio: 1; border: 1px solid currentColor; opacity: .12; border-radius: 50%; right: -25%; top: -25%; }
+.showcase::after { content: ''; position: absolute; z-index: -1; width: 60%; aspect-ratio: 1; background: currentColor; opacity: .045; border-radius: 50%; left: -20%; bottom: -40%; }
+.screen { position: absolute; inset: 8% 6%; }
+.showcase .screen { inset: 6% 5% 23%; }
+.image { object-fit: contain; filter: drop-shadow(0 14px 16px #0002); }
+.detail { position: absolute; bottom: 4%; right: 7%; width: 29%; height: 22%; transform: rotate(-3deg); }
+.caption { position: absolute; bottom: 9%; left: 7%; max-width: 53%; font-size: clamp(9px,1vw,11px); font-weight: 650; letter-spacing: .025em; }

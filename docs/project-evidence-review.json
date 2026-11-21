@@ -490,6 +490,60 @@
       "capturedAt": "2026-10-19",
       "capture": "Full desktop viewport of the real public site, converted to WebP. No cropping, generated interface content or retouching. Editor opened through the collection card using default settings.",
       "sha256": "7e03f855cff13c12b06187fa919dbb20656093a2a86e454a07646da4652659e0"
+    },
+    {
+      "path": "public/images/projects/sendadvisor-case-study/home-with-header.webp",
+      "sourceUrl": "https://sendadvisor.co.uk/",
+      "capturedAt": "2026-10-26",
+      "capture": "Full 1280 × 900 desktop viewport of the signed-out public site, with its logo and navigation header visible. Captured at the top of the page after choosing Only necessary in cookie preferences. No cropping, generated content or retouching; converted to WebP.",
+      "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
+      "sha256": "eaabc566f0d9b46118926ce55ef843a13220cde4fd873153a4f4bed23ca0b14b",
+      "updatedAt": "2026-10-26"
+    },
+    {
+      "path": "public/images/projects/sendadvisor-case-study/results-with-header.webp",
+      "sourceUrl": "https://sendadvisor.co.uk/days-out",
+      "capturedAt": "2026-10-26",
+      "capture": "Full 1280 × 900 desktop viewport of the signed-out public site, with its logo and navigation header visible. Captured at the top of the page after choosing Only necessary in cookie preferences. No cropping, generated content or retouching; converted to WebP.",
+      "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
+      "sha256": "9db282b850fde81dec20026a0f14ae1bbb8092989e9c598b946c193d90c22a5f",
+      "updatedAt": "2026-10-26"
+    },
+    {
+      "path": "public/images/projects/sendadvisor-case-study/council-with-header.webp",
+      "sourceUrl": "https://sendadvisor.co.uk/councils/norfolk",
+      "capturedAt": "2026-10-26",
+      "capture": "Full 1280 × 900 desktop viewport of the signed-out public site, with its logo and navigation header visible. Captured at the top of the page after choosing Only necessary in cookie preferences. No cropping, generated content or retouching; converted to WebP.",
+      "note": "Visible counts and listing details are a point-in-time interface snapshot, not a measured UX outcome.",
+      "sha256": "06fa201735b271dc068bf43c7f125bb8f38183feb23ba422c1eec93b76658224",
+      "updatedAt": "2026-10-26"
+    },
+    {
+      "path": "public/images/projects/horrorometer-case-study/catalogue-with-header.webp",
+      "sourceUrl": "https://www.horrorometer.com/movies",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1272 × 716 desktop viewport restored from the retained 19 October source PNG. Includes the global header and fixed bottom navigation. No cropping, generated content or retouching; converted to WebP. The title-page capture retains its original scroll position.",
+      "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
+      "sha256": "7596493eb885ccbab3910cc2d2478e5f94c498c87194be33b1baa14d1fbfa699",
+      "updatedAt": "2026-10-26"
+    },
+    {
+      "path": "public/images/projects/horrorometer-case-study/title-with-header.webp",
+      "sourceUrl": "https://www.horrorometer.com/movies/e5f9286f-6cf8-430d-98c5-d02dcb88bd58-hidden",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1272 × 716 desktop viewport restored from the retained 19 October source PNG. Includes the global header and fixed bottom navigation. No cropping, generated content or retouching; converted to WebP. The title-page capture retains its original scroll position.",
+      "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
+      "sha256": "8ef02a7f5d1b3a7f31331f52db837f528438d6c9d6d41f7232d300b899558038",
+      "updatedAt": "2026-10-26"
+    },
+    {
+      "path": "public/images/projects/horrorometer-case-study/signin-with-header.webp",
+      "sourceUrl": "https://www.horrorometer.com/auth/signin?redirect=%2Fmovies%2Fe5f9286f-6cf8-430d-98c5-d02dcb88bd58-hidden",
+      "capturedAt": "2026-10-19",
+      "capture": "Full 1272 × 716 desktop viewport restored from the retained 19 October source PNG. Includes the global header and fixed bottom navigation. No cropping, generated content or retouching; converted to WebP. The title-page capture retains its original scroll position.",
+      "note": "Signed-out public interface snapshot, not a usability result or authenticated-flow verification.",
+      "sha256": "044ff8f57500eda494ced7a746945ef8a4206acf71865c1031ed90923189916b",
+      "updatedAt": "2026-10-26"
     }
   ],
   "consistencyAccessibilityReview": {
@@ -528,5 +582,31 @@
       "visualReview": "Reviewed the desktop hero, 320px screenshot frames in light and dark themes, and the generated 1200 × 630 social preview.",
       "limitations": "Automated checks use Chromium and are not WCAG certification or a physical-device study."
     }
+  },
+  "editorialRefresh": {
+    "updatedAt": "2026-10-26",
+    "scope": "Editorial homepage, project artwork, shared page introductions, navigation, contact copy, and opening summaries across all five case studies.",
+    "evidence": "Problem, design-decision and delivery summaries condense the existing reviewed project descriptions and visual case studies. They add no research findings, adoption, performance metrics, release claims, or new source-project verification.",
+    "presentation": "The homepage selects the three live products, with SENDadvisor featured. All five projects remain on Work. Existing unretouched screenshot assets are displayed in consistent CSS frames using contain rather than cropping. The game thumbnail now uses its existing title-screen capture, with matching alternative text.",
+    "provenance": "Original screenshot assets, capture dates and provenance records remain unchanged. Detailed case-study scope notes move below the main narrative and remain visible. Release labels and per-screenshot provenance remain in place.",
+    "verification": {
+      "lint": "Passed.",
+      "unitTests": "11 passed across 6 files.",
+      "staticBuild": "Passed, including TypeScript and Windows static segment filename normalization.",
+      "seo": "Passed for all 33 sitemap pages and social previews.",
+      "browserTests": "105 passed against the local production export. Includes automated accessibility in both themes, 320px and 768px reflow, keyboard navigation, contact validation, screenshot provenance and static navigation prefetch payloads.",
+      "visualReview": "Desktop homepage in both themes, 1024px hero, and 390px mobile layout. The original transparent portrait now sits flush with the hero bottom, without a coloured panel. Reserved text space prevents the cutout from covering the introduction, actions or experience copy. The first project starts about 760px down at 390 x 844.",
+      "limitations": "Chromium browser checks and automated accessibility do not replace physical-device or screen-reader testing. No deployment or new source-project research was performed.",
+      "portraitFollowup": "Owner requested a bottom-anchored cutout. Reused the existing transparent WebP, removed its frame, and anchored it to the hero boundary across responsive layouts. Build and lint pass; 9 focused browser checks pass for homepage navigation, keyboard access, both-theme accessibility, 320px/768px layouts, first-screen mobile work visibility and no-JavaScript content."
+    }
+  },
+  "headerScreenshotRefresh": {
+    "updatedAt": "2026-10-26",
+    "scope": "Six replacement SENDadvisor and Horrorometer captures with their website headers visible. Used by the project cards, case-study hero artwork and case-study figures.",
+    "source": "SENDadvisor was captured afresh while signed out. Horrorometer uses the retained full-viewport source captures from 19 October. Original detail crops and their provenance remain available at their previous paths.",
+    "limits": "This presentation update does not add source-project verification, research findings or impact claims. SENDadvisor result counts remain a point-in-time snapshot.",
+    "caching": "New -with-header.webp URLs prevent existing browser and CDN caches from continuing to show the old detail crops.",
+    "lushSvg": "Overview artwork uses the existing full-viewport studio homepage capture so its logo and navigation are visible. The original editor screenshot remains in the walkthrough.",
+    "verification": "Lint, 11 unit tests, production export and SEO checks passed. Ten targeted browser checks passed for case-study screenshots, keyboard section navigation, image budgets and 320px/768px layouts in both themes."
   }
 }

@@ -43,7 +43,7 @@ export default function YouTubeFacade() {
         unoptimized
       />
       <span className="absolute inset-0 bg-ink/35 transition-opacity group-hover:bg-ink/25" />
-      <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-paper/50 bg-lilac transition-transform group-hover:scale-105">
+      <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-paper/50 bg-lilac ">
         <Play aria-hidden="true" size={26} className="translate-x-0.5 fill-ink text-ink" />
       </span>
     </button>

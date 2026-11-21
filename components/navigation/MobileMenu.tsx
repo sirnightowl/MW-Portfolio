@@ -5,6 +5,8 @@ import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import ThemeToggle from '@/components/common/ThemeToggle'
+import OwlMark from '@/components/common/OwlMark'
+import styles from './MobileMenu.module.css'
 
 interface NavItem {
   name: string
@@ -49,7 +51,7 @@ export default function MobileMenu({ isOpen, onClose, navItems, isActive }: Mobi
 
     document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', handleKeyDown)
-    closeButtonRef.current?.focus()
+    closeButtonRef.current?.focus({ preventScroll: true })
     const overlay = panelRef.current?.parentElement
     const background = Array.from(document.body.children)
       .filter((element): element is HTMLElement => element instanceof HTMLElement && element !== overlay && !element.contains(overlay ?? null))
@@ -64,19 +66,23 @@ export default function MobileMenu({ isOpen, onClose, navItems, isActive }: Mobi
       document.removeEventListener('keydown', handleKeyDown)
       desktop?.removeEventListener('change', closeOnDesktop)
       background.forEach(({ element, wasInert }) => { element.inert = wasInert })
-      previousFocus?.focus()
+      previousFocus?.focus({ preventScroll: true })
     }
   }, [isOpen, onClose])
 
-  if (!isOpen) return null
-
   return (
-    <div className="fixed inset-0 z-50 lg:hidden">
+    <div
+      className={`${styles.overlay} fixed inset-0 z-50 overflow-hidden lg:hidden`}
+      data-mobile-menu=""
+      data-open={isOpen}
+      aria-hidden={!isOpen}
+      inert={!isOpen}
+    >
       <button
         type="button"
         tabIndex={-1}
         aria-label="Close navigation menu"
-        className="absolute inset-0 h-full w-full cursor-default bg-ink/55"
+        className={`${styles.backdrop} absolute inset-0 h-full w-full cursor-default bg-ink/55`}
         onClick={onClose}
       />
 
@@ -86,26 +92,29 @@ export default function MobileMenu({ isOpen, onClose, navItems, isActive }: Mobi
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className="absolute bottom-0 right-0 top-0 flex w-[90%] max-w-sm flex-col border-l border-ink/15 bg-paper dark:border-white/15 dark:bg-[#151326]"
+        className={`${styles.panel} absolute bottom-0 right-0 top-0 flex w-[90%] max-w-sm flex-col border-l border-ink/15 bg-paper dark:border-white/15 dark:bg-night`}
       >
-        <div className="flex items-center justify-between border-b border-ink/15 px-5 py-4 dark:border-white/15">
-          <span className="text-lg font-extrabold tracking-tight">Where to?</span>
+        <div className="shrink-0 border-b border-ink/15 px-6 pb-6 pt-4 dark:border-white/15">
+          <div className="flex items-center justify-between">
+          <OwlMark className="h-11 w-16 text-[#703f61] dark:text-[#dfb4d0]" />
           <div className="flex items-center gap-1">
-            <ThemeToggle className="text-ink/60 hover:bg-ink/5 hover:text-ink dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white" />
+            <ThemeToggle className="text-ink/70 hover:bg-ink/5 hover:text-ink dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white" />
             <button
               ref={closeButtonRef}
               type="button"
               onClick={onClose}
-              className="flex h-11 w-11 items-center justify-center rounded-lg border border-ink/15 bg-lilac text-ink"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-ink/20 text-ink hover:bg-cream dark:border-white/25 dark:text-white dark:hover:bg-white/10"
               aria-label="Close navigation menu"
             >
               <X aria-hidden="true" size={22} />
             </button>
           </div>
+          </div>
+          <p className="mt-4 font-serif text-[28px] font-normal tracking-[-0.05em] text-[#703f61] dark:text-[#dfb4d0]">Martin Whitaker.</p>
         </div>
 
-        <nav aria-label="Mobile navigation" className="flex-1 overflow-y-auto px-5 py-8">
-          <ul className="flex flex-col gap-2">
+        <nav aria-label="Mobile navigation" className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
+          <ul className="flex flex-col">
             {navItems.map((item, index) => (
               <li key={item.name}>
                 <Link
@@ -113,14 +122,14 @@ export default function MobileMenu({ isOpen, onClose, navItems, isActive }: Mobi
                   onClick={onClose}
                   aria-current={isActive(item.href) ? 'page' : undefined}
                   className={cn(
-                    'flex items-center justify-between rounded-lg border px-5 py-4 text-xl font-bold tracking-tight transition-colors',
+                    'flex min-h-16 items-center justify-between gap-4 border-b border-ink/15 py-4 font-serif text-[34px] font-normal tracking-[-0.04em] hover:text-[#703f61] dark:border-white/15 dark:hover:text-[#dfb4d0]',
                     isActive(item.href)
-                      ? 'border-lilac bg-lilac text-night'
-                      : 'border-transparent text-ink hover:border-ink/15 hover:bg-cream dark:text-white dark:hover:border-white/15 dark:hover:bg-white/5'
+                      ? 'text-[#703f61] italic underline decoration-1 underline-offset-8 dark:text-[#dfb4d0]'
+                      : 'text-ink dark:text-white'
                   )}
                 >
                   <span>{item.name}</span>
-                  <span aria-hidden="true" className="text-xs opacity-80">0{index + 1}</span>
+                  <span aria-hidden="true" className="font-sans text-[11px] font-medium not-italic tracking-[.12em] text-ink/70 dark:text-white/70">0{index + 1}</span>
                 </Link>
               </li>
             ))}

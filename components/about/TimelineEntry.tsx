@@ -17,7 +17,7 @@ function Content({ entry }: { entry: TimelineEntryData }) {
   return (
     <div className="col-start-2 min-w-0 sm:col-start-auto">
       <h3 className="text-xl font-bold tracking-tight">{entry.title}</h3>
-      {entry.subtitle && <p className="mt-1 text-base font-semibold text-ink/65 dark:text-white/65">{entry.subtitle}</p>}
+      {entry.subtitle && <p className="mt-1 text-base font-semibold text-ink/75 dark:text-white/65">{entry.subtitle}</p>}
       <p className="mt-2 text-base leading-7 text-ink/70 dark:text-white/70">{entry.description}</p>
       {entry.tags && entry.tags.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
@@ -43,7 +43,7 @@ export default function TimelineEntry({ entry }: TimelineEntryProps) {
   return (
     <div className="grid grid-cols-[44px_minmax(0,1fr)] items-start gap-x-5 gap-y-3 sm:grid-cols-[44px_150px_minmax(0,1fr)] lg:gap-x-8">
       <Dot entry={entry} />
-      <p className="pt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink/65 dark:text-white/65">{entry.displayDate}</p>
+      <p className="pt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink/75 dark:text-white/65">{entry.displayDate}</p>
       <Content entry={entry} />
     </div>
   )

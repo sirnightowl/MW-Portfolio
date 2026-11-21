@@ -93,7 +93,7 @@ export default function ContactForm() {
           onClick={() => setSubmitted(false)}
           className="mt-4 min-h-11 text-sm font-semibold text-ink/70 dark:text-white/70 underline underline-offset-4"
         >
-          Send another
+          Write another draft
         </button>
       </div>
     )
@@ -155,9 +155,12 @@ export default function ContactForm() {
         {errors.message && <p id="message-error" className="mt-2 text-sm font-semibold text-[#a52d3d] dark:text-coral">{errors.message.message}</p>}
       </div>
 
-      <Button type="submit" size="lg" disabled={isSubmitting}>
-        {isSubmitting ? 'Opening mail…' : 'Send message'}
-      </Button>
+      <div>
+        <p id="email-draft-help" className="mb-3 text-xs leading-6 text-ink/70 dark:text-white/70">Opens a draft in your email app. You review and send it from there.</p>
+        <Button type="submit" size="lg" disabled={isSubmitting} aria-describedby="email-draft-help">
+          {isSubmitting ? 'Opening draft…' : 'Open email draft'}
+        </Button>
+      </div>
     </form>
   )
 }

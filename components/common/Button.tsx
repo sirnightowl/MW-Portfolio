@@ -14,15 +14,15 @@ type ButtonAnchorProps = ButtonProps & AnchorHTMLAttributes<HTMLAnchorElement>
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonAnchorProps>(
   ({ className, variant = 'primary', size = 'md', href, ...props }, ref) => {
     const classes = cn(
-      'inline-flex min-h-11 items-center justify-center rounded-[10px] border font-bold tracking-[-0.01em] transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
+      'inline-flex min-h-11 items-center justify-center rounded-[10px] border font-bold tracking-[-0.01em] disabled:pointer-events-none disabled:opacity-50',
       {
-        'border-ink bg-ink text-white hover:-translate-y-0.5 hover:bg-[#29243f] dark:border-lilac dark:bg-lilac dark:text-night dark:hover:bg-[#d8c3ff]':
+        'border-ink bg-ink text-white hover:bg-[#29243f] dark:border-lilac dark:bg-lilac dark:text-night dark:hover:bg-[#d8c3ff]':
           variant === 'primary',
-        'border-lilac bg-lilac text-ink hover:-translate-y-0.5 hover:bg-[#d8c3ff]':
+        'border-lilac bg-lilac text-ink hover:bg-[#d8c3ff]':
           variant === 'secondary',
-        'border-ink/20 bg-white/70 text-ink hover:-translate-y-1 hover:border-ink/40 hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/20':
+        'border-ink/20 bg-white/70 text-ink hover:border-ink/40 hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/20':
           variant === 'outline',
-        'border-transparent bg-transparent text-ink/70 hover:bg-ink/5 hover:text-ink active:scale-[0.98] dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white':
+        'border-transparent bg-transparent text-ink/70 hover:bg-ink/5 hover:text-ink dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white':
           variant === 'ghost',
       },
       {

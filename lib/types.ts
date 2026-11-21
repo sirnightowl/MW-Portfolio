@@ -27,6 +27,7 @@ export interface Project {
   status: string
   isLive?: boolean
   leadMetric?: string
+  summary: { problem: string; decision: string; delivered: string }
   role: string
   challenge: string
   challengeTitle: string

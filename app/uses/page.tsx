@@ -61,7 +61,7 @@ export default function UsesPage() {
                 {group.items.map((item) => (
                   <li key={item.name}>
                     <h3 className="font-bold leading-6">{item.name}</h3>
-                    <p className="mt-1 text-sm leading-6 text-ink/65 dark:text-white/65">{item.note}</p>
+                    <p className="mt-1 text-sm leading-6 text-ink/75 dark:text-white/65">{item.note}</p>
                   </li>
                 ))}
               </ul>

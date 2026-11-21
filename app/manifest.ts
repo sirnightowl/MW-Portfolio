@@ -9,10 +9,12 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Digital interaction designer and front-end developer building accessible public services and characterful products.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#fbfaff',
-    theme_color: '#0b0715',
+    background_color: '#f8f4eb',
+    theme_color: '#f8f4eb',
     icons: [
-      { src: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
+      { src: '/owl-icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/owl-icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: '/owl-icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
     ],
   }
 }

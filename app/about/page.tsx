@@ -23,9 +23,9 @@ export default function AboutPage() {
     <main id="main" tabIndex={-1}>
       <PageIntro
         eyebrow="About me"
-        title={<>Practical builder,<br /><span>product brain,</span><br />occasional cat supervisor.</>}
-        description="I like interfaces that explain themselves and systems that survive real users. By day I design and build for Norfolk County Council — by night I build horror fan platforms, Kanban tools, and SEND resources."
-        note="Designer, developer, and a human with a few side quests."
+        title={<>A designer who<br /><span>builds things.</span></>}
+        description="I’m Martin, a digital interaction designer and front-end developer in Norfolk. I work across public services and independent products, from the first wireframe to the finished interface."
+        note="Local government / Independent products / Life in Norfolk"
         aside={
           <div className="grid grid-cols-2 items-center gap-3 sm:gap-4">
             <div className="relative aspect-[4/5] -rotate-2 overflow-hidden rounded-xl bg-butter">
@@ -47,7 +47,7 @@ export default function AboutPage() {
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href="/cv" className="hero-button">Read my CV</Button>
-          <Button href={cvDownload} download="Martin-Whitaker-CV-2026.pdf" className="border-white/30 bg-transparent text-white hover:bg-white/10">Download CV (PDF)</Button>
+          <Button href={cvDownload} download="Martin-Whitaker-CV-2026.pdf" variant="outline">Download CV (PDF)</Button>
         </div>
       </PageIntro>
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <p className="eyebrow">What I do</p>
-            <h2 className="display-title mt-3 text-3xl md:text-4xl">Digital experience design, front end build, and a bit of everything in between.</h2>
+            <h2 className="display-title mt-3 text-3xl md:text-4xl">Design and development, together.</h2>
             <div className="mt-8 space-y-6 text-lg leading-8 text-ink/70 dark:text-white/70">
               <p>At Norfolk County Council I lead front end design and development across a suite of public-facing websites. That means everything from information architecture and wireframing through to prototyping, user testing, and production-ready code. Accessibility isn&apos;t a checklist item — it&apos;s baked into how I work.</p>
               <p>On the side I build products that scratch my own itches. Horrorometer exists because I wanted a proper horror-only review platform. SENDadvisor aims to make SEND services more transparent for parents navigating the system. I&apos;m also developing two unreleased projects: Kanaboards, a planning workspace for people and AI agents, and Stay With Me: Deep Sea, a narrative horror game.</p>

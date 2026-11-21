@@ -1,0 +1,14 @@
+.overlay { visibility: hidden; pointer-events: none; }
+.panel { transform: translateX(100%); }
+.backdrop { opacity: 0; }
+.overlay[data-open='true'] { visibility: visible; pointer-events: auto; }
+.overlay[data-open='true'] .panel { transform: translateX(0); }
+.overlay[data-open='true'] .backdrop { opacity: 1; }
+
+/* The only motion exception: a user-triggered drawer, never reduced motion. */
+@media (prefers-reduced-motion: no-preference) and (max-width: 1023px) {
+  .overlay { transition: visibility 0s linear 220ms !important; }
+  .overlay[data-open='true'] { transition-delay: 0s !important; }
+  .panel { transition: transform 220ms cubic-bezier(.2, .8, .2, 1) !important; }
+  .backdrop { transition: opacity 180ms ease-out !important; }
+}

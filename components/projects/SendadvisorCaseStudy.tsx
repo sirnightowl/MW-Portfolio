@@ -7,8 +7,8 @@ const screens: CaseStudyScreenContent[] = [
   {
     id: 'search', number: '01', title: 'Start with the kind of help.',
     intro: 'The homepage puts the search scope before the query. Days out, services, education, and an all-content search share a starting point, with a separate location input.',
-    image: '/images/projects/sendadvisor-case-study/home.webp', height: 612,
-    alt: 'SENDadvisor homepage with Days out, Services, Education and Search all scopes above keyword and location fields, followed by a coverage notice.',
+    image: '/images/projects/sendadvisor-case-study/home-with-header.webp', width: 1280, height: 900,
+    alt: 'SENDadvisor logo and navigation above the homepage, with search scopes, keyword and location fields, a coverage notice and four starting points.',
     url: 'https://sendadvisor.co.uk/', label: 'Homepage / Search entry',
     notes: [
       ['Separate scope from query', 'The selected scope changes the search prompt and destination. The interface makes the content type a visible choice.'],
@@ -19,8 +19,8 @@ const screens: CaseStudyScreenContent[] = [
   {
     id: 'results', number: '02', title: 'Keep refinement close to the results.',
     intro: 'The days-out view combines search with category and feature controls. Sorting and grid, list, and map controls sit beside the result count, above the listing cards.',
-    image: '/images/projects/sendadvisor-case-study/results.webp', height: 577,
-    alt: 'SENDadvisor days-out search, category filters including Dedicated SEND sessions and Soft play, sort and view controls, a provenance note, and the first row of result images.',
+    image: '/images/projects/sendadvisor-case-study/results-with-header.webp', width: 1280, height: 900,
+    alt: 'SENDadvisor logo and navigation above days-out search, category filters, sort and view controls, a provenance note and the first row of result images.',
     url: 'https://sendadvisor.co.uk/days-out', label: 'Days out / Directory controls',
     notes: [
       ['Make refinement explicit', 'The route reads categories, features, query, location, sort, and view parameters. These are defined inputs to the directory, rather than a single undifferentiated search.'],
@@ -31,8 +31,8 @@ const screens: CaseStudyScreenContent[] = [
   {
     id: 'councils', number: '03', title: 'Keep the official destination in view.',
     intro: 'Council pages use one template to bring official links, available contact details, and related directory results together. Norfolk is the public example shown here.',
-    image: '/images/projects/sendadvisor-case-study/council.webp', height: 612,
-    alt: 'Norfolk council page with separate actions for the official Local Offer, council website, and council contacts, above the Council Details and SEND contact panels.',
+    image: '/images/projects/sendadvisor-case-study/council-with-header.webp', width: 1280, height: 900,
+    alt: 'SENDadvisor logo and navigation above the Norfolk council page, with official Local Offer, council website and contact actions, plus Council Details and SEND contact panels.',
     url: 'https://sendadvisor.co.uk/councils/norfolk', label: 'Council information / Norfolk',
     notes: [
       ['Give links distinct jobs', 'The Local Offer, council website, and contact section have separate labels and destinations. The directory provides routes to official information.'],
@@ -65,11 +65,6 @@ export default function SendadvisorCaseStudy({ project }: { project: Project }) 
           <h2 id="context-title" className={styles.title}>{project.challengeTitle}</h2>
           <p className={styles.body}>{project.challenge}</p>
         </div>
-        <aside className={styles.scope} aria-label="Case study scope">
-          <p className="eyebrow">What this case study covers</p>
-          <p>The current public interface and its implementation. Screenshots were captured on 19 October 2026; they are cropped desktop views, with the account header excluded.</p>
-          <p>Result counts are a point-in-time snapshot. The rationale below explains the implementation, without claiming research sessions or measured changes in family outcomes.</p>
-        </aside>
       </section>
 
       {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
@@ -105,6 +100,12 @@ export default function SendadvisorCaseStudy({ project }: { project: Project }) 
           <p>These are proposed evaluation questions, not reported study findings.</p>
         </div>
       </section>
+
+        <aside className={styles.scope} aria-label="Case study scope">
+          <p className="eyebrow">What this case study covers</p>
+          <p>The public interface and its implementation. Screenshots were captured on 26 October 2026 while signed out; they show the full desktop viewport, including the website header.</p>
+          <p>Result counts are a point-in-time snapshot. The rationale below explains the implementation, without claiming research sessions or measured changes in family outcomes.</p>
+        </aside>
     </div>
   )
 }

@@ -70,11 +70,6 @@ export default function KanaboardsCaseStudy({ project }: { project: Project }) {
           <h2 id="context-title" className={styles.title}>{project.challengeTitle}</h2>
           <p className={styles.body}>{project.challenge}</p>
         </div>
-        <aside className={styles.scope} aria-label="Case study scope">
-          <p className="eyebrow">Unreleased development build</p>
-          <p>Kanaboards is unreleased. These three real screenshots were captured on 19 October 2026 from the local development build using its built-in, local-storage-backed sample workspace.</p>
-          <p>Sample names, comments, dates and counts illustrate the interface. They are not customer activity, user research or release evidence. No agent was launched for these captures.</p>
-        </aside>
       </section>
 
       {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
@@ -110,6 +105,12 @@ export default function KanaboardsCaseStudy({ project }: { project: Project }) {
           <p>These are proposed evaluation questions, not completed studies or verified outcomes. Public release is still ahead.</p>
         </div>
       </section>
+
+        <aside className={styles.scope} aria-label="Case study scope">
+          <p className="eyebrow">Unreleased development build</p>
+          <p>Kanaboards is unreleased. These three real screenshots were captured on 19 October 2026 from the local development build using its built-in, local-storage-backed sample workspace.</p>
+          <p>Sample names, comments, dates and counts illustrate the interface. They are not customer activity, user research or release evidence. No agent was launched for these captures.</p>
+        </aside>
     </div>
   )
 }

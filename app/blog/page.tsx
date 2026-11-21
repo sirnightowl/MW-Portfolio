@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
       <PageIntro eyebrow="The notebook" title={<>Notes on design,<br /><span>and shipping solo.</span></>} description="Things I’ve learned building accessible public services and characterful products — from accessibility and design systems to the details of shipping. Written for people who build." note={`${published.length} notes / Ideas from practice`} />
 
       <section aria-label="All articles" className="container-custom page-section">
-        <div className="mb-8 flex items-center justify-between border-b border-ink/15 pb-5 dark:border-white/15"><h2 className="eyebrow">Latest thinking</h2><span className="text-xs text-ink/65 dark:text-white/65">Most recent first</span></div>
+        <div className="mb-8 flex items-center justify-between border-b border-ink/15 pb-5 dark:border-white/15"><h2 className="eyebrow">Latest thinking</h2><span className="text-xs text-ink/75 dark:text-white/65">Most recent first</span></div>
         <div className="article-grid">
           {published.map((article, index) => <ArticleCard key={article.id} article={article} heading="h3" featured={index === 0} />)}
         </div>

@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <main id="main" tabIndex={-1}>
-      <PageIntro eyebrow="Contact" title={<>Good things start<br /><span>with a conversation.</span></>} description="Have a useful idea, an interesting problem, or a small project in mind? I’m currently taking on select freelance work alongside my day job." note="Based in Norfolk, UK / Usually replies within a couple of days" />
+      <PageIntro eyebrow="Contact" variant="compact" title={<>Let&apos;s <span>talk.</span></>} description="Have a project in mind? I take on select freelance work alongside my day job." note="Norfolk, UK / Usually replies within a couple of days" />
 
       <section className="container-custom page-section">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-24">
@@ -24,7 +24,7 @@ export default function ContactPage() {
             </div>
             <div className="rule-panel">
               <p className="eyebrow">Find me online</p>
-              <SocialLinks className="mt-5" iconClassName="text-ink/60 hover:text-ink dark:text-white/60 dark:hover:text-white" />
+              <SocialLinks className="mt-5" iconClassName="text-ink/70 hover:text-ink dark:text-white/60 dark:hover:text-white" />
             </div>
             <div className="rule-panel">
               <p className="eyebrow">Availability</p>
@@ -34,7 +34,7 @@ export default function ContactPage() {
           </div>
           <div className="surface-card order-1 bg-white p-6 dark:bg-[#151326] sm:p-8 lg:order-2">
             <h2 className="display-title text-2xl">Tell me what you have in mind.</h2>
-            <p className="mb-8 mt-3 text-sm leading-6 text-ink/65 dark:text-white/65">A few details are all you need. Sending opens a draft in your email app.</p>
+            <p className="mb-6 mt-3 text-sm leading-6 text-ink/75 dark:text-white/65">A short introduction and a little about the project are plenty.</p>
             <ContactForm />
           </div>
         </div>

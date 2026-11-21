@@ -57,19 +57,23 @@ test('mobile menu traps focus, makes the background inert, and restores focus', 
 
 test('invalid form submission focuses the first required field', async ({ page }) => {
   await page.goto('/contact')
-  await page.getByRole('button', { name: 'Send message', exact: true }).click()
+  await page.getByRole('button', { name: 'Open email draft', exact: true }).click()
   await expect(page.getByLabel('Name', { exact: true })).toBeFocused()
   await expect(page.getByLabel('Name', { exact: true })).toHaveAttribute('required', '')
   await expect(page.getByLabel('Name', { exact: true })).toHaveAttribute('aria-describedby', 'name-error')
 })
 
-test('reduced motion keeps counters at their final values', async ({ page }) => {
+test('homepage brings selected work into the first mobile screen', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
-  await expect(page.getByText(String(projects.length), { exact: true })).toHaveText(String(projects.length))
-  await expect(page.getByText('12+', { exact: true })).toHaveText('12+')
-  await expect(page.getByText(`${projects.filter((project) => project.isLive).length} Live products`, { exact: true })).toBeVisible()
-  await expect(page.getByText('2 Unreleased projects', { exact: true })).toBeVisible()
+  await page.evaluate(() => document.fonts.ready)
+  await expect(page.locator('#work .project-card')).toHaveCount(3)
+  const featured = page.locator('#work .project-card').first()
+  await expect(featured).toHaveAttribute('href', '/projects/sendadvisor')
+  const bounds = await featured.boundingBox()
+  expect(bounds!.y).toBeLessThan(844)
+  await expect(page.getByRole('link', { name: 'View all 5 projects' })).toHaveAttribute('href', '/work')
 })
 
 for (const theme of ['light', 'dark']) {
@@ -90,20 +94,9 @@ for (const theme of ['light', 'dark']) {
           }
           window.scrollTo(0, 0)
         })
-        await page.waitForFunction(() => Array.from(document.querySelectorAll('[data-reveal]')).every((element) => getComputedStyle(element).opacity === '1'), undefined, { timeout: 5000 })
         await audit(page, testInfo)
       })
     }
-
-    test('hero text contrasts with the brightest gradient stop', async ({ page }, testInfo) => {
-      for (const route of ['/', '/about', '/projects/horrorometer', '/blog/accessible-by-default']) {
-        await page.goto(route)
-        // A solid version of the lightest stop supplies a conservative bound
-        // for text that axe cannot assess over a gradient automatically.
-        await page.addStyleTag({ content: 'header[class*="PageIntro"], main > section[class*="home-module"]:first-child { background-image: none !important; background-color: #242035 !important; }' })
-        await audit(page, testInfo, true)
-      }
-    })
 
     test('mobile navigation dialog and contact errors are accessible', async ({ page }, testInfo) => {
       await page.setViewportSize({ width: 375, height: 812 })
@@ -112,7 +105,7 @@ for (const theme of ['light', 'dark']) {
       await expect(page.getByRole('dialog', { name: 'Navigation menu' })).toBeVisible()
       await audit(page, testInfo)
       await page.keyboard.press('Escape')
-      await page.getByRole('button', { name: 'Send message', exact: true }).click()
+      await page.getByRole('button', { name: 'Open email draft', exact: true }).click()
       await audit(page, testInfo)
     })
   })

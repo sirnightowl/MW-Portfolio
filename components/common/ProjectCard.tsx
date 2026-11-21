@@ -1,22 +1,23 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/lib/types'
+import ProjectArtwork from './ProjectArtwork'
 
-export default function ProjectCard({ project, heading: Heading = 'h2' }: { project: Project; heading?: 'h2' | 'h3' }) {
+export default function ProjectCard({ project, heading: Heading = 'h2', featured = false, preload = false }: { project: Project; heading?: 'h2' | 'h3'; featured?: boolean; preload?: boolean }) {
   return (
-    <Link href={`/projects/${project.id}`} className="project-card group">
-      <div className="project-card-image">
-        <Image alt={project.imageAlt ?? `${project.title} screenshot`} className="object-cover transition-transform duration-500 group-hover:scale-[1.025]" style={{ objectPosition: project.imagePosition ?? 'center' }} fill sizes="(min-width: 1280px) 572px, (min-width: 640px) 50vw, 100vw" src={project.image} />
-      </div>
-      <div className="mt-5 flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <p className="eyebrow !text-[10px]">{project.status} <span aria-hidden="true">·</span> Reviewed {project.year}</p>
-          <Heading className="display-title mt-2 text-2xl transition-colors group-hover:text-[#7751bb] dark:group-hover:text-lilac sm:text-3xl">{project.title}</Heading>
+    <Link href={`/projects/${project.id}`} className={`project-card group${featured ? ' project-card-featured' : ''}`}>
+      <ProjectArtwork project={project} preload={preload} showDetail sizes={featured ? '(min-width: 1280px) 680px, (min-width: 768px) 60vw, calc(100vw - 40px)' : undefined} />
+      <div className="project-card-content">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="project-card-meta"><span className={`project-status${project.isLive ? ' project-status-live' : ''}`} aria-hidden="true" />{project.status}<span aria-hidden="true">/</span>{project.category}</p>
+            <Heading className="display-title mt-3 text-2xl group-hover:text-[#7751bb] dark:group-hover:text-lilac sm:text-3xl">{project.title}</Heading>
+          </div>
+          {!featured && <span className="project-card-arrow"><ArrowUpRight aria-hidden="true" size={18} /></span>}
         </div>
-        <span className="project-card-arrow"><ArrowUpRight aria-hidden="true" size={18} /></span>
+        <p className="project-card-description">{project.description}</p>
+        {featured && <><p className="project-card-focus">{project.summary.decision}</p><span className="project-card-read">Read the case study <ArrowUpRight aria-hidden="true" size={17} /></span></>}
       </div>
-      <p className="mt-3 max-w-xl text-sm leading-6 text-ink/70 dark:text-white/70">{project.description}</p>
     </Link>
   )
 }

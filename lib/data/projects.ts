@@ -5,9 +5,9 @@ export const projects: Project[] = [
   {
     "id": "sendadvisor",
     "title": "SENDadvisor",
-    "description": "A SEND directory bringing days out, specialist services, education, council information, and guidance into one searchable interface for families in England.",
+    "description": "Helping families in England find SEND services, days out, education, and official council information in one directory.",
     "longDescription": "A directory for families looking for SEND-related places, services, education, and guidance in England. Search, category filters, and council pages connect the directory to official information. This case study examines the implemented interface and candidate-review tooling.",
-    "image": "/images/projects/sendadvisor-card.webp",
+    "image": "/images/projects/sendadvisor-case-study/home-with-header.webp",
     "technologies": [
       "Next.js",
       "TypeScript",
@@ -23,6 +23,11 @@ export const projects: Project[] = [
     "status": "Live product",
     "isLive": true,
     "leadMetric": "Search, council information, and a separate candidate-review workflow",
+    "summary": {
+      "problem": "Families need a clear starting point across different kinds of SEND information.",
+      "decision": "Separate the kind of help from the search query, and keep location and official sources in view.",
+      "delivered": "A live directory with search, category filters, guidance, and council pages. Coverage remains incomplete."
+    },
     "role": "Product and interface design, front-end development, and candidate-review tooling.",
     "challenge": "The product needs to organise several kinds of information: places to visit, specialist services, schools, guidance, and official council destinations. Search and browsing need distinct routes, while missing fields and uneven directory coverage need to remain visible rather than imply completeness.",
     "challengeTitle": "Give different needs a clear starting point.",
@@ -45,15 +50,15 @@ export const projects: Project[] = [
       "border": "border-ink",
       "shadow": "shadow-[8px_10px_0_#1f1f1d]"
     },
-    "imageAlt": "SENDadvisor directory interface",
+    "imageAlt": "SENDadvisor homepage with its logo, navigation and directory search",
     "reviewedAt": "2026-10-19"
   },
   {
     "id": "horrorometer",
     "title": "Horrorometer",
-    "description": "A horror catalogue and review platform with browsing controls, public title pages, and an overall review score.",
+    "description": "A home for horror discovery, with a browsable catalogue, title details, and reviews.",
     "longDescription": "A horror-focused catalogue and review platform for movies, TV, and books. This case study follows the public movie catalogue, a title page, and the signed-out review handoff, alongside the inspected review form and API contract.",
-    "image": "/images/projects/horrorometer-case-study/catalogue.webp",
+    "image": "/images/projects/horrorometer-case-study/catalogue-with-header.webp",
     "technologies": [
       "Next.js",
       "TypeScript",
@@ -69,6 +74,11 @@ export const projects: Project[] = [
     "status": "Live product",
     "isLive": true,
     "leadMetric": "Public discovery · Title context · Review inputs",
+    "summary": {
+      "problem": "People need to explore horror titles and understand what they are reviewing.",
+      "decision": "Connect catalogue controls to clear title pages, then make the sign-in step explicit before reviewing.",
+      "delivered": "A live catalogue and review platform. This case study documents its public flow and review implementation."
+    },
     "role": "Product design and implementation across catalogue interfaces, review inputs, API integrations, and device authorisation.",
     "challenge": "Browsing a catalogue, understanding a title, and contributing a review are different tasks. The interface needs clear discovery controls and title context before an account-specific action. Its rating controls also need to be described accurately: the public summary, review form, and API schema are separate parts of the implementation.",
     "challengeTitle": "Make discovery and review intent clear.",
@@ -92,15 +102,15 @@ export const projects: Project[] = [
       "shadow": "shadow-[8px_10px_0_#fffaf2]"
     },
     "reviewedAt": "2026-10-19",
-    "imageAlt": "Horrorometer movie catalogue with browsing controls above a poster grid"
+    "imageAlt": "Horrorometer movie catalogue with its logo, search header, browsing controls and poster grid"
   },
   {
     "id": "lush-svg",
     "title": "Lush SVG",
-    "description": "A live SVG studio for browsing collections, customising artwork, and exporting backgrounds and website elements.",
+    "description": "A creative studio for finding, customising, and exporting SVG backgrounds and website elements.",
     "longDescription": "A browser-based SVG studio bringing backgrounds, website elements, illustrations and decorative accents into an editable catalogue. This case study follows the public studio, a mesh-gradient collection and its editor, alongside the inspected filtering, URL state and export implementation.",
-    "image": "/images/projects/lush-svg-case-study/editor.webp",
-    "imageAlt": "Lush SVG editor with a mesh-gradient preview beside colour and detail controls",
+    "image": "/images/projects/lush-svg-case-study/studio.webp",
+    "imageAlt": "Lush SVG studio homepage with its logo, navigation, search and background collection previews",
     "technologies": [
       "JavaScript",
       "SVG",
@@ -115,6 +125,11 @@ export const projects: Project[] = [
     "status": "Live product",
     "isLive": true,
     "leadMetric": "Collection browsing · Editable artwork · SVG and CSS output",
+    "summary": {
+      "problem": "A visual catalogue needs a clear path from finding an asset to making it your own.",
+      "decision": "Keep the selected collection visible and bring the artwork preview together with its editing controls.",
+      "delivered": "A live SVG studio with collection filters, editable artwork, shareable design links, and SVG and CSS output."
+    },
     "role": "Interface design and front-end development across catalogue browsing, SVG customisation and export tooling.",
     "challenge": "A catalogue of visual assets needs more than a grid: people need a starting point, a visible selection scope, and a way to adapt a design to their own palette and layout. Browsing, editing and choosing an output format are distinct tasks that the studio needs to connect.",
     "challengeTitle": "Turn a visual catalogue into an editable starting point.",
@@ -159,6 +174,11 @@ export const projects: Project[] = [
     "status": "Unreleased",
     "isLive": false,
     "leadMetric": "Unreleased · Board context, parent relationships and local runners",
+    "summary": {
+      "problem": "A task needs to retain its project context when work moves between a shared board and a local coding agent.",
+      "decision": "Connect board assignments and parent relationships to a separate local runner contract.",
+      "delivered": "An unreleased planning workspace and runner integration in development. Screenshots use bundled sample data."
+    },
     "role": "Product design, full-stack development, and agent workflow implementation.",
     "challenge": "A planning workspace needs to distinguish workflow status, card context and parent relationships. Connecting that work to a coding agent introduces another boundary: a board assignment and a running local process are different states, with repository and branch context to check before execution.",
     "challengeTitle": "Connect the shape of the work to its execution.",
@@ -188,8 +208,8 @@ export const projects: Project[] = [
     "title": "Stay With Me: Deep Sea",
     "description": "An unreleased narrative horror game combining a message thread, timed story rules, recovered camera views, and a persistent archive.",
     "longDescription": "An unreleased narrative horror game built with React Native and Expo. This case study follows its title screen, opening conversation with Mara, and recovered-camera archive in the local web build, alongside the story engine and platform adapters.",
-    "image": "/images/projects/stay-with-me-deep-sea.webp",
-    "imageAlt": "Halcyon research station on the dark ocean floor, lit by a small submersible",
+    "image": "/images/projects/deep-sea-case-study/title.webp",
+    "imageAlt": "Title screen of the unreleased Stay With Me game, retaining the captured build subtitle Ocean Floor",
     "imagePosition": "center 78%",
     "gallery": [
       {
@@ -216,6 +236,11 @@ export const projects: Project[] = [
     "status": "Unreleased",
     "isLive": false,
     "leadMetric": "Unreleased game · Story engine, recovered material, and mobile integrations",
+    "summary": {
+      "problem": "A message-based horror story needs coherent progression across its conversation and recovered material.",
+      "decision": "Separate typed story rules from platform effects, with an archive tied to revealed history.",
+      "delivered": "An unreleased narrative game. The browser captures show its opening sequence and first recovered camera frame."
+    },
     "role": "Narrative interface design and implementation across story rules, the archive, and mobile integrations.",
     "challenge": "The story needs to manage conditional messages and choices while keeping engine rules separate from device effects. Recovered material also needs a persistent place outside the active conversation. Whether the pacing creates suspense or the choices feel consequential requires playtesting beyond source inspection.",
     "challengeTitle": "Separate story progression from device behaviour.",

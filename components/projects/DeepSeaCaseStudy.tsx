@@ -70,11 +70,6 @@ export default function DeepSeaCaseStudy({ project }: { project: Project }) {
           <h2 id="context-title" className={styles.title}>{project.challengeTitle}</h2>
           <p className={styles.body}>{project.challenge}</p>
         </div>
-        <aside className={styles.scope} aria-label="Case study scope">
-          <p className="eyebrow">Unreleased game / Browser capture</p>
-          <p>Three real screenshots captured on 19 October 2026 from the existing 18 October local web export. The title, opening replies and first recovered camera frame were reached through the game controls.</p>
-          <p>The dialogue is authored fiction, not participant feedback. These captures show the browser interface, not native notification delivery, a complete playthrough or evidence of player reactions. The game remains unreleased.</p>
-        </aside>
       </section>
 
       {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
@@ -110,6 +105,12 @@ export default function DeepSeaCaseStudy({ project }: { project: Project }) {
           <p>These are proposed evaluation questions. No playtesting findings, measured engagement or public release are claimed.</p>
         </div>
       </section>
+
+        <aside className={styles.scope} aria-label="Case study scope">
+          <p className="eyebrow">Unreleased game / Browser capture</p>
+          <p>Three real screenshots captured on 19 October 2026 from the existing 18 October local web export. The title, opening replies and first recovered camera frame were reached through the game controls.</p>
+          <p>The dialogue is authored fiction, not participant feedback. These captures show the browser interface, not native notification delivery, a complete playthrough or evidence of player reactions. The game remains unreleased.</p>
+        </aside>
     </div>
   )
 }

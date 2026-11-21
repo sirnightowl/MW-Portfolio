@@ -9,8 +9,8 @@ const screens: CaseStudyScreenContent[] = [
   {
     id: 'catalogue', number: '01', title: 'Give browsing its own controls.',
     intro: 'The movie catalogue puts sub-genres, card density, seen-state filtering, language, and sorting above a poster grid. Those controls expose different ways to narrow or organise the same catalogue.',
-    image: '/images/projects/horrorometer-case-study/catalogue.webp', width: 1256, height: 560,
-    alt: 'Horrorometer movie catalogue with Sub-genres, large and small card views, Hide Seen, language and sorting controls above a grid of movie posters.',
+    image: '/images/projects/horrorometer-case-study/catalogue-with-header.webp', width: 1272, height: 716,
+    alt: 'Horrorometer logo, search and account header above the movie catalogue, browsing controls, poster grid and bottom navigation.',
     url: 'https://www.horrorometer.com/movies', label: 'Movies / Catalogue controls',
     notes: [
       ['Keep choices together', 'The visible toolbar groups the browsing controls above the cards. The inspected movie route reads genre, language, sort, page, and seen-state parameters.'],
@@ -20,9 +20,9 @@ const screens: CaseStudyScreenContent[] = [
   },
   {
     id: 'title-context', number: '02', title: 'Put the title in context.',
-    intro: 'The title page gathers artwork, a synopsis, credits, and library actions. This cropped view also shows the rating summary and Write Review entry for Hidden, which had no reviews at capture time.',
-    image: '/images/projects/horrorometer-case-study/title.webp', width: 1256, height: 530,
-    alt: 'Hidden title page with poster, synopsis, cast, trailer and library actions, and a 0.0 average with 0 Reviews beside Write Review.',
+    intro: 'The title page gathers artwork, a synopsis, credits, and library actions. This view also shows the rating summary and Write Review entry for Hidden, which had no reviews at capture time.',
+    image: '/images/projects/horrorometer-case-study/title-with-header.webp', width: 1272, height: 716,
+    alt: 'Horrorometer header and bottom navigation framing the Hidden poster, synopsis, cast, trailer and library actions, and its zero-review summary.',
     url: titleUrl, label: 'Hidden / Public title page',
     notes: [
       ['Separate context from action', 'The synopsis and credits explain the title, while the trailer and library controls offer different next steps. This is the implemented information structure.'],
@@ -33,8 +33,8 @@ const screens: CaseStudyScreenContent[] = [
   {
     id: 'review-handoff', number: '03', title: 'Make the account handoff visible.',
     intro: 'Selecting Write Review while signed out opens the sign-in page. This is the real public handoff, captured without entering credentials or submitting a review.',
-    image: '/images/projects/horrorometer-case-study/signin.webp', width: 1256, height: 560,
-    alt: 'Horrorometer sign-in page showing Google and Discord options, a blank email field, an email continuation button, a magic-link option and a sign-up link.',
+    image: '/images/projects/horrorometer-case-study/signin-with-header.webp', width: 1272, height: 716,
+    alt: 'Horrorometer header and bottom navigation framing its sign-in page, with Google and Discord options, a blank email field, magic-link and sign-up options.',
     url: signInUrl, label: 'Write Review / Signed-out handoff',
     notes: [
       ['Keep the public flow observable', 'Catalogue and title information were viewable before sign-in. The review action led to authentication instead of pretending that a review had been submitted.'],
@@ -67,11 +67,6 @@ export default function HorrorometerCaseStudy({ project }: { project: Project })
           <h2 id="context-title" className={styles.title}>{project.challengeTitle}</h2>
           <p className={styles.body}>{project.challenge}</p>
         </div>
-        <aside className={styles.scope} aria-label="Case study scope">
-          <p className="eyebrow">What this case study covers</p>
-          <p>Three real views from the signed-out public site, captured on 19 October 2026. Screenshots are cropped to the main interface, with the global header and fixed bottom navigation excluded.</p>
-          <p>The notes distinguish public interface observations from inspected source code. They do not claim a usability study, measured engagement, or verification of a completed sign-in flow.</p>
-        </aside>
       </section>
 
       {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
@@ -107,6 +102,12 @@ export default function HorrorometerCaseStudy({ project }: { project: Project })
           <p>These are proposed evaluation questions. No participant findings or improvements in completion rates are claimed.</p>
         </div>
       </section>
+
+        <aside className={styles.scope} aria-label="Case study scope">
+          <p className="eyebrow">What this case study covers</p>
+          <p>Three real views from the signed-out public site, captured on 19 October 2026. Full desktop captures include the global header and fixed bottom navigation.</p>
+          <p>The notes distinguish public interface observations from inspected source code. They do not claim a usability study, measured engagement, or verification of a completed sign-in flow.</p>
+        </aside>
     </div>
   )
 }

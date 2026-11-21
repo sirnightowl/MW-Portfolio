@@ -72,7 +72,7 @@ export default function AnimatedCounter({
         <span ref={ref}>{prefix}{value.toLocaleString('en-GB')}{suffix}</span>
       </p>
       <p className="sr-only">{prefix}{to.toLocaleString('en-GB')}{suffix} {label}</p>
-      <p aria-hidden="true" className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-ink/60 dark:text-white/60">{label}</p>
+      <p aria-hidden="true" className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-ink/70 dark:text-white/60">{label}</p>
     </div>
   )
 }

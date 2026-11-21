@@ -6,7 +6,7 @@ const publishedCount = articles.filter((a) => a.published).length
 
 test('homepage loads with main heading', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('main h1')).toContainText('Useful digital products')
+  await expect(page.locator('main h1')).toContainText('accessible digital products')
 })
 
 test('homepage navigates to a project case study', async ({ page }) => {
@@ -23,10 +23,10 @@ test('SENDadvisor case study provides navigable, captioned interface evidence', 
   await expect(page).toHaveURL(/#results$/)
   await expect(page.getByRole('heading', { name: 'Keep refinement close to the results.' })).toBeVisible()
   for (const name of ['home', 'results', 'council']) {
-    const image = page.locator(`img[src="/images/projects/sendadvisor-case-study/${name}.webp"]`)
+    const image = page.locator(`main figure img[src="/images/projects/sendadvisor-case-study/${name}-with-header.webp"]`)
     await image.scrollIntoViewIfNeeded()
     await expect.poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
-    const asset = await request.get(`/images/projects/sendadvisor-case-study/${name}.webp`)
+    const asset = await request.get(`/images/projects/sendadvisor-case-study/${name}-with-header.webp`)
     expect(asset.status()).toBe(200)
     expect(asset.headers()['content-type']).toContain('image/webp')
   }
@@ -46,10 +46,10 @@ test('Horrorometer case study links real screenshots to its public flow and impl
   await expect(page).toHaveURL(/#review-handoff$/)
   await expect(page.getByRole('heading', { name: 'Make the account handoff visible.' })).toBeVisible()
   for (const name of ['catalogue', 'title', 'signin']) {
-    const image = page.locator(`main section img[src="/images/projects/horrorometer-case-study/${name}.webp"]`)
+    const image = page.locator(`main section img[src="/images/projects/horrorometer-case-study/${name}-with-header.webp"]`)
     await image.scrollIntoViewIfNeeded()
     await expect.poll(() => image.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
-    const asset = await request.get(`/images/projects/horrorometer-case-study/${name}.webp`)
+    const asset = await request.get(`/images/projects/horrorometer-case-study/${name}-with-header.webp`)
     expect(asset.status()).toBe(200)
     expect(asset.headers()['content-type']).toContain('image/webp')
   }
@@ -107,7 +107,7 @@ test('the former Diver link redirects to the renamed game with its new artwork',
   await page.goto('/projects/the-diver')
   await expect(page).toHaveURL('/projects/stay-with-me-deep-sea')
   await expect(page.locator('main h1')).toHaveText('Stay With Me: Deep Sea')
-  const artwork = page.getByRole('img', { name: 'Halcyon research station on the dark ocean floor, lit by a small submersible' })
+  const artwork = page.getByRole('img', { name: 'Title screen of the unreleased Stay With Me game, retaining the captured build subtitle Ocean Floor' })
   await expect(artwork).toBeVisible()
   await expect.poll(() => artwork.evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
 })
@@ -126,7 +126,7 @@ test('blog post renders markdown content', async ({ page }) => {
 
 test('contact form shows validation errors', async ({ page }) => {
   await page.goto('/contact')
-  await page.getByRole('button', { name: /send message/i }).click()
+  await page.getByRole('button', { name: 'Open email draft', exact: true }).click()
   await expect(page.locator('#name-error')).toBeVisible()
   await expect(page.locator('#email-error')).toBeVisible()
   await expect(page.locator('#message-error')).toBeVisible()
@@ -137,7 +137,7 @@ test('CV is reachable from About and offers the public PDF download', async ({ p
   await page.getByRole('link', { name: 'Read my CV' }).click()
   await expect(page).toHaveURL('/cv')
   await expect(page.locator('main h1')).toContainText('Martin Whitaker')
-  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'CV', exact: true })).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByRole('navigation', { name: 'Footer navigation' }).getByRole('link', { name: 'CV', exact: true })).toHaveAttribute('href', '/cv')
   await expect(page.getByRole('heading', { name: 'Digital Interaction Designer', exact: true })).toBeVisible()
   const download = page.getByRole('link', { name: 'Download CV PDF · 1 page' }).first()
   const [file] = await Promise.all([page.waitForEvent('download'), download.click()])
@@ -235,18 +235,16 @@ test('article contents links lead to the matching heading', async ({ page }) => 
   await expect(page.locator('h2#section-1')).toHaveText(title)
 })
 
-test('reveal content is visible in raw HTML (pre-JS paint)', async ({ page }) => {
+test('homepage about content is visible immediately', async ({ page }) => {
   await page.goto('/')
-  // With JS enabled, the html.js class gates pre-paint hiding; content must
-  // still be present and non-hidden in the served markup itself.
-  const isRevealVisible = await page
-    .locator('#disciplines [data-reveal]')
+  const isContentVisible = await page
+    .locator('#about')
     .first()
     .evaluate((el) => {
       const style = getComputedStyle(el)
-      return style.display !== 'none' && style.visibility !== 'hidden'
+      return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity === '1'
     })
-  expect(isRevealVisible).toBe(true)
+  expect(isContentVisible).toBe(true)
 })
 
 test('dark mode cards keep readable text contrast', async ({ page }) => {
@@ -298,9 +296,9 @@ test('dark mode cards keep readable text contrast', async ({ page }) => {
 test.describe('no JavaScript', () => {
   test.use({ javaScriptEnabled: false })
 
-  test('homepage reveal content is visible without JavaScript', async ({ page }) => {
+  test('homepage content is visible without JavaScript', async ({ page }) => {
     await page.goto('/')
-    await expect(page.getByRole('heading', { name: 'Real projects, designed and built.' })).toBeVisible()
-    await expect(page.locator('#disciplines').getByRole('heading', { name: 'Design & UX' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Selected work', exact: true })).toBeVisible()
+    await expect(page.locator('#about').getByRole('heading', { name: 'Designer, developer, occasional cat supervisor.' })).toBeVisible()
   })
 })

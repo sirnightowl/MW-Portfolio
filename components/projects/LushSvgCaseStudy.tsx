@@ -64,11 +64,6 @@ export default function LushSvgCaseStudy({ project }: { project: Project }) {
           <h2 id="context-title" className={styles.title}>{project.challengeTitle}</h2>
           <p className={styles.body}>{project.challenge}</p>
         </div>
-        <aside className={styles.scope} aria-label="Case study scope">
-          <p className="eyebrow">What this case study covers</p>
-          <p>Three real views of the public site, captured on 19 October 2026: the studio homepage, a collection, and its editor. Full desktop viewport captures are saved as WebP without retouching.</p>
-          <p>Interface observations are distinguished from inspected JavaScript modules and configuration. No participant research, adoption figures, time savings, or exhaustive export testing is claimed.</p>
-        </aside>
       </section>
       {screens.map((screen) => <CaseStudyScreen key={screen.id} screen={screen} />)}
       <section tabIndex={-1} id="implementation" aria-labelledby="implementation-title" className={styles.review}>
@@ -101,6 +96,12 @@ export default function LushSvgCaseStudy({ project }: { project: Project }) {
           <p>These are proposed evaluation questions, rather than reported user findings.</p>
         </div>
       </section>
+
+        <aside className={styles.scope} aria-label="Case study scope">
+          <p className="eyebrow">What this case study covers</p>
+          <p>Three real views of the public site, captured on 19 October 2026: the studio homepage, a collection, and its editor. Full desktop viewport captures are saved as WebP without retouching.</p>
+          <p>Interface observations are distinguished from inspected JavaScript modules and configuration. No participant research, adoption figures, time savings, or exhaustive export testing is claimed.</p>
+        </aside>
     </div>
   )
 }

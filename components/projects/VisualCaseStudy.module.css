@@ -5,7 +5,8 @@
 .context, .reflection { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); align-items: start; gap: 64px; padding-top: 64px; scroll-margin-top: 112px; }
 .title { max-width: 830px; margin-top: 12px; font-size: clamp(1.9rem,3.4vw,2.9rem); font-weight: 800; line-height: 1.13; letter-spacing: -.045em; text-wrap: balance; }
 .body { max-width: 780px; margin-top: 22px; color: var(--muted); font-size: 17px; line-height: 1.85; }
-.scope { padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: var(--muted-surface); }
+.context { display: block; max-width: 900px; }
+.scope { margin-top: 48px; padding: 26px; border-top: 1px solid var(--line); background: var(--muted-surface); }
 .scope p:not(:first-child) { margin-top: 16px; color: var(--muted); font-size: 13px; line-height: 1.8; }
 .screenSection { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--line); scroll-margin-top: 112px; }
 .sectionHeading { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 24px; }

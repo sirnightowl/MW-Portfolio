@@ -10,12 +10,12 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['"TikTok Sans Variable"', '"Aptos"', '"Segoe UI"', 'sans-serif'],
-        serif: ['"TikTok Sans Variable"', '"Aptos"', '"Segoe UI"', 'sans-serif'],
+        serif: ['Georgia', '"Times New Roman"', 'serif'],
       },
       colors: {
-        ink: '#151326',
-        paper: '#fbfaff',
-        cream: '#f2eff9',
+        ink: '#332c30',
+        paper: '#f8f4eb',
+        cream: '#eee7dc',
         coral: '#ff7d78',
         sage: '#dce8ff',
         sky: '#e8ddff',
@@ -24,7 +24,7 @@ module.exports = {
         night: '#0b0715',
         grape: '#8f68ff',
         lilac: '#c6a7ff',
-        lilacbg: '#f0ebff',
+        lilacbg: '#efebf4',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',

@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/navigation/Navbar'
+import Link from 'next/link'
 import SocialLinks from '@/components/common/SocialLinks'
+import OwlMark from '@/components/common/OwlMark'
 import { SITE_URL, jsonLd } from '@/lib/site'
 
 const tiktok = localFont({
@@ -21,6 +23,13 @@ export const metadata: Metadata = {
   },
   description: 'Digital interaction designer and front-end developer building accessible public services and characterful products.',
   applicationName: 'Martin Whitaker Portfolio',
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=owl', sizes: '16x16 32x32 48x48', type: 'image/x-icon' },
+      { url: '/owl-icon.svg', sizes: 'any', type: 'image/svg+xml' },
+    ],
+    apple: { url: '/apple-touch-icon.png?v=owl-2', sizes: '180x180', type: 'image/png' },
+  },
   authors: [{ name: 'Martin Whitaker' }],
   creator: 'Martin Whitaker',
   keywords: ['digital interaction design', 'front-end development', 'accessibility', 'UX design', 'product design'],
@@ -73,12 +82,10 @@ export default function RootLayout({
          * `document.documentElement` inside the `try/catch` below. Any future
          * change should preserve this defensive wrapping: SSR and clients
          * with storage disabled must not cause a head-script exception.
-         * The `js` class opts reveal animations in only when JavaScript
-         * runs — without it, reveal content stays visible in the raw HTML.
          */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:'light';}catch(e){}try{document.documentElement.classList.add('js');}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:'light';}catch(e){}})();`,
           }}
         />
       </head>
@@ -94,9 +101,20 @@ export default function RootLayout({
           <div className="container-custom">
             <div className="footer-grid">
               <div>
-                <p className="text-xl font-extrabold tracking-tight">Martin Whitaker<span className="text-coral">.</span></p>
-                <p className="mt-3 max-w-xs text-sm leading-6 text-ink/65 dark:text-white/65">Building clear, useful interfaces<br />with a little character.</p>
+                <Link href="/" className="inline-flex min-h-11 items-center gap-3 font-serif text-[23px] tracking-[-0.05em] text-[#703f61] dark:text-[#dfb4d0]">
+                  <OwlMark className="h-10 w-14 shrink-0" />
+                  <span>Martin Whitaker.</span>
+                </Link>
+                <p className="mt-3 max-w-xs text-sm leading-6 text-ink/75 dark:text-white/65">Building clear, useful interfaces<br />with a little character.</p>
               </div>
+              <nav aria-label="Footer navigation" className="footer-navigation">
+                <Link href="/work">Work</Link>
+                <Link href="/about">About</Link>
+                <Link href="/cv">CV</Link>
+                <Link href="/blog">Writing</Link>
+                <Link href="/uses">Uses</Link>
+                <Link href="/contact">Contact</Link>
+              </nav>
               <div>
                 <p className="eyebrow">Find me elsewhere</p>
                 <SocialLinks className="mt-4" />

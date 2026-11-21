@@ -6,6 +6,7 @@ import Button from '@/components/common/Button'
 import { Squiggle } from '@/components/common/DecorativeShapes'
 import PageIntro from '@/components/common/PageIntro'
 import ProjectCard from '@/components/common/ProjectCard'
+import ProjectArtwork from '@/components/common/ProjectArtwork'
 import SendadvisorCaseStudy from '@/components/projects/SendadvisorCaseStudy'
 import HorrorometerCaseStudy from '@/components/projects/HorrorometerCaseStudy'
 import KanaboardsCaseStudy from '@/components/projects/KanaboardsCaseStudy'
@@ -64,11 +65,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <PageIntro
           eyebrow="Case study"
           title={project.title}
-          description={project.longDescription ?? project.description}
+          description={project.description}
           variant="project"
           back={{ href: '/work', label: 'Back to selected work' }}
-          note={project.leadMetric ?? `${project.year} / ${project.status}`}
-          aside={<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-white/15 bg-cream"><Image alt={project.imageAlt ?? `${project.title} product interface`} className="object-cover" style={{ objectPosition: project.imagePosition ?? 'center' }} fill preload fetchPriority="high" sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" src={project.image} /></div>}
+          note={`${project.status} / ${project.category}`}
+          aside={<ProjectArtwork project={project} preload sizes="(min-width: 1024px) 560px, calc(100vw - 40px)" />}
         >
           {project.isLive && project.liveUrl && (
             <Button href={project.liveUrl} target="_blank" rel="noopener noreferrer" size="lg" className="hero-button">Visit live product <ArrowUpRight aria-hidden="true" className="ml-4 h-4 w-4" /></Button>
@@ -78,13 +79,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="container-custom">
           <dl className="grid gap-6 border-b border-ink/15 py-8 dark:border-white/15 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65 dark:text-white/65">My role</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/75 dark:text-white/65">My role</dt>
               <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{project.role}</dd>
             </div>
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/65 dark:text-white/65">Reviewed / status</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/75 dark:text-white/65">Reviewed / status</dt>
               <dd className="mt-2 text-sm font-medium leading-6 text-ink/85 dark:text-white/85">{new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(project.reviewedAt))} · {project.status}</dd>
             </div>
+          </dl>
+          <dl aria-label="Case study summary" className="case-summary">
+            <div><dt>The problem</dt><dd>{project.summary.problem}</dd></div>
+            <div><dt>The design decision</dt><dd>{project.summary.decision}</dd></div>
+            <div><dt>{project.isLive ? 'What shipped' : 'In development'}</dt><dd>{project.summary.delivered}</dd></div>
           </dl>
         </div>
 
